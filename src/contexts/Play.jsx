@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
 const Context = createContext();
 
@@ -27,7 +27,7 @@ export const usePlay = () => {
   const context = useContext(Context);
 
   if (context === undefined) {
-    throw new Error("usePlay must be used within a PlayProvider");
+    throw new Error('usePlay must be used within a PlayProvider');
   }
 
   return context;

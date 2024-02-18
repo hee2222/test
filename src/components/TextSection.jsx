@@ -1,41 +1,42 @@
-import { Text } from "@react-three/drei";
-import { fadeOnBeforeCompileFlat } from "../utils/fadeMaterial";
+import { Image } from '@react-three/drei';
+import { useRef, useState, useEffect } from 'react';
 
-export const TextSection = ({ title, subtitle, ...props }) => {
-  return (
-    <group {...props}>
-      {!!title && (
-        <Text
-          color="white"
-          anchorX={"left"}
-          anchorY="bottom"
-          fontSize={0.52}
-          maxWidth={2.5}
-          lineHeight={1}
-          font={"./fonts/DMSerifDisplay-Regular.ttf"}
-        >
-          {title}
-          <meshStandardMaterial
-            color={"white"}
-            onBeforeCompile={fadeOnBeforeCompileFlat}
-          />
-        </Text>
-      )}
+export const TextSection = ({ sectionKey, onClick, clickAble, ...props }) => {
+  const ref = useRef();
+  const [hovered, setHovered] = useState(false);
 
-      <Text
-        color="white"
-        anchorX={"left"}
-        anchorY="top"
-        fontSize={0.2}
-        maxWidth={2.5}
-        font={"./fonts/Inter-Regular.ttf"}
-      >
-        {subtitle}
-        <meshStandardMaterial
-          color={"white"}
-          onBeforeCompile={fadeOnBeforeCompileFlat}
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto';
+  }, [hovered]);
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick(sectionKey); // 클릭된 섹션의 키 값을 전달
+    }
+  };
+
+  if (clickAble) {
+    return (
+      <>
+        <Image
+          ref={ref}
+          onClick={handleClick}
+          onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}
+          onPointerOut={(event) => setHovered(false)}
+          scale={onClick ? 1.5 : 1}
+          url={`./images/info/img${sectionKey}.png`}
+          transparent
+          {...props}
         />
-      </Text>
-    </group>
-  );
+      </>
+    );
+  } else {
+    return (
+      <Image
+        url={`./images/info/img${sectionKey}.png`}
+        transparent
+        {...props}
+      />
+    );
+  }
 };

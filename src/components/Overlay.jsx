@@ -12,6 +12,7 @@ export const Overlay = () => {
       if (!play) {
         setPlay(true); // play 상태를 true로 변경
       }
+      console.log(end);
     };
 
     // 컴포넌트가 마운트되었을 때 클릭 이벤트 추가
@@ -33,12 +34,14 @@ export const Overlay = () => {
       />
       {progress === 100 && (
         <div className={`intro ${play ? 'intro--disappear' : ''}`}>
-          <img
-            src="./images/logo.png"
-            alt="suni-logo"
-            height={32}
-            className="logo"
-          />
+          <a href="/" className="logo">
+            <img
+              src="./images/logo.png"
+              alt="suni-logo"
+              height={32}
+              className="logo"
+            />
+          </a>
           <img
             src="./images/intro.png"
             alt="intro"
@@ -60,7 +63,7 @@ export const Overlay = () => {
         </div>
       )}
       <div className={`outro ${end ? 'outro--appear' : ''}`}>
-        <img src="./images/ending.png" alt="ending" className="ending-image" />
+        <img src="./images/ending.jpg" alt="ending" className="ending-image" />
       </div>
     </div>
   );

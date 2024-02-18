@@ -41,7 +41,9 @@ body {
 .overlay--disable {
   pointer-events: none;
 }
-
+.overlay--disable a {
+  pointer-events: auto;
+}
 .loader {
   position: absolute;
   top: 0;
@@ -49,7 +51,6 @@ body {
   bottom: 0;
   right: 0;
   background: black;
-  pointer-events: pointer;
   transition: opacity 2s ease-in-out;
 }
 
@@ -98,6 +99,7 @@ img.scrollIcon {
   animation: fadeIn 1s ease-in-out 1.5s forwards;
   mix-blend-mode: difference;
 }
+
 .intro--disappear img.intro-logo {
   opacity: 0;
 }
@@ -123,14 +125,44 @@ img.scrollIcon {
   opacity: 1;
 }
 
-/* RESPONSIVE */
-
-@media screen and (max-width: 768px) {
-  .outro__text {
-    font-size: 1rem;
-  }
+.slider {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.slider img {
+  /* transition: all 0.3s ease-in-out; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.slider .close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  cursor: pointer;
+}
+.prevBtn {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 /* ANIMATIONS */
 
 @keyframes fadeUp {
@@ -154,17 +186,3 @@ img.scrollIcon {
     opacity: 1;
   }
 }
-/* 
-
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-} */

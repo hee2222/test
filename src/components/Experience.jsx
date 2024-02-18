@@ -3,12 +3,18 @@ import {
   PerspectiveCamera,
   useScroll,
   OrbitControls,
-  PointMaterial,
-  Points,
 } from '@react-three/drei';
+
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  Suspense,
+} from 'react';
 import * as THREE from 'three';
 import { Euler, Group, Vector3, AdditiveBlending } from 'three';
 import { usePlay } from '../contexts/Play';
@@ -17,10 +23,10 @@ import { RealBuilding } from './RealBuilding';
 import { Suni } from './Suni';
 import { Background } from './Background';
 import { Cloud } from './Cloud';
+import { Jupiter } from './Jupiter';
 import { CustomPoints } from './point';
 import { Planets } from './Planets';
-import { Woods } from './Woods';
-import { Rainbow } from './Rainbow';
+import { TextSection } from './TextSection';
 
 const LINE_NB_POINTS = 1000;
 const CURVE_DISTANCE = 250;
@@ -29,12 +35,18 @@ const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = 42;
 
-export const Experience = () => {
+export const Experience = ({ onSectionClick }) => {
+  const handleClick = (sectionKey) => {
+    onSectionClick(sectionKey);
+  };
+
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, -0.5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(100, 0, -1.5 * CURVE_DISTANCE),
+      new THREE.Vector3(-100, 0, -2 * CURVE_DISTANCE),
       new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
       new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
@@ -53,6 +65,45 @@ export const Experience = () => {
   const curve = useMemo(() => {
     return new THREE.CatmullRomCurve3(curvePoints, false, 'catmullrom', 0.5);
   }, []);
+
+  const textSections = useMemo(() => {
+    return [
+      {
+        clickAble: true,
+        cameraRailDist: -1,
+        position: new Vector3(
+          curvePoints[1].x - 3,
+          curvePoints[1].y,
+          curvePoints[1].z
+        ),
+      },
+      {
+        cameraRailDist: -1,
+        position: new Vector3(
+          curvePoints[2].x - 3,
+          curvePoints[2].y,
+          curvePoints[2].z
+        ),
+      },
+      {
+        cameraRailDist: -1,
+        position: new Vector3(
+          curvePoints[3].x - 3,
+          curvePoints[3].y,
+          curvePoints[3].z
+        ),
+      },
+      {
+        clickAble: true,
+        cameraRailDist: 1.5,
+        position: new Vector3(
+          curvePoints[4].x + 3.5,
+          curvePoints[4].y,
+          curvePoints[4].z - 12
+        ),
+      },
+    ];
+  });
 
   const clouds = useMemo(
     () => [
@@ -228,13 +279,13 @@ export const Experience = () => {
     []
   );
 
-  const shape = useMemo(() => {
-    const shape = new THREE.Shape();
-    shape.moveTo(0, -0.08);
-    shape.lineTo(0, 0.08);
+  // const shape = useMemo(() => {
+  //   const shape = new THREE.Shape();
+  //   shape.moveTo(0, -0.08);
+  //   shape.lineTo(0, 0.08);
 
-    return shape;
-  }, [curve]);
+  //   return shape;
+  // }, [curve]);
 
   const cameraGroup = useRef();
   const cameraRail = useRef();
@@ -242,8 +293,8 @@ export const Experience = () => {
   const scroll = useScroll();
   const lastScroll = useRef(0);
 
-  const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
-  const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
+  // const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
+  // const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
 
   const { play, setHasScroll, end, setEnd } = usePlay();
 
@@ -278,7 +329,7 @@ export const Experience = () => {
       );
     }
 
-    lineMaterialRef.current.opacity = sceneOpacity.current;
+    // lineMaterialRef.current.opacity = sceneOpacity.current;
 
     if (end) {
       return;
@@ -292,6 +343,7 @@ export const Experience = () => {
 
     if (resetCameraRail) {
       const targetCameraRailPosition = new Vector3(0, 0, 0);
+
       cameraRail.current.position.lerp(targetCameraRailPosition, delta);
     }
 
@@ -368,6 +420,7 @@ export const Experience = () => {
         angle
       )
     );
+
     airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
 
     if (
@@ -395,23 +448,28 @@ export const Experience = () => {
 
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: '#6f35cc',
-      colorB: '#ffad30',
+      colorA: '#483C7A',
+      colorB: '#36204A',
     });
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: '#87ceeb',
-      colorB: '#ffcc00',
+      colorA: '#88436E',
+      colorB: '#FFC666',
     });
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: '#19bdff',
-      colorB: '#ffffff',
+      colorA: '#FFFFB0',
+      colorB: '#75C1ED',
     });
     tl.current.to(backgroundColors.current, {
       duration: 1,
-      colorA: '#99edc3',
-      colorB: '#55ab8f',
+      colorA: '#CCFEFE',
+      colorB: '#3AC3FE',
+    });
+    tl.current.to(backgroundColors.current, {
+      duration: 1,
+      colorA: '#55ab8f',
+      colorB: '#99edc3',
     });
 
     tl.current.pause();
@@ -459,10 +517,13 @@ export const Experience = () => {
   return useMemo(
     () => (
       <>
-        <directionalLight position={[0, 3, 1]} intensity={0.2} />
+        <directionalLight position={[0, 0, 1]} intensity={0.3} />
         {/* <OrbitControls /> */}
         <group ref={cameraGroup}>
           <Background backgroundColors={backgroundColors} />
+          {/* <Plane args={[5, 5]} position={[0, 0, 0]}>
+            <meshStandardMaterial color={'#ff0000'} transparent opacity={0.5} />
+          </Plane> */}
           <group ref={cameraRail}>
             <PerspectiveCamera
               ref={camera}
@@ -474,19 +535,30 @@ export const Experience = () => {
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <axesHelper />
-              <Suni
-                rotation-y={Math.PI}
-                rotation-x={-Math.PI / 3}
-                scale={[0.02, 0.02, 0.02]}
-                position-y={0.1}
-              />
+              <Suspense fallback={null}>
+                <Suni
+                  rotation-y={Math.PI}
+                  rotation-x={-Math.PI / 3}
+                  scale={[0.02, 0.02, 0.02]}
+                  position-y={-0.1}
+                  position-z={0.5}
+                />
+              </Suspense>
             </Float>
           </group>
         </group>
         {/* TEXT */}
-
+        {textSections.map((textSection, index) => (
+          <TextSection
+            {...textSection}
+            key={index}
+            sectionKey={index}
+            clickAble={textSection.clickAble}
+            onClick={handleClick}
+          />
+        ))}
         {/* LINE */}
-        <group position-y={-2}>
+        {/* <group position-y={-2}>
           <mesh>
             <extrudeGeometry
               args={[
@@ -502,13 +574,13 @@ export const Experience = () => {
               color={'white'}
               ref={lineMaterialRef}
               transparent
-              envMapIntensity={2}
+              // envMapIntensity={0}
+              opacity={0}
               onBeforeCompile={fadeOnBeforeCompile}
             />
           </mesh>
-        </group>
-        {/* <Jupiter scale={[0.05, 0.05, 0.05]} position={(100, 100, -20)} /> */}
-        {/* <Earth scale={[0.01, 0.01, 0.01]} position={(-3.5, 100, -10)} /> */}
+        </group> */}
+
         <RealBuilding
           position={[150, -100, -1000]}
           scale={[4, 4, 4]}
@@ -541,18 +613,14 @@ export const Experience = () => {
         {clouds.map((cloud, index) => (
           <Cloud sceneOpacity={sceneOpacity} {...cloud} key={index} />
         ))}
-        <CustomPoints numPoints={10000} range={1000} />
+        <CustomPoints numPoints={1000} range={500} />
         <Planets
-          scale={[0.3, 0.3, 0.3]}
+          scale={[0.4, 0.4, 0.4]}
           rotation-z={Math.PI / 3}
           rotation-x={-Math.PI}
-          position-z={-10}
+          position-z={-20}
         ></Planets>
-        <Rainbow
-          scale={[100, 100, 100]}
-          position={[200, 0, -2600]}
-          rotation-y={-Math.PI / 4}
-        />
+        <Jupiter position={[0, -12, -5]} scale={[0.05, 0.05, 0.05]} />
       </>
     ),
     []
