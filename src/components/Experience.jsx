@@ -3,11 +3,19 @@ import {
   PerspectiveCamera,
   useScroll,
   OrbitControls,
+  Detailed,
 } from '@react-three/drei';
 
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  Suspense,
+  Fragment,
+} from 'react';
 import * as THREE from 'three';
 import { Euler, Group, Vector3, AdditiveBlending } from 'three';
 import { usePlay } from '../contexts/Play';
@@ -15,19 +23,17 @@ import { fadeOnBeforeCompile } from '../utils/fadeMaterial';
 import { Suni } from './Newsuni';
 import { Background } from './Background';
 import { C } from './C';
-import { B } from './B';
-
+import { B } from './New-b';
 import { Planets } from './Planets';
-import { Jupiter } from './Jupiter';
 import { CustomPoints } from './point';
 import { TextSection } from './TextSection';
 
 const LINE_NB_POINTS = 1120;
-const CURVE_DISTANCE = 80;
+const CURVE_DISTANCE = 60;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 20;
+const FRICTION_DISTANCE = 10;
 
 export const Experience = ({ onSectionClick }) => {
   const handleClick = (sectionKey) => {
@@ -37,7 +43,7 @@ export const Experience = ({ onSectionClick }) => {
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(10, 0, -1 * CURVE_DISTANCE),
+      new THREE.Vector3(1, 0, -1 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
       new THREE.Vector3(-10, 0, -3 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -4 * CURVE_DISTANCE),
@@ -105,243 +111,23 @@ export const Experience = ({ onSectionClick }) => {
   }, []);
 
   const textSections = useMemo(() => {
-    return [
-      {
-        clickAble: true,
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[1].x + 2,
-          curvePoints[1].y,
-          curvePoints[1].z
-        ),
-      },
-      {
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[2].x - 2,
-          curvePoints[2].y,
-          curvePoints[2].z
-        ),
-      },
-      {
-        cameraRailDist: -1,
-        position: new Vector3(
-          curvePoints[3].x + 2,
-          curvePoints[3].y,
-          curvePoints[3].z
-        ),
-      },
-      {
-        clickAble: true,
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[4].x - 2,
-          curvePoints[4].y,
-          curvePoints[4].z
-        ),
-      },
-      {
-        clickAble: true,
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[5].x + 2,
-          curvePoints[5].y,
-          curvePoints[5].z
-        ),
-      },
-      {
-        clickAble: true,
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[6].x - 2,
-          curvePoints[6].y,
-          curvePoints[6].z
-        ),
-      },
-      {
-        clickAble: true,
-        cameraRailDist: 1,
-        position: new Vector3(
-          curvePoints[7].x + 2,
-          curvePoints[7].y,
-          curvePoints[7].z
-        ),
-      },
-    ];
-  });
+    const sections = [];
+    const numSections = 54; // 원하는 섹션의 총 수
 
-  const clouds = useMemo(
-    () => [
-      // STARTING
-      // {
-      //   position: new Vector3(-3.5, -3.2, -7),
-      // },
-      // {
-      //   position: new Vector3(3.5, -4, -10),
-      // },
-      // {
-      //   scale: new Vector3(4, 4, 4),
-      //   position: new Vector3(-18, 0.2, -68),
-      //   rotation: new Euler(-Math.PI / 5, Math.PI / 6, 0),
-      // },
-      // {
-      //   scale: new Vector3(2.5, 2.5, 2.5),
-      //   position: new Vector3(10, -1.2, -52),
-      // },
-      // FIRST POINT
-      {
-        scale: new Vector3(10, 10, 10),
-        position: new Vector3(
-          curvePoints[3].x + 10,
-          curvePoints[3].y - 4,
-          curvePoints[3].z + 64
-        ),
-      },
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[3].x - 20,
-          curvePoints[3].y + 4,
-          curvePoints[3].z + 28
-        ),
-        // rotation: new Euler(0, Math.PI / 7, 0),
-      },
-      {
-        // rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[3].x - 13,
-          curvePoints[3].y + 4,
-          curvePoints[3].z - 62
-        ),
-      },
-      {
-        // rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[3].x + 54,
-          curvePoints[3].y + 2,
-          curvePoints[3].z - 82
-        ),
-      },
-      {
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[3].x + 8,
-          curvePoints[3].y - 14,
-          curvePoints[3].z - 22
-        ),
-      },
-      // SECOND POINT
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[4].x + 6,
-          curvePoints[4].y - 7,
-          curvePoints[4].z + 50
-        ),
-      },
-      {
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[4].x - 2,
-          curvePoints[4].y + 4,
-          curvePoints[4].z - 26
-        ),
-      },
-      {
-        scale: new Vector3(4, 4, 4),
-        position: new Vector3(
-          curvePoints[4].x + 12,
-          curvePoints[4].y + 1,
-          curvePoints[4].z - 86
-        ),
-        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 3),
-      },
-      // THIRD POINT
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[5].x + 3,
-          curvePoints[5].y - 10,
-          curvePoints[5].z + 50
-        ),
-      },
-      {
-        scale: new Vector3(10, 10, 10),
-        position: new Vector3(
-          curvePoints[5].x - 10,
-          curvePoints[5].y,
-          curvePoints[5].z + 30
-        ),
-        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
-      },
-      {
-        scale: new Vector3(4, 4, 4),
-        position: new Vector3(
-          curvePoints[5].x - 20,
-          curvePoints[5].y - 5,
-          curvePoints[5].z - 8
-        ),
-        // rotation: new Euler(Math.PI, 0, Math.PI / 5),
-      },
-      {
-        scale: new Vector3(10, 10, 10),
-        position: new Vector3(
-          curvePoints[5].x + 0,
-          curvePoints[5].y - 5,
-          curvePoints[5].z - 98
-        ),
-        // rotation: new Euler(0, Math.PI / 3, 0),
-      },
-      // FOURTH POINT
-      {
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[6].x + 3,
-          curvePoints[6].y - 10,
-          curvePoints[6].z + 2
-        ),
-      },
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[6].x + 24,
-          curvePoints[6].y - 6,
-          curvePoints[6].z - 42
-        ),
-        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
-      },
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[6].x - 4,
-          curvePoints[6].y + 9,
-          curvePoints[6].z - 62
-        ),
-        // rotation: new Euler(Math.PI / 3, 0, Math.PI / 3),
-      },
-      {
-        scale: new Vector3(3, 3, 3),
-        position: new Vector3(
-          curvePoints[7].x + 12,
-          curvePoints[7].y - 5,
-          curvePoints[7].z + 60
-        ),
-        // rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
-      },
-      {
-        scale: new Vector3(5, 5, 5),
-        position: new Vector3(
-          curvePoints[7].x - 12,
-          curvePoints[7].y + 5,
-          curvePoints[7].z + 120
-        ),
-        // rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
-      },
-    ],
-    []
-  );
+    for (let i = 1; i < numSections; i++) {
+      const clickAble = i % 2 === 0; // 짝수 번째 섹션은 클릭 가능
+      const cameraRailDist = i % 2 === 0 ? 2 : -2; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
+      const position = new Vector3(
+        curvePoints[i].x + (i % 2 === 0 ? 2 : -2), // 짝수 번째 섹션은 x 좌표에 2를 더하고, 홀수 번째 섹션은 2를 빼줍니다.
+        curvePoints[i].y,
+        curvePoints[i].z
+      );
+
+      sections.push({ clickAble, cameraRailDist, position });
+    }
+
+    return sections;
+  }, null);
 
   const shape = useMemo(() => {
     const shape = new THREE.Shape();
@@ -357,8 +143,8 @@ export const Experience = ({ onSectionClick }) => {
   const scroll = useScroll();
   const lastScroll = useRef(0);
 
-  const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
-  const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
+  // const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
+  // const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
 
   const { play, setHasScroll, end, setEnd } = usePlay();
 
@@ -515,7 +301,7 @@ export const Experience = ({ onSectionClick }) => {
   const tl = useRef();
   const backgroundColors = useRef({
     colorA: '#000035',
-    colorB: '#49499C',
+    colorB: '#36204A',
   });
 
   const planeInTl = useRef();
@@ -525,30 +311,30 @@ export const Experience = ({ onSectionClick }) => {
     tl.current = gsap.timeline();
 
     tl.current.to(backgroundColors.current, {
-      duration: 1,
-      colorA: '#483C7A',
-      colorB: '#36204A',
+      duration: 0.3,
+      colorA: '#8A20EB',
+      colorB: '#7474F2',
     });
     tl.current.to(backgroundColors.current, {
-      duration: 1,
-      colorA: '#88436E',
-      colorB: '#FFC666',
+      duration: 0.3,
+      colorA: '#00F0FF',
+      colorB: '#7474F2',
     });
     tl.current.to(backgroundColors.current, {
-      duration: 1,
-      colorA: '#FFFFB0',
-      colorB: '#75C1ED',
+      duration: 0.3,
+      colorA: '#8A20EB',
+      colorB: '#7474F2',
     });
     tl.current.to(backgroundColors.current, {
-      duration: 1,
-      colorA: '#CCFEFE',
-      colorB: '#3AC3FE',
+      duration: 0.3,
+      colorA: '#8A20EB',
+      colorB: '#7474F2',
     });
-    tl.current.to(backgroundColors.current, {
-      duration: 1,
-      colorA: '#55ab8f',
-      colorB: '#99edc3',
-    });
+    // tl.current.to(backgroundColors.current, {
+    //   duration: 1,
+    //   colorA: '#55ab8f',
+    //   colorB: '#99edc3',
+    // });
 
     tl.current.pause();
 
@@ -605,6 +391,8 @@ export const Experience = ({ onSectionClick }) => {
               ref={camera}
               position={[0, 0, 5]}
               fov={30}
+              near={1}
+              far={2000}
               makeDefault
             />
           </group>
@@ -622,11 +410,12 @@ export const Experience = ({ onSectionClick }) => {
             </Float>
           </group>
         </group>
+
         {/* TEXT */}
         {textSections.map((textSection, index) => (
           <TextSection
             {...textSection}
-            key={index}
+            key={`T${index}`}
             sectionKey={index}
             clickAble={textSection.clickAble}
             onClick={handleClick}
@@ -649,21 +438,100 @@ export const Experience = ({ onSectionClick }) => {
               color={'white'}
               ref={lineMaterialRef}
               transparent
-              envMapIntensity={1}
+              envMapIntensity={2}
               onBeforeCompile={fadeOnBeforeCompile}
             />
           </mesh>
         </group>
 
         {/* CLOUDS */}
-        {clouds.map((cloud, index) => (
-          <C sceneOpacity={sceneOpacity} {...cloud} key={index} />
+
+        {[...Array(6)].map((cloud, index) => (
+          <Fragment key={`cloud-${index}`}>
+            <C
+              sceneOpacity={sceneOpacity}
+              scale={(8, 8, 8)}
+              position-x={
+                curvePoints[index + 20].x - (index % 2 === 0 ? 10 : -10)
+              }
+              position-y={curvePoints[index + 20].y + 5}
+              position-z={curvePoints[index + 20].z - 5}
+            />
+
+            <C
+              sceneOpacity={sceneOpacity}
+              scale={(4, 4, 4)}
+              position-x={-`${curvePoints[index + 20].x + 12}`}
+              position-y={-`${curvePoints[index + 20].y + 10}`}
+              position-z={curvePoints[index + 20].z - 30}
+            />
+            <C
+              sceneOpacity={sceneOpacity}
+              scale={(6, 6, 6)}
+              position-x={
+                curvePoints[index + 19].x - (index % 2 === 0 ? 20 : -20)
+              }
+              position-y={
+                curvePoints[index + 19].y + (index % 2 === 0 ? 20 : -20)
+              }
+              position-z={curvePoints[index + 19].z - 50}
+            />
+          </Fragment>
         ))}
-        <B scale={[2, 2, 2]} position-y={-8} position-z={-1100} />
+
+        {/* <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[26].z} />
+        <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[27].z} /> */}
+        <C
+          sceneOpacity={sceneOpacity}
+          scale={(100, 10, 100)}
+          position-x={curvePoints[19].x}
+          position-y={curvePoints[19].y}
+          position-z={curvePoints[19].z - 40}
+        />
+        <C
+          sceneOpacity={sceneOpacity}
+          scale={(100, 10, 100)}
+          position-x={curvePoints[25].x}
+          position-y={curvePoints[25].y}
+          position-z={curvePoints[25].z - 40}
+        />
+        <>
+          {[...Array(29)].map((_, index) => (
+            <Fragment key={`b-${index}`}>
+              <B
+                sceneOpacity={sceneOpacity}
+                scale={[6, 1.5, 4]}
+                position-x={index % 2 === 0 ? 6 : -6}
+                position-y={-8}
+                position-z={curvePoints[index + 26].z - 10}
+              />
+              <C
+                sceneOpacity={sceneOpacity}
+                scale={(5, 5, 5)}
+                position-x={
+                  curvePoints[index + 26].x + (index % 2 === 0 ? 2 : -2)
+                }
+                position-y={curvePoints[index + 26].y + 10}
+                position-z={curvePoints[index + 26].z - 30}
+              />
+              <C
+                sceneOpacity={sceneOpacity}
+                scale={(8, 8, 8)}
+                position-x={
+                  -`${
+                    curvePoints[index + 26].x + 20 * (index % 2 === 0 ? 1 : -1)
+                  }`
+                }
+                position-y={curvePoints[index + 26].y + 5}
+                position-z={curvePoints[index + 26].z - 60}
+              />
+            </Fragment>
+          ))}
+        </>
+
         <Planets position={[1, -1, -5]} />
 
-        <CustomPoints numPoints={1000} range={500} />
-        {/* <Jupiter position={[0, -12, -5]} scale={[0.05, 0.05, 0.05]} /> */}
+        <CustomPoints numPoints={500} range={1700} />
       </>
     ),
     []

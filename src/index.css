@@ -14,7 +14,14 @@ body {
   overflow: hidden;
   background-color: black;
 }
-
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: transparent;
+}
 ::-webkit-scrollbar {
   width: 2px;
 }
@@ -87,7 +94,8 @@ img.logo {
   transition: all 2s ease-in-out;
   z-index: 10;
 }
-.intro.intro--disappear img.logo {
+.intro.intro--disappear img.logo,
+.intro.intro--disappear img.scrollIcon {
   opacity: 1;
 }
 img.scrollIcon {
@@ -96,8 +104,9 @@ img.scrollIcon {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  animation: fadeIn 1s ease-in-out 1.5s forwards;
-  mix-blend-mode: difference;
+  transition: all 2s ease-in-out;
+  /* animation: fadeIn 1s ease-in-out 1.5s forwards; */
+  /* mix-blend-mode: difference; */
 }
 
 .intro--disappear img.intro-logo {
@@ -136,32 +145,42 @@ img.scrollIcon {
   justify-content: center;
   align-items: center;
 }
-.slider img {
+.slide img {
   /* transition: all 0.3s ease-in-out; */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .slider .close {
   position: absolute;
   top: 40px;
   right: 40px;
   cursor: pointer;
+  z-index: 10;
+  text-transform: uppercase;
 }
-.prevBtn {
+.slider button.prevBtn {
+  display: block;
   position: absolute;
   top: 50%;
-  right: 40px;
+  right: 60px;
   transform: translateY(-50%);
   cursor: pointer;
+  z-index: 10;
 }
-.nextBtn {
+.slider button.nextBtn {
+  display: block;
   position: absolute;
   top: 50%;
-  left: 40px;
+  left: 60px;
   transform: translateY(-50%);
   cursor: pointer;
+  z-index: 10;
 }
 /* ANIMATIONS */
 

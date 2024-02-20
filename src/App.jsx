@@ -48,7 +48,7 @@ function App() {
             opacity: 0,
           }}
         >
-          {/* <fog attach="fog" color="hotpink" near={1} far={5} /> */}
+          <fog attach="fog" color="white" near={1} far={4000} />
           <Experience onSectionClick={handleSectionClick} />
         </ScrollControls>
         <Rig />

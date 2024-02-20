@@ -5,52 +5,126 @@ Command: npx gltfjsx@6.2.16 public/models/planet-1.glb
 
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { fadeOnBeforeCompile } from '../utils/fadeMaterial';
 
 export function Planets(props) {
   const { nodes, materials } = useGLTF('./models/planet-1.glb');
   return (
     <group {...props} dispose={null}>
       <mesh
-        geometry={nodes.p4001.geometry}
-        material={materials.texture}
-        position={[2, 0.5, 3]}
-      />
-      <mesh
-        geometry={nodes.p6001.geometry}
-        material={materials.texture}
-        position={[2, 0.5, 1]}
-      />
-      <mesh
+        scale={[8, 8, 8]}
         geometry={nodes.p5001.geometry}
         material={materials.texture}
-        position={[-3.699, 2.272, 2]}
+        onBeforeCompile={fadeOnBeforeCompile}
+        position={[-0.8, -4.5, -0]}
       />
       <mesh
-        geometry={nodes.p13001.geometry}
+        scale={[20, 20, 20]}
+        geometry={nodes.p6001.geometry}
         material={materials.texture}
-        position={[-2.255, 1.365, -10]}
+        position={[-15, 10, -50]}
       />
       <mesh
-        geometry={nodes.p8001.geometry}
+        scale={[15, 15, 15]}
+        geometry={nodes.p4001.geometry}
         material={materials.texture}
-        position={[-6.271, 0.543, -5]}
+        position={[25, 10, -100]}
       />
       <mesh
+        scale={[20, 20, 20]}
         geometry={nodes.p12001.geometry}
         material={materials.texture}
-        position={[-3, 2.842, -10]}
+        position={[-15, -10, -150]}
       />
       <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p12001.geometry}
+        material={materials.texture}
+        position={[-30, 14, -200]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p3001.geometry}
+        material={materials.texture}
+        rotation-z={Math.PI / 4}
+        rotation-x={-Math.PI / 4}
+        position={[15, -10, -200]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p8001.geometry}
+        material={materials.texture}
+        position={[15, -14, -300]}
+      />
+      <group scale={[8, 8, 8]} position={[-45, -10, -250]}>
+        <mesh
+          geometry={nodes.Circle001.geometry}
+          material={materials.texture}
+        />
+        <mesh
+          geometry={nodes.Circle001_1.geometry}
+          material={materials.Material}
+        />
+      </group>
+      {/* <mesh
+        scale={[20, 20, 20]}
+        geometry={nodes.p6001.geometry}
+        material={materials.texture}
+        position={[-15, 25, -150]}
+      /> */}
+      {/* <group scale={[8, 8, 8]} position={[-14, 25, -200]}>
+        <mesh
+          geometry={nodes.Circle001.geometry}
+          material={materials.texture}
+        />
+        <mesh
+          geometry={nodes.Circle001_1.geometry}
+          material={materials.Material}
+        />
+      </group> */}
+
+      <mesh
+        scale={[10, 10, 10]}
+        geometry={nodes.p5001.geometry}
+        material={materials.texture}
+        position={[20, 15, -350]}
+      />
+      <mesh
+        scale={[20, 20, 20]}
+        geometry={nodes.p6001.geometry}
+        material={materials.texture}
+        position={[-40, 18, -400]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p13001.geometry}
+        material={materials.texture}
+        position={[30, 10, -450]}
+      />
+      <mesh
+        scale={[18, 18, 18]}
+        geometry={nodes.p8001.geometry}
+        material={materials.texture}
+        position={[25, -15, -500]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p12001.geometry}
+        material={materials.texture}
+        position={[-13, -12, -600]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
         geometry={nodes.p9001.geometry}
         material={materials.texture}
-        position={[3, 0.713, 1.787]}
+        position={[15, -10 - 700]}
       />
-      <mesh
-        geometry={nodes.p10001.geometry}
-        material={materials.texture}
-        position={[-3, 1.321, 1.897]}
-      />
-      <group position={[-3, 0.839, -10]}>
+      <group
+        scale={[18, 18, 18]}
+        position={[40, -15, -700]}
+        rotation-z={Math.PI}
+        rotation-x={-Math.PI}
+      >
         <mesh
           geometry={nodes.Circle001.geometry}
           material={materials.texture}
@@ -61,14 +135,57 @@ export function Planets(props) {
         />
       </group>
       <mesh
-        geometry={nodes.p2001.geometry}
-        material={materials.texture}
-        position={[1, 0, -20]}
-      />
-      <mesh
+        scale={[10, 10, 10]}
         geometry={nodes.p3001.geometry}
         material={materials.texture}
-        position={[1, 0, -20]}
+        position={[-20, 25, -750]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p10001.geometry}
+        material={materials.texture}
+        position={[-20, -10, -800]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p12001.geometry}
+        material={materials.texture}
+        position={[-20, 14, -900]}
+      />
+
+      <mesh
+        scale={[18, 18, 18]}
+        geometry={nodes.p8001.geometry}
+        material={materials.texture}
+        position={[15, -14, -1100]}
+      />
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p13001.geometry}
+        material={materials.texture}
+        position={[-15, 15, -1100]}
+      />
+      <group scale={[8, 8, 8]} position={[10, 15, -950]}>
+        <mesh
+          geometry={nodes.Circle001.geometry}
+          material={materials.texture}
+        />
+        <mesh
+          geometry={nodes.Circle001_1.geometry}
+          material={materials.Material}
+        />
+      </group>
+      <mesh
+        scale={[8, 8, 8]}
+        geometry={nodes.p2001.geometry}
+        material={materials.texture}
+        position={[10, -25, -900]}
+      />
+      <mesh
+        scale={[10, 10, 10]}
+        geometry={nodes.p3001.geometry}
+        material={materials.texture}
+        position={[30, -20, -900]}
       />
     </group>
   );

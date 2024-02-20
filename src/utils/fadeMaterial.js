@@ -44,3 +44,13 @@ export const fadeOnBeforeCompileFlat = (shader) => {
     `gl_FragColor = diffuseColor;`
   );
 };
+
+export const normalfadeOnBeforeCompileFlat = (shader) => {
+  shader.fragmentShader = shader.fragmentShader.replace(
+    'gl_FragColor = vec4( packNormalToRGB( normal ), opacity );',
+    [
+      'gl_FragColor = vec4( packNormalToRGB( normal ), opacity );',
+      'gl_FragColor.a *= pow( gl_FragCoord.z, 50.0 );',
+    ].join('\n')
+  );
+};

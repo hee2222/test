@@ -2,20 +2,21 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
 const generateRandomPoint = (range) => {
-  const x = THREE.MathUtils.randFloat(-range, range);
-  const y = THREE.MathUtils.randFloat(-range, range);
+  const y = THREE.MathUtils.randFloat(-120, 120);
   const z = THREE.MathUtils.randFloat(-range, range);
-  return [x, y, z];
+  return [y, z];
 };
 
 export const CustomPoints = ({ numPoints, range }) => {
   const pointsRef = useRef();
+  const spacing = 1;
 
   useEffect(() => {
     const positions = [];
     for (let i = 0; i < numPoints; i++) {
-      const point = generateRandomPoint(range);
-      positions.push(...point);
+      const x = i * spacing - (numPoints * spacing) / 2; // 균등한 간격으로 설정
+      const [y, z] = generateRandomPoint(range);
+      positions.push(x, y, z);
     }
 
     pointsRef.current.geometry.setAttribute(
@@ -30,7 +31,7 @@ export const CustomPoints = ({ numPoints, range }) => {
       <pointsMaterial
         attach="material"
         color={'white'}
-        size={2}
+        size={1}
         sizeAttenuation={false}
       />
     </points>

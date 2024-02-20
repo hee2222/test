@@ -18,12 +18,12 @@ export const Slider = ({ sectionKey, onClose }) => {
   const renderSlides = [];
   for (let i = 0; i < 3; i++) {
     renderSlides.push(
-      <div
+      <img
         key={`slide${i + 1}`}
+        src={`./images/slider/slide${i + 1}.jpg`}
+        alt={`slide${i + 1}`}
         style={{ visibility: currentSlide === i ? 'visible' : 'hidden' }}
-      >
-        <img src={`./images/slider/slide${i + 1}.png`} alt={`slide${i + 1}`} />
-      </div>
+      />
     );
   }
 
@@ -33,12 +33,12 @@ export const Slider = ({ sectionKey, onClose }) => {
         Close
       </div>
       {/* <p>Selected Section Key: {sectionKey}</p> */}
-      {renderSlides}
+      <div className="slide">{renderSlides}</div>
       <button onClick={handlePrevSlide} className="prevBtn">
-        Prev
+        <img src="./images/right.svg" alt="arrow-prev" width={40} height={40} />
       </button>
       <button onClick={handleNextSlide} className="nextBtn">
-        Next
+        <img src="./images/left.svg" alt="arrow-next" width={40} height={40} />
       </button>
     </div>
   );
