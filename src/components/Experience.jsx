@@ -27,7 +27,7 @@ const CURVE_DISTANCE = 80;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 100;
+const FRICTION_DISTANCE = 20;
 
 export const Experience = ({ onSectionClick }) => {
   const handleClick = (sectionKey) => {
@@ -37,9 +37,9 @@ export const Experience = ({ onSectionClick }) => {
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -1 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -3 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -4 * CURVE_DISTANCE),
       new THREE.Vector3(-10, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
@@ -108,9 +108,9 @@ export const Experience = ({ onSectionClick }) => {
     return [
       {
         clickAble: true,
-        cameraRailDist: 0,
+        cameraRailDist: 1,
         position: new Vector3(
-          curvePoints[1].x - 2,
+          curvePoints[1].x + 2,
           curvePoints[1].y,
           curvePoints[1].z
         ),
@@ -118,7 +118,7 @@ export const Experience = ({ onSectionClick }) => {
       {
         cameraRailDist: 1,
         position: new Vector3(
-          curvePoints[2].x + 2,
+          curvePoints[2].x - 2,
           curvePoints[2].y,
           curvePoints[2].z
         ),
@@ -126,7 +126,7 @@ export const Experience = ({ onSectionClick }) => {
       {
         cameraRailDist: -1,
         position: new Vector3(
-          curvePoints[3].x - 2,
+          curvePoints[3].x + 2,
           curvePoints[3].y,
           curvePoints[3].z
         ),
@@ -135,9 +135,36 @@ export const Experience = ({ onSectionClick }) => {
         clickAble: true,
         cameraRailDist: 1,
         position: new Vector3(
-          curvePoints[4].x + 2,
+          curvePoints[4].x - 2,
           curvePoints[4].y,
           curvePoints[4].z
+        ),
+      },
+      {
+        clickAble: true,
+        cameraRailDist: 1,
+        position: new Vector3(
+          curvePoints[5].x + 2,
+          curvePoints[5].y,
+          curvePoints[5].z
+        ),
+      },
+      {
+        clickAble: true,
+        cameraRailDist: 1,
+        position: new Vector3(
+          curvePoints[6].x - 2,
+          curvePoints[6].y,
+          curvePoints[6].z
+        ),
+      },
+      {
+        clickAble: true,
+        cameraRailDist: 1,
+        position: new Vector3(
+          curvePoints[7].x + 2,
+          curvePoints[7].y,
+          curvePoints[7].z
         ),
       },
     ];

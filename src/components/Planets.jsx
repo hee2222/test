@@ -13,12 +13,12 @@ export function Planets(props) {
       <mesh
         geometry={nodes.p4001.geometry}
         material={materials.texture}
-        position={[2.277, 0.5, 1]}
+        position={[2, 0.5, 3]}
       />
       <mesh
         geometry={nodes.p6001.geometry}
         material={materials.texture}
-        position={[1.217, 2.133, 2]}
+        position={[2, 0.5, 1]}
       />
       <mesh
         geometry={nodes.p5001.geometry}
@@ -28,17 +28,17 @@ export function Planets(props) {
       <mesh
         geometry={nodes.p13001.geometry}
         material={materials.texture}
-        position={[-2.255, 1.365, 10]}
+        position={[-2.255, 1.365, -10]}
       />
       <mesh
         geometry={nodes.p8001.geometry}
         material={materials.texture}
-        position={[-6.271, 0.543, 1.91]}
+        position={[-6.271, 0.543, -5]}
       />
       <mesh
         geometry={nodes.p12001.geometry}
         material={materials.texture}
-        position={[-3, 2.842, 1.905]}
+        position={[-3, 2.842, -10]}
       />
       <mesh
         geometry={nodes.p9001.geometry}
@@ -50,7 +50,7 @@ export function Planets(props) {
         material={materials.texture}
         position={[-3, 1.321, 1.897]}
       />
-      <group position={[-3, 0.839, 10]}>
+      <group position={[-3, 0.839, -10]}>
         <mesh
           geometry={nodes.Circle001.geometry}
           material={materials.texture}
@@ -63,12 +63,12 @@ export function Planets(props) {
       <mesh
         geometry={nodes.p2001.geometry}
         material={materials.texture}
-        position={[-3, 1, 1.918]}
+        position={[1, 0, -20]}
       />
       <mesh
         geometry={nodes.p3001.geometry}
         material={materials.texture}
-        position={[3, 2, 1.857]}
+        position={[1, 0, -20]}
       />
     </group>
   );

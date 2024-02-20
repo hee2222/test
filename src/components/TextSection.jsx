@@ -24,7 +24,7 @@ export const TextSection = ({ sectionKey, onClick, clickAble, ...props }) => {
           onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}
           onPointerOut={(event) => setHovered(false)}
           scale={1.5}
-          url={`./images/info/img${sectionKey}.png`}
+          url={`./images/info/img${sectionKey % 4}.png`}
           transparent
           {...props}
         />
