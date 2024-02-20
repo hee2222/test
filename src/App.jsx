@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Experience } from './components/Experience';
 import { easing } from 'maath';
 import { Overlay } from './components/Overlay';
-import { usePlay } from './contexts/Play';
 import { Slider } from './components/Slider';
+import { usePlay } from './contexts/Play';
 
 function Rig() {
   return useFrame((state, delta) => {
@@ -35,8 +35,8 @@ function App() {
       <Canvas>
         <color attach="background" args={['#ececec']} />
         <ScrollControls
-          pages={play && !end ? 50 : 0}
-          damping={0.5}
+          pages={play && !end ? 100 : 0}
+          damping={0.1}
           style={{
             top: '10px',
             left: '0px',
@@ -48,6 +48,7 @@ function App() {
             opacity: 0,
           }}
         >
+          {/* <fog attach="fog" color="hotpink" near={1} far={5} /> */}
           <Experience onSectionClick={handleSectionClick} />
         </ScrollControls>
         <Rig />

@@ -7,33 +7,27 @@ import {
 
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  Suspense,
-} from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
 import * as THREE from 'three';
 import { Euler, Group, Vector3, AdditiveBlending } from 'three';
 import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompile } from '../utils/fadeMaterial';
-import { RealBuilding } from './RealBuilding';
-import { Suni } from './Suni';
+import { Suni } from './Newsuni';
 import { Background } from './Background';
-import { Cloud } from './Cloud';
+import { C } from './C';
+import { B } from './B';
+
+import { Planets } from './Planets';
 import { Jupiter } from './Jupiter';
 import { CustomPoints } from './point';
-import { Planets } from './Planets';
 import { TextSection } from './TextSection';
 
-const LINE_NB_POINTS = 1000;
-const CURVE_DISTANCE = 250;
+const LINE_NB_POINTS = 1120;
+const CURVE_DISTANCE = 80;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 42;
+const FRICTION_DISTANCE = 100;
 
 export const Experience = ({ onSectionClick }) => {
   const handleClick = (sectionKey) => {
@@ -43,18 +37,62 @@ export const Experience = ({ onSectionClick }) => {
   const curvePoints = useMemo(
     () => [
       new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(0, 0, -0.5 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -1.5 * CURVE_DISTANCE),
-      new THREE.Vector3(-100, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(-100, 0, -3 * CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -4 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -5 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -1 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -3 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -4 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -5 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
       new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -8 * CURVE_DISTANCE),
-      new THREE.Vector3(-100, 0, -9 * CURVE_DISTANCE),
-      new THREE.Vector3(100, 0, -10 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -10 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -11 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -12 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -15 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -16 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -17 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -18 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -19 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -20 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -21 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -22 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -23 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -24 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -25 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -26 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -27 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -28 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -29 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -30 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -31 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -32 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -33 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -34 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -35 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -36 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -37 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -38 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -39 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -40 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -41 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -42 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -43 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -44 * CURVE_DISTANCE),
+      new THREE.Vector3(-10, 0, -45 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -46 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -47 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -48 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -49 * CURVE_DISTANCE),
+      new THREE.Vector3(10, 0, -50 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -51 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -52 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -53 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -54 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -55 * CURVE_DISTANCE),
+      new THREE.Vector3(0, 0, -56 * CURVE_DISTANCE),
     ],
     []
   );
@@ -70,17 +108,17 @@ export const Experience = ({ onSectionClick }) => {
     return [
       {
         clickAble: true,
-        cameraRailDist: -1,
+        cameraRailDist: 0,
         position: new Vector3(
-          curvePoints[1].x - 3,
+          curvePoints[1].x - 2,
           curvePoints[1].y,
           curvePoints[1].z
         ),
       },
       {
-        cameraRailDist: -1,
+        cameraRailDist: 1,
         position: new Vector3(
-          curvePoints[2].x - 3,
+          curvePoints[2].x + 2,
           curvePoints[2].y,
           curvePoints[2].z
         ),
@@ -88,18 +126,18 @@ export const Experience = ({ onSectionClick }) => {
       {
         cameraRailDist: -1,
         position: new Vector3(
-          curvePoints[3].x - 3,
+          curvePoints[3].x - 2,
           curvePoints[3].y,
           curvePoints[3].z
         ),
       },
       {
         clickAble: true,
-        cameraRailDist: 1.5,
+        cameraRailDist: 1,
         position: new Vector3(
-          curvePoints[4].x + 3.5,
+          curvePoints[4].x + 2,
           curvePoints[4].y,
-          curvePoints[4].z - 12
+          curvePoints[4].z
         ),
       },
     ];
@@ -125,7 +163,7 @@ export const Experience = ({ onSectionClick }) => {
       // },
       // FIRST POINT
       {
-        scale: new Vector3(4, 4, 4),
+        scale: new Vector3(10, 10, 10),
         position: new Vector3(
           curvePoints[3].x + 10,
           curvePoints[3].y - 4,
@@ -139,10 +177,10 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[3].y + 4,
           curvePoints[3].z + 28
         ),
-        rotation: new Euler(0, Math.PI / 7, 0),
+        // rotation: new Euler(0, Math.PI / 7, 0),
       },
       {
-        rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
+        // rotation: new Euler(0, Math.PI / 7, Math.PI / 5),
         scale: new Vector3(5, 5, 5),
         position: new Vector3(
           curvePoints[3].x - 13,
@@ -151,7 +189,7 @@ export const Experience = ({ onSectionClick }) => {
         ),
       },
       {
-        rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
+        // rotation: new Euler(Math.PI / 2, Math.PI / 2, Math.PI / 3),
         scale: new Vector3(5, 5, 5),
         position: new Vector3(
           curvePoints[3].x + 54,
@@ -177,7 +215,7 @@ export const Experience = ({ onSectionClick }) => {
         ),
       },
       {
-        scale: new Vector3(2, 2, 2),
+        scale: new Vector3(5, 5, 5),
         position: new Vector3(
           curvePoints[4].x - 2,
           curvePoints[4].y + 4,
@@ -191,7 +229,7 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[4].y + 1,
           curvePoints[4].z - 86
         ),
-        rotation: new Euler(Math.PI / 4, 0, Math.PI / 3),
+        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 3),
       },
       // THIRD POINT
       {
@@ -203,13 +241,13 @@ export const Experience = ({ onSectionClick }) => {
         ),
       },
       {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(10, 10, 10),
         position: new Vector3(
           curvePoints[5].x - 10,
           curvePoints[5].y,
           curvePoints[5].z + 30
         ),
-        rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
+        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
       },
       {
         scale: new Vector3(4, 4, 4),
@@ -218,20 +256,20 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[5].y - 5,
           curvePoints[5].z - 8
         ),
-        rotation: new Euler(Math.PI, 0, Math.PI / 5),
+        // rotation: new Euler(Math.PI, 0, Math.PI / 5),
       },
       {
-        scale: new Vector3(5, 5, 5),
+        scale: new Vector3(10, 10, 10),
         position: new Vector3(
           curvePoints[5].x + 0,
           curvePoints[5].y - 5,
           curvePoints[5].z - 98
         ),
-        rotation: new Euler(0, Math.PI / 3, 0),
+        // rotation: new Euler(0, Math.PI / 3, 0),
       },
       // FOURTH POINT
       {
-        scale: new Vector3(2, 2, 2),
+        scale: new Vector3(5, 5, 5),
         position: new Vector3(
           curvePoints[6].x + 3,
           curvePoints[6].y - 10,
@@ -245,7 +283,7 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[6].y - 6,
           curvePoints[6].z - 42
         ),
-        rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
+        // rotation: new Euler(Math.PI / 4, 0, Math.PI / 5),
       },
       {
         scale: new Vector3(3, 3, 3),
@@ -254,9 +292,8 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[6].y + 9,
           curvePoints[6].z - 62
         ),
-        rotation: new Euler(Math.PI / 3, 0, Math.PI / 3),
+        // rotation: new Euler(Math.PI / 3, 0, Math.PI / 3),
       },
-      // FINAL
       {
         scale: new Vector3(3, 3, 3),
         position: new Vector3(
@@ -264,28 +301,28 @@ export const Experience = ({ onSectionClick }) => {
           curvePoints[7].y - 5,
           curvePoints[7].z + 60
         ),
-        rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
+        // rotation: new Euler(-Math.PI / 4, -Math.PI / 6, 0),
       },
       {
-        scale: new Vector3(3, 3, 3),
+        scale: new Vector3(5, 5, 5),
         position: new Vector3(
           curvePoints[7].x - 12,
           curvePoints[7].y + 5,
           curvePoints[7].z + 120
         ),
-        rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
+        // rotation: new Euler(Math.PI / 4, Math.PI / 6, 0),
       },
     ],
     []
   );
 
-  // const shape = useMemo(() => {
-  //   const shape = new THREE.Shape();
-  //   shape.moveTo(0, -0.08);
-  //   shape.lineTo(0, 0.08);
+  const shape = useMemo(() => {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, -0.08);
+    shape.lineTo(0, 0.08);
 
-  //   return shape;
-  // }, [curve]);
+    return shape;
+  }, [curve]);
 
   const cameraGroup = useRef();
   const cameraRail = useRef();
@@ -293,14 +330,15 @@ export const Experience = ({ onSectionClick }) => {
   const scroll = useScroll();
   const lastScroll = useRef(0);
 
-  // const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
-  // const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
+  const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
+  const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
 
   const { play, setHasScroll, end, setEnd } = usePlay();
 
   useFrame((_state, delta) => {
     if (window.innerWidth > window.innerHeight) {
       // LANDSCAPE
+
       camera.current.fov = 30;
       camera.current.position.z = 5;
     } else {
@@ -329,7 +367,7 @@ export const Experience = ({ onSectionClick }) => {
       );
     }
 
-    // lineMaterialRef.current.opacity = sceneOpacity.current;
+    lineMaterialRef.current.opacity = sceneOpacity.current;
 
     if (end) {
       return;
@@ -340,10 +378,24 @@ export const Experience = ({ onSectionClick }) => {
     let friction = 1;
     let resetCameraRail = true;
     // LOOK TO CLOSE TEXT SECTIONS
+    textSections.forEach((textSection) => {
+      const distance = textSection.position.distanceTo(
+        cameraGroup.current.position
+      );
 
+      if (distance < FRICTION_DISTANCE) {
+        friction = Math.max(distance / FRICTION_DISTANCE, 0.1);
+        const targetCameraRailPosition = new Vector3(
+          (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
+          0,
+          0
+        );
+        cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+        resetCameraRail = false;
+      }
+    });
     if (resetCameraRail) {
       const targetCameraRailPosition = new Vector3(0, 0, 0);
-
       cameraRail.current.position.lerp(targetCameraRailPosition, delta);
     }
 
@@ -420,7 +472,6 @@ export const Experience = ({ onSectionClick }) => {
         angle
       )
     );
-
     airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
 
     if (
@@ -519,11 +570,9 @@ export const Experience = ({ onSectionClick }) => {
       <>
         <directionalLight position={[0, 0, 1]} intensity={0.3} />
         {/* <OrbitControls /> */}
+
         <group ref={cameraGroup}>
           <Background backgroundColors={backgroundColors} />
-          {/* <Plane args={[5, 5]} position={[0, 0, 0]}>
-            <meshStandardMaterial color={'#ff0000'} transparent opacity={0.5} />
-          </Plane> */}
           <group ref={cameraRail}>
             <PerspectiveCamera
               ref={camera}
@@ -534,7 +583,6 @@ export const Experience = ({ onSectionClick }) => {
           </group>
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
-              <axesHelper />
               <Suspense fallback={null}>
                 <Suni
                   rotation-y={Math.PI}
@@ -558,7 +606,7 @@ export const Experience = ({ onSectionClick }) => {
           />
         ))}
         {/* LINE */}
-        {/* <group position-y={-2}>
+        <group position-y={-2}>
           <mesh>
             <extrudeGeometry
               args={[
@@ -574,53 +622,21 @@ export const Experience = ({ onSectionClick }) => {
               color={'white'}
               ref={lineMaterialRef}
               transparent
-              // envMapIntensity={0}
-              opacity={0}
+              envMapIntensity={1}
               onBeforeCompile={fadeOnBeforeCompile}
             />
           </mesh>
-        </group> */}
+        </group>
 
-        <RealBuilding
-          position={[150, -100, -1000]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -70, -1100]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -80, -1200]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -100, -1300]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -100, -1400]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -80, -1500]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
-        <RealBuilding
-          position={[150, -70, -1550]}
-          scale={[4, 4, 4]}
-        ></RealBuilding>
         {/* CLOUDS */}
         {clouds.map((cloud, index) => (
-          <Cloud sceneOpacity={sceneOpacity} {...cloud} key={index} />
+          <C sceneOpacity={sceneOpacity} {...cloud} key={index} />
         ))}
+        <B scale={[2, 2, 2]} position-y={-8} position-z={-1100} />
+        <Planets position={[1, -1, -5]} />
+
         <CustomPoints numPoints={1000} range={500} />
-        <Planets
-          scale={[0.4, 0.4, 0.4]}
-          rotation-z={Math.PI / 3}
-          rotation-x={-Math.PI}
-          position-z={-20}
-        ></Planets>
-        <Jupiter position={[0, -12, -5]} scale={[0.05, 0.05, 0.05]} />
+        {/* <Jupiter position={[0, -12, -5]} scale={[0.05, 0.05, 0.05]} /> */}
       </>
     ),
     []

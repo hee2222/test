@@ -23,7 +23,7 @@ export const TextSection = ({ sectionKey, onClick, clickAble, ...props }) => {
           onClick={handleClick}
           onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}
           onPointerOut={(event) => setHovered(false)}
-          scale={onClick ? 1.5 : 1}
+          scale={1.5}
           url={`./images/info/img${sectionKey}.png`}
           transparent
           {...props}
@@ -34,6 +34,7 @@ export const TextSection = ({ sectionKey, onClick, clickAble, ...props }) => {
     return (
       <Image
         url={`./images/info/img${sectionKey}.png`}
+        scale={1.5}
         transparent
         {...props}
       />
