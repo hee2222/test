@@ -4,6 +4,7 @@ import {
   useScroll,
   OrbitControls,
   Detailed,
+  Trail,
 } from '@react-three/drei';
 
 import { useFrame } from '@react-three/fiber';
@@ -19,12 +20,12 @@ import {
 import * as THREE from 'three';
 import { Euler, Group, Vector3, AdditiveBlending } from 'three';
 import { usePlay } from '../contexts/Play';
-import { fadeOnBeforeCompile } from '../utils/fadeMaterial';
+import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import { Suni } from './Newsuni';
 import { Background } from './Background';
 import { C } from './C';
 import { B } from './New-b';
-import { Planets } from './Planets';
+import { Planet } from './Planet';
 import { CustomPoints } from './point';
 import { TextSection } from './TextSection';
 
@@ -42,63 +43,63 @@ export const Experience = ({ onSectionClick }) => {
 
   const curvePoints = useMemo(
     () => [
-      new THREE.Vector3(0, 0, 0),
-      new THREE.Vector3(1, 0, -1 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -2 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -3 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -4 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -5 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -6 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -7 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -8 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -9 * CURVE_DISTANCE),
-      new THREE.Vector3(10, 0, -10 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -11 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -12 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -13 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -14 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -15 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -16 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -17 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -18 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -19 * CURVE_DISTANCE),
-      new THREE.Vector3(10, 0, -20 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -21 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -22 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -23 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -24 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -25 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -26 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -27 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -28 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -29 * CURVE_DISTANCE),
-      new THREE.Vector3(10, 0, -30 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -31 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -32 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -33 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -34 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -35 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -36 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -37 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -38 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -39 * CURVE_DISTANCE),
-      new THREE.Vector3(10, 0, -40 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -41 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -42 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -43 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -44 * CURVE_DISTANCE),
-      new THREE.Vector3(-10, 0, -45 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -46 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -47 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -48 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -49 * CURVE_DISTANCE),
-      new THREE.Vector3(10, 0, -50 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -51 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -52 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -53 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -54 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -55 * CURVE_DISTANCE),
-      new THREE.Vector3(0, 0, -56 * CURVE_DISTANCE),
+      new Vector3(0, 0, 0),
+      new Vector3(1, 0, -1 * CURVE_DISTANCE),
+      new Vector3(0, 0, -2 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -3 * CURVE_DISTANCE),
+      new Vector3(0, 0, -4 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -5 * CURVE_DISTANCE),
+      new Vector3(0, 0, -6 * CURVE_DISTANCE),
+      new Vector3(0, 0, -7 * CURVE_DISTANCE),
+      new Vector3(0, 0, -8 * CURVE_DISTANCE),
+      new Vector3(0, 0, -9 * CURVE_DISTANCE),
+      new Vector3(10, 0, -10 * CURVE_DISTANCE),
+      new Vector3(0, 0, -11 * CURVE_DISTANCE),
+      new Vector3(0, 0, -12 * CURVE_DISTANCE),
+      new Vector3(0, 0, -13 * CURVE_DISTANCE),
+      new Vector3(0, 0, -14 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -15 * CURVE_DISTANCE),
+      new Vector3(0, 0, -16 * CURVE_DISTANCE),
+      new Vector3(0, 0, -17 * CURVE_DISTANCE),
+      new Vector3(0, 0, -18 * CURVE_DISTANCE),
+      new Vector3(0, 0, -19 * CURVE_DISTANCE),
+      new Vector3(10, 0, -20 * CURVE_DISTANCE),
+      new Vector3(0, 0, -21 * CURVE_DISTANCE),
+      new Vector3(0, 0, -22 * CURVE_DISTANCE),
+      new Vector3(0, 0, -23 * CURVE_DISTANCE),
+      new Vector3(0, 0, -24 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -25 * CURVE_DISTANCE),
+      new Vector3(0, 0, -26 * CURVE_DISTANCE),
+      new Vector3(0, 0, -27 * CURVE_DISTANCE),
+      new Vector3(0, 0, -28 * CURVE_DISTANCE),
+      new Vector3(0, 0, -29 * CURVE_DISTANCE),
+      new Vector3(10, 0, -30 * CURVE_DISTANCE),
+      new Vector3(0, 0, -31 * CURVE_DISTANCE),
+      new Vector3(0, 0, -32 * CURVE_DISTANCE),
+      new Vector3(0, 0, -33 * CURVE_DISTANCE),
+      new Vector3(0, 0, -34 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -35 * CURVE_DISTANCE),
+      new Vector3(0, 0, -36 * CURVE_DISTANCE),
+      new Vector3(0, 0, -37 * CURVE_DISTANCE),
+      new Vector3(0, 0, -38 * CURVE_DISTANCE),
+      new Vector3(0, 0, -39 * CURVE_DISTANCE),
+      new Vector3(10, 0, -40 * CURVE_DISTANCE),
+      new Vector3(0, 0, -41 * CURVE_DISTANCE),
+      new Vector3(0, 0, -42 * CURVE_DISTANCE),
+      new Vector3(0, 0, -43 * CURVE_DISTANCE),
+      new Vector3(0, 0, -44 * CURVE_DISTANCE),
+      new Vector3(-10, 0, -45 * CURVE_DISTANCE),
+      new Vector3(0, 0, -46 * CURVE_DISTANCE),
+      new Vector3(0, 0, -47 * CURVE_DISTANCE),
+      new Vector3(0, 0, -48 * CURVE_DISTANCE),
+      new Vector3(0, 0, -49 * CURVE_DISTANCE),
+      new Vector3(10, 0, -50 * CURVE_DISTANCE),
+      new Vector3(0, 0, -51 * CURVE_DISTANCE),
+      new Vector3(0, 0, -52 * CURVE_DISTANCE),
+      new Vector3(0, 0, -53 * CURVE_DISTANCE),
+      new Vector3(0, 0, -54 * CURVE_DISTANCE),
+      new Vector3(0, 0, -55 * CURVE_DISTANCE),
+      new Vector3(0, 0, -56 * CURVE_DISTANCE),
     ],
     []
   );
@@ -236,10 +237,8 @@ export const Experience = ({ onSectionClick }) => {
       Math.min(lerpedScrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
 
-    const currentLookAt = cameraGroup.current.getWorldDirection(
-      new THREE.Vector3()
-    );
-    const targetLookAt = new THREE.Vector3()
+    const currentLookAt = cameraGroup.current.getWorldDirection(new Vector3());
+    const targetLookAt = new Vector3()
       .subVectors(curPoint, lookAtPoint)
       .normalize();
 
@@ -256,10 +255,7 @@ export const Experience = ({ onSectionClick }) => {
     nonLerpLookAt.position.copy(curPoint);
     nonLerpLookAt.lookAt(nonLerpLookAt.position.clone().add(targetLookAt));
 
-    tangent.applyAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      -nonLerpLookAt.rotation.y
-    );
+    tangent.applyAxisAngle(new Vector3(0, 1, 0), -nonLerpLookAt.rotation.y);
 
     let angle = Math.atan2(-tangent.z, tangent.x);
     angle = -Math.PI / 2 + angle;
@@ -382,6 +378,7 @@ export const Experience = ({ onSectionClick }) => {
     () => (
       <>
         <directionalLight position={[0, 0, 1]} intensity={0.3} />
+
         {/* <OrbitControls /> */}
 
         <group ref={cameraGroup}>
@@ -391,11 +388,10 @@ export const Experience = ({ onSectionClick }) => {
               ref={camera}
               position={[0, 0, 5]}
               fov={30}
-              near={1}
-              far={2000}
               makeDefault
             />
           </group>
+
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
@@ -412,15 +408,18 @@ export const Experience = ({ onSectionClick }) => {
         </group>
 
         {/* TEXT */}
-        {textSections.map((textSection, index) => (
-          <TextSection
-            {...textSection}
-            key={`T${index}`}
-            sectionKey={index}
-            clickAble={textSection.clickAble}
-            onClick={handleClick}
-          />
-        ))}
+        <Suspense fallback={null}>
+          {textSections.map((textSection, index) => (
+            <TextSection
+              {...textSection}
+              sceneOpacity={sceneOpacity}
+              key={`T${index}`}
+              sectionKey={index}
+              clickAble={textSection.clickAble}
+              onClick={handleClick}
+            />
+          ))}
+        </Suspense>
         {/* LINE */}
         <group position-y={-2}>
           <mesh>
@@ -439,13 +438,12 @@ export const Experience = ({ onSectionClick }) => {
               ref={lineMaterialRef}
               transparent
               envMapIntensity={2}
-              onBeforeCompile={fadeOnBeforeCompile}
+              onBeforeCompile={fadeOnBeforeCompileFlat}
             />
           </mesh>
         </group>
 
         {/* CLOUDS */}
-
         {[...Array(6)].map((cloud, index) => (
           <Fragment key={`cloud-${index}`}>
             <C
@@ -500,9 +498,9 @@ export const Experience = ({ onSectionClick }) => {
             <Fragment key={`b-${index}`}>
               <B
                 sceneOpacity={sceneOpacity}
-                scale={[6, 1.5, 4]}
+                scale={[6, 2, 4]}
                 position-x={index % 2 === 0 ? 6 : -6}
-                position-y={-8}
+                position-y={-12}
                 position-z={curvePoints[index + 26].z - 10}
               />
               <C
@@ -529,9 +527,10 @@ export const Experience = ({ onSectionClick }) => {
           ))}
         </>
 
-        <Planets position={[1, -1, -5]} />
+        <Planet position={[1, -1, -5]} />
 
         <CustomPoints numPoints={500} range={1700} />
+        {/* <fog attach="fog" color="white" near={1} far={2000} /> */}
       </>
     ),
     []
