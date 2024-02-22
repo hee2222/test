@@ -1,16 +1,20 @@
 import { Environment, Sphere } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import { Gradient, LayerMaterial } from 'lamina';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { Gradient, LayerMaterial, Texture } from 'lamina';
 import { useRef } from 'react';
+
+import { gsap } from 'gsap';
 
 import * as THREE from 'three';
 
 export const Background = ({ backgroundColors }) => {
   const start = 0.2;
-  const end = -0.5;
+  const end = -0.3;
 
   const gradientRef = useRef();
   const gradientEnvRef = useRef();
+
+  const texture = useLoader(THREE.TextureLoader, './images/background.jpg');
 
   useFrame(() => {
     gradientRef.current.colorA = new THREE.Color(

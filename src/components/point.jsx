@@ -31,7 +31,7 @@ export const CustomPoints = ({ numPoints, range }) => {
       <pointsMaterial
         attach="material"
         color={'white'}
-        size={1}
+        size={1.5}
         sizeAttenuation={false}
       />
     </points>

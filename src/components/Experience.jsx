@@ -2,23 +2,16 @@ import {
   Float,
   PerspectiveCamera,
   useScroll,
+  Clouds,
+  Cloud,
   OrbitControls,
-  Detailed,
-  Trail,
 } from '@react-three/drei';
 
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  Suspense,
-  Fragment,
-} from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
 import * as THREE from 'three';
-import { Euler, Group, Vector3, AdditiveBlending } from 'three';
+import { Group, Vector3 } from 'three';
 import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import { Suni } from './Newsuni';
@@ -30,7 +23,7 @@ import { CustomPoints } from './point';
 import { TextSection } from './TextSection';
 
 const LINE_NB_POINTS = 1120;
-const CURVE_DISTANCE = 60;
+const CURVE_DISTANCE = 80;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
@@ -51,55 +44,55 @@ export const Experience = ({ onSectionClick }) => {
       new Vector3(-10, 0, -5 * CURVE_DISTANCE),
       new Vector3(0, 0, -6 * CURVE_DISTANCE),
       new Vector3(0, 0, -7 * CURVE_DISTANCE),
-      new Vector3(0, 0, -8 * CURVE_DISTANCE),
+      new Vector3(10, 0, -8 * CURVE_DISTANCE),
       new Vector3(0, 0, -9 * CURVE_DISTANCE),
-      new Vector3(10, 0, -10 * CURVE_DISTANCE),
+      new Vector3(0, 0, -10 * CURVE_DISTANCE),
       new Vector3(0, 0, -11 * CURVE_DISTANCE),
-      new Vector3(0, 0, -12 * CURVE_DISTANCE),
-      new Vector3(0, 0, -13 * CURVE_DISTANCE),
-      new Vector3(0, 0, -14 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -15 * CURVE_DISTANCE),
-      new Vector3(0, 0, -16 * CURVE_DISTANCE),
-      new Vector3(0, 0, -17 * CURVE_DISTANCE),
-      new Vector3(0, 0, -18 * CURVE_DISTANCE),
-      new Vector3(0, 0, -19 * CURVE_DISTANCE),
-      new Vector3(10, 0, -20 * CURVE_DISTANCE),
-      new Vector3(0, 0, -21 * CURVE_DISTANCE),
-      new Vector3(0, 0, -22 * CURVE_DISTANCE),
-      new Vector3(0, 0, -23 * CURVE_DISTANCE),
-      new Vector3(0, 0, -24 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -25 * CURVE_DISTANCE),
-      new Vector3(0, 0, -26 * CURVE_DISTANCE),
-      new Vector3(0, 0, -27 * CURVE_DISTANCE),
-      new Vector3(0, 0, -28 * CURVE_DISTANCE),
-      new Vector3(0, 0, -29 * CURVE_DISTANCE),
-      new Vector3(10, 0, -30 * CURVE_DISTANCE),
-      new Vector3(0, 0, -31 * CURVE_DISTANCE),
-      new Vector3(0, 0, -32 * CURVE_DISTANCE),
-      new Vector3(0, 0, -33 * CURVE_DISTANCE),
-      new Vector3(0, 0, -34 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -35 * CURVE_DISTANCE),
-      new Vector3(0, 0, -36 * CURVE_DISTANCE),
-      new Vector3(0, 0, -37 * CURVE_DISTANCE),
-      new Vector3(0, 0, -38 * CURVE_DISTANCE),
-      new Vector3(0, 0, -39 * CURVE_DISTANCE),
-      new Vector3(10, 0, -40 * CURVE_DISTANCE),
-      new Vector3(0, 0, -41 * CURVE_DISTANCE),
-      new Vector3(0, 0, -42 * CURVE_DISTANCE),
-      new Vector3(0, 0, -43 * CURVE_DISTANCE),
-      new Vector3(0, 0, -44 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -45 * CURVE_DISTANCE),
-      new Vector3(0, 0, -46 * CURVE_DISTANCE),
-      new Vector3(0, 0, -47 * CURVE_DISTANCE),
-      new Vector3(0, 0, -48 * CURVE_DISTANCE),
-      new Vector3(0, 0, -49 * CURVE_DISTANCE),
-      new Vector3(10, 0, -50 * CURVE_DISTANCE),
-      new Vector3(0, 0, -51 * CURVE_DISTANCE),
-      new Vector3(0, 0, -52 * CURVE_DISTANCE),
-      new Vector3(0, 0, -53 * CURVE_DISTANCE),
-      new Vector3(0, 0, -54 * CURVE_DISTANCE),
-      new Vector3(0, 0, -55 * CURVE_DISTANCE),
-      new Vector3(0, 0, -56 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -12 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -13 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -14 * CURVE_DISTANCE),
+      // new Vector3(-10, 0, -15 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -16 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -17 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -18 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -19 * CURVE_DISTANCE),
+      // new Vector3(10, 0, -20 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -21 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -22 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -23 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -24 * CURVE_DISTANCE),
+      // new Vector3(-10, 0, -25 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -26 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -27 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -28 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -29 * CURVE_DISTANCE),
+      // new Vector3(10, 0, -30 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -31 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -32 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -33 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -34 * CURVE_DISTANCE),
+      // new Vector3(-10, 0, -35 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -36 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -37 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -38 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -39 * CURVE_DISTANCE),
+      // new Vector3(10, 0, -40 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -41 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -42 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -43 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -44 * CURVE_DISTANCE),
+      // new Vector3(-10, 0, -45 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -46 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -47 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -48 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -49 * CURVE_DISTANCE),
+      // new Vector3(10, 0, -50 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -51 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -52 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -53 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -54 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -55 * CURVE_DISTANCE),
+      // new Vector3(0, 0, -56 * CURVE_DISTANCE),
     ],
     []
   );
@@ -113,18 +106,17 @@ export const Experience = ({ onSectionClick }) => {
 
   const textSections = useMemo(() => {
     const sections = [];
-    const numSections = 54; // 원하는 섹션의 총 수
+    const numSections = 10; // 원하는 섹션의 총 수
 
     for (let i = 1; i < numSections; i++) {
-      const clickAble = i % 2 === 0; // 짝수 번째 섹션은 클릭 가능
-      const cameraRailDist = i % 2 === 0 ? 2 : -2; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
+      const cameraRailDist = i % 2 === 0 ? 1 : -1; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
       const position = new Vector3(
-        curvePoints[i].x + (i % 2 === 0 ? 2 : -2), // 짝수 번째 섹션은 x 좌표에 2를 더하고, 홀수 번째 섹션은 2를 빼줍니다.
+        curvePoints[i].x + (i % 2 === 0 ? 1.2 : -1.2), // 짝수 번째 섹션은 x 좌표에 2를 더하고, 홀수 번째 섹션은 2를 빼줍니다.
         curvePoints[i].y,
         curvePoints[i].z
       );
 
-      sections.push({ clickAble, cameraRailDist, position });
+      sections.push({ cameraRailDist, position });
     }
 
     return sections;
@@ -198,7 +190,7 @@ export const Experience = ({ onSectionClick }) => {
       );
 
       if (distance < FRICTION_DISTANCE) {
-        friction = Math.max(distance / FRICTION_DISTANCE, 0.1);
+        friction = Math.max(distance / FRICTION_DISTANCE, 1.8);
         const targetCameraRailPosition = new Vector3(
           (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
           0,
@@ -272,7 +264,7 @@ export const Experience = ({ onSectionClick }) => {
     }
 
     // SET BACK ANGLE
-    angle = (angleDegrees * Math.PI) / 180;
+    angle = (angleDegrees * Math.PI) / 100;
 
     const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
       new THREE.Euler(
@@ -296,8 +288,8 @@ export const Experience = ({ onSectionClick }) => {
 
   const tl = useRef();
   const backgroundColors = useRef({
-    colorA: '#000035',
-    colorB: '#36204A',
+    colorA: '#8A20EB',
+    colorB: '#7474F2',
   });
 
   const planeInTl = useRef();
@@ -318,19 +310,9 @@ export const Experience = ({ onSectionClick }) => {
     });
     tl.current.to(backgroundColors.current, {
       duration: 0.3,
-      colorA: '#8A20EB',
+      colorA: '#ff3399',
       colorB: '#7474F2',
     });
-    tl.current.to(backgroundColors.current, {
-      duration: 0.3,
-      colorA: '#8A20EB',
-      colorB: '#7474F2',
-    });
-    // tl.current.to(backgroundColors.current, {
-    //   duration: 1,
-    //   colorA: '#55ab8f',
-    //   colorB: '#99edc3',
-    // });
 
     tl.current.pause();
 
@@ -378,9 +360,7 @@ export const Experience = ({ onSectionClick }) => {
     () => (
       <>
         <directionalLight position={[0, 0, 1]} intensity={0.3} />
-
         {/* <OrbitControls /> */}
-
         <group ref={cameraGroup}>
           <Background backgroundColors={backgroundColors} />
           <group ref={cameraRail}>
@@ -444,7 +424,7 @@ export const Experience = ({ onSectionClick }) => {
         </group>
 
         {/* CLOUDS */}
-        {[...Array(6)].map((cloud, index) => (
+        {/* {[...Array(6)].map((cloud, index) => (
           <Fragment key={`cloud-${index}`}>
             <C
               sceneOpacity={sceneOpacity}
@@ -475,11 +455,11 @@ export const Experience = ({ onSectionClick }) => {
               position-z={curvePoints[index + 19].z - 50}
             />
           </Fragment>
-        ))}
+        ))} */}
 
         {/* <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[26].z} />
         <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[27].z} /> */}
-        <C
+        {/* <C
           sceneOpacity={sceneOpacity}
           scale={(100, 10, 100)}
           position-x={curvePoints[19].x}
@@ -525,12 +505,11 @@ export const Experience = ({ onSectionClick }) => {
               />
             </Fragment>
           ))}
-        </>
+        </> */}
 
-        <Planet position={[1, -1, -5]} />
+        <Planet position={[1, -1, -5]} curvePoints={curvePoints} />
 
-        <CustomPoints numPoints={500} range={1700} />
-        {/* <fog attach="fog" color="white" near={1} far={2000} /> */}
+        <CustomPoints numPoints={1000} range={1700} />
       </>
     ),
     []

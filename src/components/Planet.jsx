@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei';
 
 import { fullOpacityOnApproach } from '../utils/fadeMaterial';
 
-export function Planet(props) {
+export function Planet({ curvePoints, props }) {
   const { nodes, materials } = useGLTF('./models/planet.glb');
   useMemo(() => {
     for (const key in materials) {
@@ -23,43 +23,85 @@ export function Planet(props) {
   return (
     <group {...props} dispose={null}>
       <mesh
-        position={[-1, -8, -6]}
+        position={[0, -8, -6]}
         geometry={nodes.gr.geometry}
         material={materials.pl11}
         scale={20}
       />
-
-      <group position={[-10, -5, -50]} scale={5} rotation={[-2.6, 0, 0.4]}>
+      <group
+        scale={10}
+        position={[
+          curvePoints[1].x + 4,
+          curvePoints[1].y,
+          curvePoints[1].z - 10,
+        ]}
+      >
         <mesh
-          geometry={nodes.Circle003.geometry}
-          material={materials['Material.001']}
+          geometry={nodes.Circle002.geometry}
+          material={materials['Material.002']}
         />
-        <mesh geometry={nodes.Circle003_1.geometry} material={materials.pl9} />
+        <mesh geometry={nodes.Circle002_1.geometry} material={materials.pl8} />
       </group>
       <mesh
-        position={[20, 16, -150]}
+        position={[
+          curvePoints[2].x - 10,
+          curvePoints[2].y,
+          curvePoints[2].z - 20,
+        ]}
         geometry={nodes.wh2.geometry}
         material={materials.pl4}
         scale={20}
       />
-
       <mesh
-        position={[20, -10, -250]}
+        position={[
+          curvePoints[2].x + 20,
+          curvePoints[2].y + 20,
+          curvePoints[2].z - 50,
+        ]}
+        geometry={nodes.gr.geometry}
+        material={materials.pl11}
+        scale={10}
+      />
+      <mesh
+        position={[
+          curvePoints[3].x + 10,
+          curvePoints[3].y,
+          curvePoints[3].z - 20,
+        ]}
+        geometry={nodes.bl.geometry}
+        material={materials.pl2}
+        rotation={[-3.024, 0.138, 0.622]}
+        scale={20}
+      />
+      <mesh
+        position={[
+          curvePoints[4].x - 10,
+          curvePoints[4].y,
+          curvePoints[4].z - 10,
+        ]}
         geometry={nodes.br.geometry}
         material={materials.pl1}
         rotation={[-3.105, 0.145, 0.484]}
-        scale={30}
+        scale={20}
       />
       <mesh
-        position={[-22, 14, -300]}
+        position={[
+          curvePoints[5].x + 8,
+          curvePoints[5].y,
+          curvePoints[5].z - 10,
+        ]}
         geometry={nodes.wh.geometry}
         material={materials.pl6}
         scale={10}
       />
       <group
         rotation={[0.141, 0.143, 0.357]}
-        scale={20}
-        position={[-20, 20, -200]}
+        scale={10}
+        position={[
+          curvePoints[6].x - 8,
+          curvePoints[6].y,
+          curvePoints[6].z - 20,
+        ]}
       >
         <mesh
           geometry={nodes.Circle003.geometry}
@@ -67,7 +109,14 @@ export function Planet(props) {
         />
         <mesh geometry={nodes.Circle003_1.geometry} material={materials.pl9} />
       </group>
-      <group scale={20} position={[16, 16, -400]}>
+      <group
+        scale={10}
+        position={[
+          curvePoints[7].x + 8,
+          curvePoints[7].y,
+          curvePoints[7].z - 10,
+        ]}
+      >
         <mesh geometry={nodes.Sphere008.geometry} material={materials.pl7} />
         <mesh
           geometry={nodes.Sphere008_1.geometry}
@@ -75,75 +124,81 @@ export function Planet(props) {
         />
       </group>
       <mesh
-        position={[-20, -8, -500]}
+        position={[
+          curvePoints[8].x - 4,
+          curvePoints[8].y,
+          curvePoints[8].z - 10,
+        ]}
         geometry={nodes.sb.geometry}
         material={materials.pl3}
         scale={16}
       />
       <mesh
-        position={[20, -10, -550]}
+        position={[
+          curvePoints[9].x + 8,
+          curvePoints[9].y,
+          curvePoints[9].z - 10,
+        ]}
         geometry={nodes.ye.geometry}
         material={materials.pl10}
         scale={20}
       />
+
       <mesh
-        position={[-24, 20, -600]}
-        geometry={nodes.bl.geometry}
-        material={materials.pl2}
-        rotation={[-3.024, 0.138, 0.622]}
-        scale={30}
-      />
-      <mesh
-        position={[-4, -16, -700]}
+        position={[
+          curvePoints[1].x - 10,
+          curvePoints[1].y + 10,
+          curvePoints[1].z + 10,
+        ]}
         geometry={nodes.ye.geometry}
         material={materials.pl10}
-        scale={30}
-      />
-      <group scale={20} position={[-40, 16, -750]}>
-        <mesh geometry={nodes.Sphere008.geometry} material={materials.pl7} />
-        <mesh
-          geometry={nodes.Sphere008_1.geometry}
-          material={materials['Material.003']}
-        />
-      </group>
-      <mesh
-        position={[20, 20, -800]}
-        geometry={nodes.wh2.geometry}
-        material={materials.pl4}
-        scale={30}
+        scale={20}
       />
 
-      <group position={[-24, -24, -900]} scale={20}>
+      <mesh
+        position={[
+          curvePoints[4].x - 40,
+          curvePoints[4].y + 20,
+          curvePoints[4].z - 5,
+        ]}
+        geometry={nodes.gr.geometry}
+        material={materials.pl11}
+        scale={30}
+      />
+      <group
+        position={[
+          curvePoints[5].x + 45,
+          curvePoints[5].y + 10,
+          curvePoints[5].z - 5,
+        ]}
+        scale={20}
+      >
         <mesh
           geometry={nodes.Circle005.geometry}
           material={materials.Material}
         />
         <mesh geometry={nodes.Circle005_1.geometry} material={materials.pl1} />
       </group>
-      <group
-        rotation={[0.141, 0.143, 0.357]}
-        scale={20}
-        position={[-20, 20, -950]}
-      >
-        <mesh
-          geometry={nodes.Circle003.geometry}
-          material={materials['Material.001']}
-        />
-        <mesh geometry={nodes.Circle003_1.geometry} material={materials.pl9} />
-      </group>
+
       <mesh
-        position={[30, 10, -1000]}
-        geometry={nodes.gr.geometry}
-        material={materials.pl11}
+        position={[
+          curvePoints[6].x - 44,
+          curvePoints[6].y + 20,
+          curvePoints[6].z - 5,
+        ]}
+        geometry={nodes.wh2.geometry}
+        material={materials.pl4}
         scale={30}
       />
-      <mesh
-        position={[10, -20, -1100]}
-        geometry={nodes.ye.geometry}
-        material={materials.pl10}
-        scale={20}
-      />
-      <group scale={30} position={[-30, 20, -1100]}>
+
+      <group
+        scale={10}
+        position={[
+          curvePoints[9].x - 14,
+          curvePoints[9].y - 14,
+          curvePoints[9].z - 10,
+        ]}
+      >
         <mesh
           geometry={nodes.Circle002.geometry}
           material={materials['Material.002']}

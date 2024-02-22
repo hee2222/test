@@ -12,7 +12,7 @@ function Rig() {
     easing.damp3(
       state.camera.rotation,
       [state.mouse.y * 0.05, -state.mouse.x * 0.05, 0],
-      0.2,
+      0.1,
       delta
     );
   });
