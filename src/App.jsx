@@ -6,13 +6,20 @@ import { easing } from 'maath';
 import { Overlay } from './components/Overlay';
 import { Slider } from './components/Slider';
 import { usePlay } from './contexts/Play';
+import {
+  EffectComposer,
+  Noise,
+  Vignette,
+  Bloom,
+  DepthOfField,
+} from '@react-three/postprocessing';
 
 function Rig() {
   return useFrame((state, delta) => {
     easing.damp3(
       state.camera.rotation,
       [state.mouse.y * 0.05, -state.mouse.x * 0.05, 0],
-      0.1,
+      0.2,
       delta
     );
   });
@@ -51,9 +58,14 @@ function App() {
         >
           <Experience onSectionClick={handleSectionClick} />
         </ScrollControls>
+        <EffectComposer>
+          {/*        
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
+          <Noise opacity={0.06} />
+          <Vignette eskil={false} offset={0.7} darkness={0.3} />
+        </EffectComposer>
         <Rig />
       </Canvas>
-
       <Overlay />
 
       {selectedSection !== null && (

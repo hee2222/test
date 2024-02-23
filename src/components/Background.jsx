@@ -9,7 +9,7 @@ import * as THREE from 'three';
 
 export const Background = ({ backgroundColors }) => {
   const start = 0.2;
-  const end = -0.3;
+  const end = -0.5;
 
   const gradientRef = useRef();
   const gradientEnvRef = useRef();
@@ -23,10 +23,11 @@ export const Background = ({ backgroundColors }) => {
     gradientRef.current.colorB = new THREE.Color(
       backgroundColors.current.colorB
     );
+
     gradientEnvRef.current.colorA = new THREE.Color(
       backgroundColors.current.colorA
     );
-    gradientEnvRef.current.colorB = new THREE.Color(
+    gradientEnvRef.current.colorD = new THREE.Color(
       backgroundColors.current.colorB
     );
   });
@@ -35,6 +36,8 @@ export const Background = ({ backgroundColors }) => {
     <>
       <Sphere scale={[1000, 1000, 1000]} rotation-y={Math.PI / 2}>
         <LayerMaterial color={'#ffffff'} side={THREE.BackSide}>
+          {/* <Texture map={texture} /> */}
+          {/* <Noise ref={gradientRef} offset={[10, 5, 8]} scale={1.3} /> */}
           <Gradient ref={gradientRef} axes={'y'} start={start} end={end} />
         </LayerMaterial>
       </Sphere>

@@ -48,51 +48,6 @@ export const Experience = ({ onSectionClick }) => {
       new Vector3(0, 0, -9 * CURVE_DISTANCE),
       new Vector3(0, 0, -10 * CURVE_DISTANCE),
       new Vector3(0, 0, -11 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -12 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -13 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -14 * CURVE_DISTANCE),
-      // new Vector3(-10, 0, -15 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -16 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -17 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -18 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -19 * CURVE_DISTANCE),
-      // new Vector3(10, 0, -20 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -21 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -22 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -23 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -24 * CURVE_DISTANCE),
-      // new Vector3(-10, 0, -25 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -26 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -27 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -28 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -29 * CURVE_DISTANCE),
-      // new Vector3(10, 0, -30 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -31 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -32 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -33 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -34 * CURVE_DISTANCE),
-      // new Vector3(-10, 0, -35 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -36 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -37 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -38 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -39 * CURVE_DISTANCE),
-      // new Vector3(10, 0, -40 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -41 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -42 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -43 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -44 * CURVE_DISTANCE),
-      // new Vector3(-10, 0, -45 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -46 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -47 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -48 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -49 * CURVE_DISTANCE),
-      // new Vector3(10, 0, -50 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -51 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -52 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -53 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -54 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -55 * CURVE_DISTANCE),
-      // new Vector3(0, 0, -56 * CURVE_DISTANCE),
     ],
     []
   );
@@ -288,8 +243,8 @@ export const Experience = ({ onSectionClick }) => {
 
   const tl = useRef();
   const backgroundColors = useRef({
-    colorA: '#8A20EB',
-    colorB: '#7474F2',
+    colorA: '#0303bc',
+    colorB: '#8f9be5',
   });
 
   const planeInTl = useRef();
@@ -300,18 +255,13 @@ export const Experience = ({ onSectionClick }) => {
 
     tl.current.to(backgroundColors.current, {
       duration: 0.3,
-      colorA: '#8A20EB',
-      colorB: '#7474F2',
+      colorA: '#585bed',
+      colorB: '#ffcf58',
     });
     tl.current.to(backgroundColors.current, {
       duration: 0.3,
-      colorA: '#00F0FF',
-      colorB: '#7474F2',
-    });
-    tl.current.to(backgroundColors.current, {
-      duration: 0.3,
-      colorA: '#ff3399',
-      colorB: '#7474F2',
+      colorA: '#7474F2',
+      colorB: '#e9edf7',
     });
 
     tl.current.pause();
