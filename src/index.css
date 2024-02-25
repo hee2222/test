@@ -1004,7 +1004,7 @@ img.scrollIcon {
   color: #ff3c3c;
   text-align: center;
   font-size: 18pt;
-  padding: 5px 0px 30px;
+  padding: 5px 0px 16px;
   text-transform: capitalize;
   font-weight: 300;
 }
@@ -1074,9 +1074,9 @@ img.scrollIcon {
 .slide1 .table .heading {
   background: #f0f4f2;
   width: 100%;
-  padding: 20px;
+  padding: 16px;
   text-align: left;
-  font-size: 15pt;
+  font-size: 16px;
   color: #fff;
   text-transform: capitalize;
   text-align: center;
@@ -1085,7 +1085,7 @@ img.scrollIcon {
 .slide1 .table .block {
   display: block;
   width: 85%;
-  margin: 40px 50%;
+  margin: 32px 50%;
   -webkit-transform: translate(-50%);
   transform: translate(-50%);
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
@@ -1189,7 +1189,7 @@ img.scrollIcon {
 .slide1 .table h2.heading img {
   display: block;
   margin: 10px auto;
-  height: 40px;
+  height: 32px;
 }
 
 .slide1 div {
@@ -1260,7 +1260,6 @@ img.scrollIcon {
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
-  margin: auto;
 }
 
 .slide2 section {
