@@ -24,17 +24,17 @@ export const Background = ({ backgroundColors }) => {
       backgroundColors.current.colorB
     );
 
-    gradientEnvRef.current.colorA = new THREE.Color(
-      backgroundColors.current.colorA
-    );
-    gradientEnvRef.current.colorD = new THREE.Color(
-      backgroundColors.current.colorB
-    );
+    // gradientEnvRef.current.colorA = new THREE.Color(
+    //   backgroundColors.current.colorA
+    // );
+    // gradientEnvRef.current.colorD = new THREE.Color(
+    //   backgroundColors.current.colorB
+    // );
   });
 
   return (
     <>
-      <Sphere scale={[1000, 1000, 1000]} rotation-y={Math.PI / 2}>
+      <Sphere scale={[500, 500, 500]} rotation-y={Math.PI / 2}>
         <LayerMaterial color={'#ffffff'} side={THREE.BackSide}>
           {/* <Texture map={texture} /> */}
           {/* <Noise ref={gradientRef} offset={[10, 5, 8]} scale={1.3} /> */}
@@ -43,12 +43,18 @@ export const Background = ({ backgroundColors }) => {
       </Sphere>
       <Environment resolution={256} frames={Infinity}>
         <Sphere
-          scale={[500, 500, 500]}
+          scale={[100, 100, 100]}
           rotation-y={Math.PI / 2}
           rotation-x={Math.PI}
         >
           <LayerMaterial color={'#ffffff'} side={THREE.BackSide}>
-            <Gradient ref={gradientEnvRef} axes={'y'} start={start} end={end} />
+            <Gradient
+              colorA={'#000000'}
+              colorB={'#909090'}
+              axes={'y'}
+              start={start}
+              end={end}
+            />
           </LayerMaterial>
         </Sphere>
       </Environment>

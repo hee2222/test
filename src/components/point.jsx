@@ -30,7 +30,7 @@ export const CustomPoints = ({ numPoints, range }) => {
       <bufferGeometry attach="geometry" />
       <pointsMaterial
         attach="material"
-        color={'white'}
+        // color={'white'}
         size={1.5}
         sizeAttenuation={false}
       />

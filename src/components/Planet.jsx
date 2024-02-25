@@ -23,18 +23,14 @@ export function Planet({ curvePoints, props }) {
   return (
     <group {...props} dispose={null}>
       <mesh
-        position={[0, -8, -6]}
+        scale={10}
+        position={[0, -4, 0]}
         geometry={nodes.gr.geometry}
         material={materials.pl11}
-        scale={20}
       />
       <group
         scale={10}
-        position={[
-          curvePoints[1].x + 4,
-          curvePoints[1].y,
-          curvePoints[1].z - 10,
-        ]}
+        position={[curvePoints[1].x + 4, curvePoints[1].y, curvePoints[1].z]}
       >
         <mesh
           geometry={nodes.Circle002.geometry}
@@ -43,6 +39,7 @@ export function Planet({ curvePoints, props }) {
         <mesh geometry={nodes.Circle002_1.geometry} material={materials.pl8} />
       </group>
       <mesh
+        scale={10}
         position={[
           curvePoints[2].x - 10,
           curvePoints[2].y,
@@ -50,18 +47,8 @@ export function Planet({ curvePoints, props }) {
         ]}
         geometry={nodes.wh2.geometry}
         material={materials.pl4}
-        scale={20}
       />
-      <mesh
-        position={[
-          curvePoints[2].x + 20,
-          curvePoints[2].y + 20,
-          curvePoints[2].z - 50,
-        ]}
-        geometry={nodes.gr.geometry}
-        material={materials.pl11}
-        scale={10}
-      />
+
       <mesh
         position={[
           curvePoints[3].x + 10,
@@ -71,9 +58,10 @@ export function Planet({ curvePoints, props }) {
         geometry={nodes.bl.geometry}
         material={materials.pl2}
         rotation={[-3.024, 0.138, 0.622]}
-        scale={20}
+        scale={10}
       />
       <mesh
+        scale={20}
         position={[
           curvePoints[4].x - 10,
           curvePoints[4].y,
@@ -82,7 +70,6 @@ export function Planet({ curvePoints, props }) {
         geometry={nodes.br.geometry}
         material={materials.pl1}
         rotation={[-3.105, 0.145, 0.484]}
-        scale={20}
       />
       <mesh
         position={[
@@ -144,7 +131,7 @@ export function Planet({ curvePoints, props }) {
         scale={20}
       />
 
-      <mesh
+      {/* <mesh
         position={[
           curvePoints[1].x - 10,
           curvePoints[1].y + 10,
@@ -189,22 +176,7 @@ export function Planet({ curvePoints, props }) {
         geometry={nodes.wh2.geometry}
         material={materials.pl4}
         scale={30}
-      />
-
-      <group
-        scale={10}
-        position={[
-          curvePoints[9].x - 14,
-          curvePoints[9].y - 14,
-          curvePoints[9].z - 10,
-        ]}
-      >
-        <mesh
-          geometry={nodes.Circle002.geometry}
-          material={materials['Material.002']}
-        />
-        <mesh geometry={nodes.Circle002_1.geometry} material={materials.pl8} />
-      </group>
+      /> */}
     </group>
   );
 }

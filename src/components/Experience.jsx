@@ -2,14 +2,19 @@ import {
   Float,
   PerspectiveCamera,
   useScroll,
-  Clouds,
-  Cloud,
   OrbitControls,
 } from '@react-three/drei';
 
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  Suspense,
+  Fragment,
+} from 'react';
 import * as THREE from 'three';
 import { Group, Vector3 } from 'three';
 import { usePlay } from '../contexts/Play';
@@ -23,11 +28,11 @@ import { CustomPoints } from './point';
 import { TextSection } from './TextSection';
 
 const LINE_NB_POINTS = 1120;
-const CURVE_DISTANCE = 80;
+const CURVE_DISTANCE = 60;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 10;
+const FRICTION_DISTANCE = 2;
 
 export const Experience = ({ onSectionClick }) => {
   const handleClick = (sectionKey) => {
@@ -37,7 +42,7 @@ export const Experience = ({ onSectionClick }) => {
   const curvePoints = useMemo(
     () => [
       new Vector3(0, 0, 0),
-      new Vector3(1, 0, -1 * CURVE_DISTANCE),
+      new Vector3(1, 0, -1 * 35),
       new Vector3(0, 0, -2 * CURVE_DISTANCE),
       new Vector3(-10, 0, -3 * CURVE_DISTANCE),
       new Vector3(0, 0, -4 * CURVE_DISTANCE),
@@ -64,9 +69,9 @@ export const Experience = ({ onSectionClick }) => {
     const numSections = 10; // 원하는 섹션의 총 수
 
     for (let i = 1; i < numSections; i++) {
-      const cameraRailDist = i % 2 === 0 ? 1 : -1; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
+      const cameraRailDist = i % 2 === 0 ? 2 : -2; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
       const position = new Vector3(
-        curvePoints[i].x + (i % 2 === 0 ? 1.2 : -1.2), // 짝수 번째 섹션은 x 좌표에 2를 더하고, 홀수 번째 섹션은 2를 빼줍니다.
+        curvePoints[i].x + (i % 2 === 0 ? 2.5 : -2.5),
         curvePoints[i].y,
         curvePoints[i].z
       );
@@ -136,7 +141,7 @@ export const Experience = ({ onSectionClick }) => {
 
     const scrollOffset = Math.max(0, scroll.offset);
 
-    let friction = 1;
+    let friction = 3;
     let resetCameraRail = true;
     // LOOK TO CLOSE TEXT SECTIONS
     textSections.forEach((textSection) => {
@@ -145,7 +150,7 @@ export const Experience = ({ onSectionClick }) => {
       );
 
       if (distance < FRICTION_DISTANCE) {
-        friction = Math.max(distance / FRICTION_DISTANCE, 1.8);
+        friction = Math.max(distance / FRICTION_DISTANCE, 0.1);
         const targetCameraRailPosition = new Vector3(
           (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
           0,
@@ -195,7 +200,6 @@ export const Experience = ({ onSectionClick }) => {
     );
 
     // Airplane rotation
-
     const tangent = curve.getTangent(lerpedScrollOffset + CURVE_AHEAD_AIRPLANE);
 
     const nonLerpLookAt = new Group();
@@ -219,7 +223,7 @@ export const Experience = ({ onSectionClick }) => {
     }
 
     // SET BACK ANGLE
-    angle = (angleDegrees * Math.PI) / 100;
+    angle = (angleDegrees * Math.PI) / 180;
 
     const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
       new THREE.Euler(
@@ -328,8 +332,8 @@ export const Experience = ({ onSectionClick }) => {
                 <Suni
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
-                  scale={[0.02, 0.02, 0.02]}
-                  position-y={-0.1}
+                  scale={[0.015, 0.015, 0.015]}
+                  position-y={-0.2}
                   position-z={0.5}
                 />
               </Suspense>
@@ -374,92 +378,29 @@ export const Experience = ({ onSectionClick }) => {
         </group>
 
         {/* CLOUDS */}
-        {/* {[...Array(6)].map((cloud, index) => (
+        {curvePoints.map((cloud, index) => (
           <Fragment key={`cloud-${index}`}>
             <C
               sceneOpacity={sceneOpacity}
-              scale={(8, 8, 8)}
-              position-x={
-                curvePoints[index + 20].x - (index % 2 === 0 ? 10 : -10)
-              }
-              position-y={curvePoints[index + 20].y + 5}
-              position-z={curvePoints[index + 20].z - 5}
+              scale={(10, 10, 10)}
+              position-x={curvePoints[index].x - (index % 0 ? 10 : -10)}
+              position-y={curvePoints[index].y - 10}
+              position-z={curvePoints[index].z - 5}
             />
 
             <C
               sceneOpacity={sceneOpacity}
-              scale={(4, 4, 4)}
-              position-x={-`${curvePoints[index + 20].x + 12}`}
-              position-y={-`${curvePoints[index + 20].y + 10}`}
-              position-z={curvePoints[index + 20].z - 30}
-            />
-            <C
-              sceneOpacity={sceneOpacity}
-              scale={(6, 6, 6)}
-              position-x={
-                curvePoints[index + 19].x - (index % 2 === 0 ? 20 : -20)
-              }
-              position-y={
-                curvePoints[index + 19].y + (index % 2 === 0 ? 20 : -20)
-              }
-              position-z={curvePoints[index + 19].z - 50}
+              scale={(10, 10, 10)}
+              position-x={curvePoints[index].x - (index % 0 ? -10 : 10)}
+              position-y={curvePoints[index].y - 10}
+              position-z={curvePoints[index].z - 30}
             />
           </Fragment>
-        ))} */}
+        ))}
 
-        {/* <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[26].z} />
-        <B scale={[4, 4, 4]} position-y={-20} position-z={curvePoints[27].z} /> */}
-        {/* <C
-          sceneOpacity={sceneOpacity}
-          scale={(100, 10, 100)}
-          position-x={curvePoints[19].x}
-          position-y={curvePoints[19].y}
-          position-z={curvePoints[19].z - 40}
-        />
-        <C
-          sceneOpacity={sceneOpacity}
-          scale={(100, 10, 100)}
-          position-x={curvePoints[25].x}
-          position-y={curvePoints[25].y}
-          position-z={curvePoints[25].z - 40}
-        />
-        <>
-          {[...Array(29)].map((_, index) => (
-            <Fragment key={`b-${index}`}>
-              <B
-                sceneOpacity={sceneOpacity}
-                scale={[6, 2, 4]}
-                position-x={index % 2 === 0 ? 6 : -6}
-                position-y={-12}
-                position-z={curvePoints[index + 26].z - 10}
-              />
-              <C
-                sceneOpacity={sceneOpacity}
-                scale={(5, 5, 5)}
-                position-x={
-                  curvePoints[index + 26].x + (index % 2 === 0 ? 2 : -2)
-                }
-                position-y={curvePoints[index + 26].y + 10}
-                position-z={curvePoints[index + 26].z - 30}
-              />
-              <C
-                sceneOpacity={sceneOpacity}
-                scale={(8, 8, 8)}
-                position-x={
-                  -`${
-                    curvePoints[index + 26].x + 20 * (index % 2 === 0 ? 1 : -1)
-                  }`
-                }
-                position-y={curvePoints[index + 26].y + 5}
-                position-z={curvePoints[index + 26].z - 60}
-              />
-            </Fragment>
-          ))}
-        </> */}
+        <Planet curvePoints={curvePoints} />
 
-        <Planet position={[1, -1, -5]} curvePoints={curvePoints} />
-
-        <CustomPoints numPoints={1000} range={1700} />
+        <CustomPoints numPoints={1000} range={1000} />
       </>
     ),
     []

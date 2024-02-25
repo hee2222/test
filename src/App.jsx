@@ -1,4 +1,4 @@
-import { ScrollControls } from '@react-three/drei';
+import { ScrollControls, useScroll } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useState } from 'react';
 import { Experience } from './components/Experience';
@@ -6,13 +6,8 @@ import { easing } from 'maath';
 import { Overlay } from './components/Overlay';
 import { Slider } from './components/Slider';
 import { usePlay } from './contexts/Play';
-import {
-  EffectComposer,
-  Noise,
-  Vignette,
-  Bloom,
-  DepthOfField,
-} from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
+import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing';
 
 function Rig() {
   return useFrame((state, delta) => {
@@ -29,22 +24,14 @@ function App() {
   const { play, end } = usePlay();
   const [selectedSection, setSelectedSection] = useState(null);
 
-  const handleSectionClick = (sectionKey) => {
-    setSelectedSection(sectionKey);
-  };
-
-  const handleCloseSlider = () => {
-    setSelectedSection(null);
-  };
-  // console.log(play);
   return (
     <>
       <Canvas>
         <color attach="background" args={['#ececec']} />
         <ScrollControls
-          pages={play && !end ? 100 : 0}
-          damping={0.1}
-          maxSpeed={0.2}
+          pages={play && !end ? 200 : 0}
+          damping={0.2}
+          maxSpeed={0.1}
           style={{
             top: '10px',
             left: '0px',
@@ -56,13 +43,11 @@ function App() {
             opacity: 0,
           }}
         >
-          <Experience onSectionClick={handleSectionClick} />
+          <Experience />
         </ScrollControls>
         <EffectComposer>
-          {/*        
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
-          <Noise opacity={0.06} />
-          <Vignette eskil={false} offset={0.7} darkness={0.3} />
+          <Noise opacity={0.03} />
+          <Vignette eskil={false} offset={0.1} darkness={0.9} />
         </EffectComposer>
         <Rig />
       </Canvas>

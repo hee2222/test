@@ -1,10 +1,7 @@
 import { Text } from '@react-three/drei';
 import { useRef, useState, useEffect, useMemo } from 'react';
-import { useLoader } from '@react-three/fiber';
-import {
-  fullOpacityOnApproach,
-  fadeOnBeforeCompileFlat,
-} from '../utils/fadeMaterial';
+import { useLoader, useFrame } from '@react-three/fiber';
+import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import * as THREE from 'three';
 
 export const TextSection = ({
@@ -13,8 +10,12 @@ export const TextSection = ({
   onClick,
   ...props
 }) => {
-  const ref = useRef();
-  const materialRef = useRef();
+  const materialRefTitle = useRef();
+  const materialRefSubtitle = useRef();
+  const materialRefDescription = useRef();
+
+  const materialRefTitle1 = useRef();
+  const materialRefSubtitle1 = useRef();
 
   const textTitle = useMemo(
     () => [
@@ -32,9 +33,6 @@ export const TextSection = ({
   );
 
   const [hovered, setHovered] = useState(false);
-  useEffect(() => {
-    materialRef.current.opacity = 1;
-  }, []);
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
@@ -46,8 +44,24 @@ export const TextSection = ({
     }
   };
 
-  let imgUrl = `./images/info/img${sectionKey % 7}.png`;
-  const texture = useLoader(THREE.TextureLoader, imgUrl);
+  useFrame(() => {
+    if (materialRefTitle.current) {
+      materialRefTitle.current.opacity = sceneOpacity.current;
+    }
+    if (materialRefSubtitle.current) {
+      materialRefSubtitle.current.opacity = sceneOpacity.current;
+    }
+    if (materialRefDescription.current) {
+      materialRefDescription.current.opacity = sceneOpacity.current;
+    }
+    if (materialRefTitle1.current) {
+      materialRefTitle1.current.opacity = sceneOpacity.current;
+    }
+    if (materialRefSubtitle1.current) {
+      materialRefSubtitle1.current.opacity = sceneOpacity.current;
+    }
+  });
+  // const font = useFont('./fonts/Pretendard-Medium.ttf');
 
   return (
     <group {...props}>
@@ -57,53 +71,82 @@ export const TextSection = ({
         anchorY={'center'}
         anchorX={'center'}
         lineHeight={1.2}
-        position-z={0.01}
+        position-y={0.4}
+        position-z={-0.01}
+        font={'./fonts/Pretendard-Medium.ttf'}
+      >
+        {`#TOTAL 0${sectionKey + 1}/09`}
+        <meshStandardMaterial
+          color={'white'}
+          ref={materialRefTitle}
+          transparent
+          onBeforeCompile={fadeOnBeforeCompileFlat}
+        />
+      </Text>
+
+      <Text
+        fontSize={0.5}
+        color={'white'}
+        anchorY={'center'}
+        anchorX={'center'}
+        lineHeight={1.2}
+        position-z={-0.02}
+        font={'./fonts/Pretendard-Medium.ttf'}
       >
         {textTitle[sectionKey]}
         <meshStandardMaterial
           transparent
-          ref={materialRef}
+          ref={materialRefTitle1}
           onBeforeCompile={fadeOnBeforeCompileFlat}
         />
       </Text>
-      {/* <mesh>
-          <planeGeometry attach="geometry" args={[1.5, 1.5]} />
-          <meshStandardMaterial
-            attach="material"
-            map={texture}
-            ref={materialRef}
-            transparent
-            onBeforeCompile={fullOpacityOnApproach}
-          />
-        </mesh> */}
-      <group position-z={0.1} position-y={-0.5}>
+
+      <Text
+        fontSize={0.2}
+        color={'white'}
+        anchorY={'center'}
+        anchorX={'center'}
+        lineHeight={1.2}
+        position-y={-0.8}
+        position-z={0.01}
+        font={'./fonts/Pretendard-Medium.ttf'}
+      >
+        Guide to the Whole job
+        <meshStandardMaterial
+          transparent
+          ref={materialRefSubtitle}
+          onBeforeCompile={fadeOnBeforeCompileFlat}
+        />
+      </Text>
+      <group position-y={-1.6}>
         <mesh
           onClick={handleClick}
           onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}
           onPointerOut={(event) => setHovered(false)}
-          scale={hovered ? 1.1 : 1}
+          // scale-y={hovered ? 1.1 : 1}
         >
-          <planeGeometry attach="geometry" args={[1, 0.3]} />
+          <planeGeometry attach="geometry" args={[2, 0.6]} />
           <meshStandardMaterial
             color={hovered ? 'hotpink' : 'red'}
             attach="material"
             transparent
-            ref={materialRef}
-            onBeforeCompile={fullOpacityOnApproach}
+            ref={materialRefSubtitle1}
+            onBeforeCompile={fadeOnBeforeCompileFlat}
           />
         </mesh>
         <Text
-          fontSize={0.1}
+          fontSize={0.2}
           color={'white'}
           anchorX={'center'}
           lineHeight={1.2}
           position-z={0.01}
+          font={'./fonts/Pretendard-Medium.ttf'}
         >
           자세히보기
           <meshStandardMaterial
             transparent
-            ref={materialRef}
-            onBeforeCompile={fullOpacityOnApproach}
+            ref={materialRefDescription}
+            onBeforeCompile={fadeOnBeforeCompileFlat}
           />
         </Text>
       </group>

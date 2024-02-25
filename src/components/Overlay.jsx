@@ -12,7 +12,6 @@ export const Overlay = () => {
       if (!play) {
         setPlay(true); // play 상태를 true로 변경
       }
-      console.log(end);
     };
 
     // 컴포넌트가 마운트되었을 때 클릭 이벤트 추가
