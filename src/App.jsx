@@ -23,13 +23,25 @@ function Rig() {
 function App() {
   const { play, end } = usePlay();
   const [selectedSection, setSelectedSection] = useState(null);
+  const scroll = useScroll();
 
+  const handleSectionClick = (sectionKey) => {
+    setSelectedSection(sectionKey);
+  };
+
+  const handleCloseSlider = () => {
+    setSelectedSection(null);
+  };
+
+  // const handleScrollButtonClick = () => {
+  //   scroll.scrollTo({ top: 1000 });
+  // };
   return (
     <>
       <Canvas>
         <color attach="background" args={['#ececec']} />
         <ScrollControls
-          pages={play && !end ? 200 : 0}
+          pages={play && !end ? 150 : 0}
           damping={0.2}
           maxSpeed={0.1}
           style={{
@@ -43,7 +55,7 @@ function App() {
             opacity: 0,
           }}
         >
-          <Experience />
+          <Experience onSectionClick={handleSectionClick} />
         </ScrollControls>
         <EffectComposer>
           <Noise opacity={0.03} />
