@@ -1046,7 +1046,7 @@ img.scrollIcon {
 
 .slide1 .table {
   background: #fff;
-  width: 13.5%;
+  width: 240px;
   height: 645px;
   display: block;
   float: left;
@@ -1088,9 +1088,9 @@ img.scrollIcon {
 .slide1 .table .block {
   display: block;
   width: 85%;
-  margin: 32px 50%;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
+  margin: 32px auto;
+  /* -webkit-transform: translate(-50%);
+  transform: translate(-50%); */
   border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
 }
 
@@ -1253,18 +1253,18 @@ img.scrollIcon {
 }
 
 .slide1 .intro {
-  position: absolute;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  overflow: scroll;
 }
 
 .slide1 .allcontent {
   max-width: 1920px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
   padding: 0 20px;
+  overflow: scroll;
 }
 
 .slide2 section {

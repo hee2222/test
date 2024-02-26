@@ -302,7 +302,6 @@ export const Slider = ({ sectionKey, onClose }) => {
   for (let i = 0; i < renderObject['slide'].length; i++) {
     for (let j = 0; j < renderObject['slide'][i].length; j++) {
       slideContent = renderObject['slide'][i][j];
-      console.log(slideContent);
 
       renderSlides.push(
         <Slide
