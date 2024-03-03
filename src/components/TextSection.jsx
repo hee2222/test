@@ -1,6 +1,6 @@
 import { Text } from '@react-three/drei';
 import { useRef, useState, useEffect, useMemo } from 'react';
-import { useLoader, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import * as THREE from 'three';
 

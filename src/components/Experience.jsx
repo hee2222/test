@@ -14,6 +14,7 @@ import {
   useRef,
   Suspense,
   Fragment,
+  useState,
 } from 'react';
 import * as THREE from 'three';
 import { Group, Vector3 } from 'three';
@@ -22,19 +23,19 @@ import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import { Suni } from './Newsuni';
 import { Background } from './Background';
 import { C } from './C';
-import { B } from './New-b';
 import { Planet } from './Planet';
 import { CustomPoints } from './point';
 import { TextSection } from './TextSection';
+import { Speed } from './Speed';
 
 const LINE_NB_POINTS = 1120;
-const CURVE_DISTANCE = 60;
+const CURVE_DISTANCE = 40;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
-const FRICTION_DISTANCE = 2;
+const FRICTION_DISTANCE = 20;
 
-export const Experience = ({ onSectionClick }) => {
+export const Experience = ({ onSectionClick, scrollBtn }) => {
   const handleClick = (sectionKey) => {
     onSectionClick(sectionKey);
   };
@@ -42,12 +43,12 @@ export const Experience = ({ onSectionClick }) => {
   const curvePoints = useMemo(
     () => [
       new Vector3(0, 0, 0),
-      new Vector3(1, 0, -1 * 35),
+      new Vector3(0, 0, -1 * CURVE_DISTANCE),
       new Vector3(0, 0, -2 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -3 * CURVE_DISTANCE),
-      new Vector3(0, 0, -4 * CURVE_DISTANCE),
-      new Vector3(-10, 0, -5 * CURVE_DISTANCE),
-      new Vector3(0, 0, -6 * CURVE_DISTANCE),
+      new Vector3(0, 0, -3 * CURVE_DISTANCE),
+      new Vector3(50, 0, -4 * CURVE_DISTANCE),
+      new Vector3(0, 0, -5 * CURVE_DISTANCE),
+      new Vector3(-50, 0, -6 * CURVE_DISTANCE),
       new Vector3(0, 0, -7 * CURVE_DISTANCE),
       new Vector3(10, 0, -8 * CURVE_DISTANCE),
       new Vector3(0, 0, -9 * CURVE_DISTANCE),
@@ -69,9 +70,9 @@ export const Experience = ({ onSectionClick }) => {
     const numSections = 10; // 원하는 섹션의 총 수
 
     for (let i = 1; i < numSections; i++) {
-      const cameraRailDist = i % 2 === 0 ? 2 : -2; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
+      const cameraRailDist = i % 2 === 0 ? 1 : -1; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
       const position = new Vector3(
-        curvePoints[i].x + (i % 2 === 0 ? 2.5 : -2.5),
+        curvePoints[i].x + (i % 2 === 0 ? 2 : -2),
         curvePoints[i].y,
         curvePoints[i].z
       );
@@ -96,15 +97,11 @@ export const Experience = ({ onSectionClick }) => {
   const scroll = useScroll();
   const lastScroll = useRef(0);
 
-  // const positions = new Float32Array([-10, 0, 0, 10, 0, 0]);
-  // const colors = new Float32Array([1, 0.5, 0.5, 1, 0.5, 0.5]);
-
   const { play, setHasScroll, end, setEnd } = usePlay();
 
   useFrame((_state, delta) => {
     if (window.innerWidth > window.innerHeight) {
       // LANDSCAPE
-
       camera.current.fov = 30;
       camera.current.position.z = 5;
     } else {
@@ -139,9 +136,9 @@ export const Experience = ({ onSectionClick }) => {
       return;
     }
 
-    const scrollOffset = Math.max(0, scroll.offset);
+    let scrollOffset = Math.max(0, scroll.offset, scrollBtn);
 
-    let friction = 3;
+    let friction = 1;
     let resetCameraRail = true;
     // LOOK TO CLOSE TEXT SECTIONS
     textSections.forEach((textSection) => {
@@ -150,13 +147,14 @@ export const Experience = ({ onSectionClick }) => {
       );
 
       if (distance < FRICTION_DISTANCE) {
-        friction = Math.max(distance / FRICTION_DISTANCE, 0.1);
+        friction = Math.max(distance / FRICTION_DISTANCE, 0.01);
         const targetCameraRailPosition = new Vector3(
           (1 - distance / FRICTION_DISTANCE) * textSection.cameraRailDist,
           0,
           0
         );
         cameraRail.current.position.lerp(targetCameraRailPosition, delta);
+
         resetCameraRail = false;
       }
     });
@@ -184,7 +182,6 @@ export const Experience = ({ onSectionClick }) => {
     cameraGroup.current.position.lerp(curPoint, delta * 24);
 
     // Make the group look ahead on the curve
-
     const lookAtPoint = curve.getPoint(
       Math.min(lerpedScrollOffset + CURVE_AHEAD_CAMERA, 1)
     );
@@ -236,7 +233,7 @@ export const Experience = ({ onSectionClick }) => {
 
     if (
       cameraGroup.current.position.z <
-      curvePoints[curvePoints.length - 1].z + 100
+      curvePoints[curvePoints.length - 1].z + 50
     ) {
       setEnd(true);
       planeOutTl.current.play();
@@ -316,6 +313,7 @@ export const Experience = ({ onSectionClick }) => {
         <directionalLight position={[0, 0, 1]} intensity={0.3} />
         {/* <OrbitControls /> */}
         <group ref={cameraGroup}>
+          <Speed />
           <Background backgroundColors={backgroundColors} />
           <group ref={cameraRail}>
             <PerspectiveCamera
@@ -347,6 +345,7 @@ export const Experience = ({ onSectionClick }) => {
             <TextSection
               {...textSection}
               sceneOpacity={sceneOpacity}
+              scale={0.8}
               key={`T${index}`}
               sectionKey={index}
               clickAble={textSection.clickAble}
