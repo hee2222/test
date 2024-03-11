@@ -271,7 +271,7 @@ img.scrollIcon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   padding: 32px 20px;
   background-color: #ffffff30;
   backdrop-filter: blur(100px);
@@ -283,6 +283,12 @@ img.scrollIcon {
 .button-grid button {
   cursor: pointer;
   color: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+.button-grid button.active {
+  background-color: #66c1bf;
+  color: black;
 }
 /* slide */
 

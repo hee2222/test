@@ -48,14 +48,20 @@ function App() {
   // 버튼 클릭 시 호출되는 함수
   const handleButtonClick = (value) => {
     // 클릭 시 받은 값으로 scrollBtn 상태 업데이트
-    setScrollBtn(value * 0.1 + 0.1 - 0.02);
+    setScrollBtn(value);
     console.log('Button clicked with scroll value:', value);
+  };
+
+  const [targetIndex, setTargetIndex] = useState(null);
+
+  const handleTargetIndexUpdate = (index) => {
+    setTargetIndex(index);
   };
 
   return (
     <>
       <Canvas>
-        <color attach="background" args={['#ececec']} />
+        {/* <color attach="background" args={['#ececec']} /> */}
         <ScrollControls
           pages={play && !end ? 10 : 0}
           damping={0}
@@ -74,14 +80,14 @@ function App() {
           <Experience
             onSectionClick={handleSectionClick}
             scrollBtn={scrollBtn}
+            onTargetIndexUpdate={handleTargetIndexUpdate}
           />
         </ScrollControls>
         {effects}
-
         <Rig />
       </Canvas>
       <Overlay />
-      <ButtonGrid onButtonClick={handleButtonClick} />
+      <ButtonGrid onButtonClick={handleButtonClick} targetIndex={targetIndex} />
       {selectedSection !== null && (
         <Slider sectionKey={selectedSection} onClose={handleCloseSlider} />
       )}

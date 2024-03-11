@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const ButtonGrid = ({ onButtonClick }) => {
+export const ButtonGrid = ({ onButtonClick, targetIndex }) => {
   const handleClick = (index) => {
     onButtonClick(index); // 버튼 클릭 시 해당 버튼의 인덱스를 전달
   };
@@ -20,7 +20,11 @@ export const ButtonGrid = ({ onButtonClick }) => {
   // 각 버튼을 렌더링
   const renderButtons = () => {
     return buttonLabels.map((label, index) => (
-      <button key={index} onClick={() => handleClick(index)}>
+      <button
+        key={index}
+        onClick={() => handleClick(index + 1)}
+        className={targetIndex - 1 === index ? 'active' : ''}
+      >
         {label}
       </button>
     ));

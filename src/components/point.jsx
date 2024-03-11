@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 const generateRandomPoint = (range) => {
@@ -7,7 +8,7 @@ const generateRandomPoint = (range) => {
   return [y, z];
 };
 
-export const CustomPoints = ({ numPoints, range }) => {
+export const Points = ({ numPoints, range }) => {
   const pointsRef = useRef();
   const spacing = 1;
 
@@ -25,13 +26,21 @@ export const CustomPoints = ({ numPoints, range }) => {
     );
   }, [numPoints, range]);
 
+  useFrame((_state, delta) => {
+    if (pointsRef.current) {
+      var lightness = 0.1;
+      lightness > 1 ? (lightness = 0) : delta;
+      pointsRef.current.material.opactiy = lightness;
+    }
+  });
+
   return (
     <points ref={pointsRef}>
       <bufferGeometry attach="geometry" />
       <pointsMaterial
         attach="material"
-        // color={'white'}
-        size={1.5}
+        transparent
+        size={2}
         sizeAttenuation={false}
       />
     </points>

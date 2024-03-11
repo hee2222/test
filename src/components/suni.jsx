@@ -3,7 +3,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 
 export function Suni(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('./models/newsuni.glb');
+  const { nodes, materials, animations } = useGLTF('./models/suni.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -137,4 +137,4 @@ export function Suni(props) {
   );
 }
 
-useGLTF.preload('./models/newsuni.glb');
+useGLTF.preload('./models/suni.glb');

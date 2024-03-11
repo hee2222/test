@@ -3,30 +3,23 @@ import {
   PerspectiveCamera,
   useScroll,
   OrbitControls,
+  Sparkles,
+  Text,
 } from '@react-three/drei';
-
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  Suspense,
-  Fragment,
-  useState,
-} from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
 import * as THREE from 'three';
 import { Group, Vector3 } from 'three';
 import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
-import { Suni } from './Newsuni';
+import { Suni } from './suni';
 import { Background } from './Background';
-import { C } from './C';
 import { Planet } from './Planet';
-import { CustomPoints } from './point';
+import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';
+import { ShaderCard } from './shader';
 
 const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
@@ -35,7 +28,11 @@ const CURVE_AHEAD_AIRPLANE = 0.02;
 const AIRPLANE_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = 20;
 
-export const Experience = ({ onSectionClick, scrollBtn }) => {
+export const Experience = ({
+  onSectionClick,
+  scrollBtn,
+  onTargetIndexUpdate,
+}) => {
   const handleClick = (sectionKey) => {
     onSectionClick(sectionKey);
   };
@@ -136,7 +133,7 @@ export const Experience = ({ onSectionClick, scrollBtn }) => {
       return;
     }
 
-    let scrollOffset = Math.max(0, scroll.offset, scrollBtn);
+    let scrollOffset = Math.max(0, scroll.offset);
 
     let friction = 1;
     let resetCameraRail = true;
@@ -233,11 +230,37 @@ export const Experience = ({ onSectionClick, scrollBtn }) => {
 
     if (
       cameraGroup.current.position.z <
-      curvePoints[curvePoints.length - 1].z + 50
+      curvePoints[curvePoints.length - 1].z + 40
     ) {
       setEnd(true);
       planeOutTl.current.play();
     }
+
+    let isInThrottle = false;
+
+    function increaseScoreDuringTyping() {
+      if (isInThrottle) {
+        return;
+      }
+
+      isInThrottle = true;
+
+      setTimeout(() => {
+        const roundedPositionZ = Math.round(cameraGroup.current.position.z);
+        const targetIndex = curvePoints.findIndex(
+          (point) => roundedPositionZ === point.z + 13
+        );
+        if (targetIndex !== -1) {
+          // console.log('dd', targetIndex);
+          onTargetIndexUpdate(targetIndex);
+        }
+
+        isInThrottle = false;
+      }, 1000);
+    }
+
+    // increaseScoreDuringTyping 함수를 직접 호출합니다.
+    increaseScoreDuringTyping();
   });
 
   const airplane = useRef();
@@ -307,10 +330,21 @@ export const Experience = ({ onSectionClick, scrollBtn }) => {
     }
   }, [play]);
 
+  useEffect(() => {
+    if (scroll.el && scrollBtn !== null) {
+      scroll.el.scrollTo({
+        top: (scroll.el.scrollHeight / 11) * scrollBtn - 1500,
+        behavior: 'smooth',
+      });
+    }
+    console.log(scroll, scroll.el.scrollHeight);
+  }, [scrollBtn]);
+
   return useMemo(
     () => (
       <>
-        <directionalLight position={[0, 0, 1]} intensity={0.3} />
+        <ambientLight intensity={0.3} />
+
         {/* <OrbitControls /> */}
         <group ref={cameraGroup}>
           <Speed />
@@ -322,11 +356,24 @@ export const Experience = ({ onSectionClick, scrollBtn }) => {
               fov={30}
               makeDefault
             />
+            {/* <ShaderCard position-z={0} /> */}
           </group>
 
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
+                <Text
+                  fontSize={0.08}
+                  color={'black'}
+                  anchorY={'center'}
+                  anchorX={'center'}
+                  lineHeight={1.2}
+                  position-y={0.04}
+                  position-z={-0.02}
+                  font={'./fonts/Pretendard-Medium.ttf'}
+                >
+                  안녕~!
+                </Text>
                 <Suni
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
@@ -376,30 +423,10 @@ export const Experience = ({ onSectionClick, scrollBtn }) => {
           </mesh>
         </group>
 
-        {/* CLOUDS */}
-        {curvePoints.map((cloud, index) => (
-          <Fragment key={`cloud-${index}`}>
-            <C
-              sceneOpacity={sceneOpacity}
-              scale={(10, 10, 10)}
-              position-x={curvePoints[index].x - (index % 0 ? 10 : -10)}
-              position-y={curvePoints[index].y - 10}
-              position-z={curvePoints[index].z - 5}
-            />
-
-            <C
-              sceneOpacity={sceneOpacity}
-              scale={(10, 10, 10)}
-              position-x={curvePoints[index].x - (index % 0 ? -10 : 10)}
-              position-y={curvePoints[index].y - 10}
-              position-z={curvePoints[index].z - 30}
-            />
-          </Fragment>
-        ))}
-
         <Planet curvePoints={curvePoints} />
 
-        <CustomPoints numPoints={1000} range={1000} />
+        <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
+        <Points numPoints={2000} range={1000} />
       </>
     ),
     []
