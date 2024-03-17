@@ -26,6 +26,7 @@ export const Overlay = () => {
   return (
     <div
       className={`overlay ${play ? 'overlay--disable' : ''}
+    ${end ? 'overlay--end' : ''}
     ${hasScroll ? 'overlay--scrolled' : ''}`}
     >
       <div

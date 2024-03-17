@@ -90,7 +90,7 @@ export function Planet({ curvePoints, props }) {
           material={materials['Material.003']}
         />
       </group>
-      <mesh
+      {/* <mesh
         position={[curvePoints[8].x - 4, curvePoints[8].y, curvePoints[8].z]}
         geometry={nodes.sb.geometry}
         material={materials.pl3}
@@ -101,7 +101,7 @@ export function Planet({ curvePoints, props }) {
         geometry={nodes.ye.geometry}
         material={materials.pl10}
         scale={10}
-      />
+      /> */}
 
       {/* <mesh
         position={[

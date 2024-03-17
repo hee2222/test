@@ -1,6 +1,4 @@
 const info = [
-  { title: '전략/조직설계', slide: ['1'] },
-  { title: '전략/조직설계', slide: ['2'] },
   {
     title: '전략/조직설계',
     slide: [

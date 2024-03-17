@@ -6,8 +6,6 @@ export const ButtonGrid = ({ onButtonClick, targetIndex }) => {
   };
 
   const buttonLabels = [
-    '전체 직무 안내',
-    '공통 Lv.특징',
     '전략/조직설계',
     '재무/회계',
     '마케팅',

@@ -83,11 +83,13 @@ function App() {
             onTargetIndexUpdate={handleTargetIndexUpdate}
           />
         </ScrollControls>
+
         {effects}
         <Rig />
       </Canvas>
       <Overlay />
       <ButtonGrid onButtonClick={handleButtonClick} targetIndex={targetIndex} />
+
       {selectedSection !== null && (
         <Slider sectionKey={selectedSection} onClose={handleCloseSlider} />
       )}

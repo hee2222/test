@@ -4,28 +4,36 @@ import {
   useScroll,
   OrbitControls,
   Sparkles,
+  Clouds,
+  Cloud,
   Text,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useEffect, useLayoutEffect, useMemo, useRef, Suspense } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  Suspense,
+  useState,
+} from 'react';
 import * as THREE from 'three';
 import { Group, Vector3 } from 'three';
 import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
-import { Suni } from './suni';
+import { Model } from './SK_Actions';
 import { Background } from './Background';
 import { Planet } from './Planet';
 import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';
-import { ShaderCard } from './shader';
 
 const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
-const AIRPLANE_MAX_ANGLE = 35;
+// const AIRPLANE_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = 20;
 
 export const Experience = ({
@@ -37,6 +45,16 @@ export const Experience = ({
     onSectionClick(sectionKey);
   };
 
+  const buttonLabels = [
+    '전략/조직설계',
+    '재무/회계',
+    '마케팅',
+    'HR',
+    '구매/SCM',
+    'IP',
+    '법무',
+  ];
+
   const curvePoints = useMemo(
     () => [
       new Vector3(0, 0, 0),
@@ -47,10 +65,8 @@ export const Experience = ({
       new Vector3(0, 0, -5 * CURVE_DISTANCE),
       new Vector3(-50, 0, -6 * CURVE_DISTANCE),
       new Vector3(0, 0, -7 * CURVE_DISTANCE),
-      new Vector3(10, 0, -8 * CURVE_DISTANCE),
+      new Vector3(0, 0, -8 * CURVE_DISTANCE),
       new Vector3(0, 0, -9 * CURVE_DISTANCE),
-      new Vector3(0, 0, -10 * CURVE_DISTANCE),
-      new Vector3(0, 0, -11 * CURVE_DISTANCE),
     ],
     []
   );
@@ -64,7 +80,7 @@ export const Experience = ({
 
   const textSections = useMemo(() => {
     const sections = [];
-    const numSections = 10; // 원하는 섹션의 총 수
+    const numSections = 8; // 원하는 섹션의 총 수
 
     for (let i = 1; i < numSections; i++) {
       const cameraRailDist = i % 2 === 0 ? 1 : -1; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
@@ -137,6 +153,7 @@ export const Experience = ({
 
     let friction = 1;
     let resetCameraRail = true;
+
     // LOOK TO CLOSE TEXT SECTIONS
     textSections.forEach((textSection) => {
       const distance = textSection.position.distanceTo(
@@ -202,31 +219,31 @@ export const Experience = ({
 
     tangent.applyAxisAngle(new Vector3(0, 1, 0), -nonLerpLookAt.rotation.y);
 
-    let angle = Math.atan2(-tangent.z, tangent.x);
-    angle = -Math.PI / 2 + angle;
+    // let angle = Math.atan2(-tangent.z, tangent.x);
+    // angle = -Math.PI / 2 + angle;
 
-    let angleDegrees = (angle * 180) / Math.PI;
-    angleDegrees *= 2.4; // stronger angle
+    // let angleDegrees = (angle * 180) / Math.PI;
+    // angleDegrees *= 2.4; // stronger angle
 
-    // LIMIT PLANE ANGLE
-    if (angleDegrees < 0) {
-      angleDegrees = Math.max(angleDegrees, -AIRPLANE_MAX_ANGLE);
-    }
-    if (angleDegrees > 0) {
-      angleDegrees = Math.min(angleDegrees, AIRPLANE_MAX_ANGLE);
-    }
+    // // LIMIT PLANE ANGLE
+    // if (angleDegrees < 0) {
+    //   angleDegrees = Math.max(angleDegrees, -AIRPLANE_MAX_ANGLE);
+    // }
+    // if (angleDegrees > 0) {
+    //   angleDegrees = Math.min(angleDegrees, AIRPLANE_MAX_ANGLE);
+    // }
 
-    // SET BACK ANGLE
-    angle = (angleDegrees * Math.PI) / 180;
+    // // SET BACK ANGLE
+    // angle = (angleDegrees * Math.PI) / 180;
 
-    const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
-      new THREE.Euler(
-        airplane.current.rotation.x,
-        airplane.current.rotation.y,
-        angle
-      )
-    );
-    airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
+    // const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
+    //   new THREE.Euler(
+    //     airplane.current.rotation.x,
+    //     airplane.current.rotation.y,
+    //     angle
+    //   )
+    // );
+    // airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
 
     if (
       cameraGroup.current.position.z <
@@ -247,19 +264,18 @@ export const Experience = ({
 
       setTimeout(() => {
         const roundedPositionZ = Math.round(cameraGroup.current.position.z);
-        const targetIndex = curvePoints.findIndex(
+        const newTargetIndex = curvePoints.findIndex(
           (point) => roundedPositionZ === point.z + 13
         );
-        if (targetIndex !== -1) {
-          // console.log('dd', targetIndex);
-          onTargetIndexUpdate(targetIndex);
+        if (newTargetIndex !== -1) {
+          // console.log('dd');
+          onTargetIndexUpdate(newTargetIndex);
         }
 
         isInThrottle = false;
       }, 1000);
     }
 
-    // increaseScoreDuringTyping 함수를 직접 호출합니다.
     increaseScoreDuringTyping();
   });
 
@@ -333,11 +349,10 @@ export const Experience = ({
   useEffect(() => {
     if (scroll.el && scrollBtn !== null) {
       scroll.el.scrollTo({
-        top: (scroll.el.scrollHeight / 11) * scrollBtn - 1500,
+        top: (scroll.el.scrollHeight / 9) * scrollBtn,
         behavior: 'smooth',
       });
     }
-    console.log(scroll, scroll.el.scrollHeight);
   }, [scrollBtn]);
 
   return useMemo(
@@ -356,30 +371,30 @@ export const Experience = ({
               fov={30}
               makeDefault
             />
-            {/* <ShaderCard position-z={0} /> */}
           </group>
 
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
-                <Text
-                  fontSize={0.08}
-                  color={'black'}
-                  anchorY={'center'}
-                  anchorX={'center'}
-                  lineHeight={1.2}
-                  position-y={0.04}
-                  position-z={-0.02}
-                  font={'./fonts/Pretendard-Medium.ttf'}
-                >
-                  안녕~!
-                </Text>
-                <Suni
+                <group visible={true}>
+                  <Text
+                    fontSize={0.08}
+                    color={'black'}
+                    anchorY={'center'}
+                    anchorX={'center'}
+                    lineHeight={1.2}
+                    position-y={0.04}
+                    position-z={-0.02}
+                    font={'./fonts/Pretendard-Medium.ttf'}
+                  ></Text>
+                </group>
+                <Model
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
                   scale={[0.015, 0.015, 0.015]}
                   position-y={-0.2}
                   position-z={0.5}
+                  onTargetIndexUpdate={onTargetIndexUpdate}
                 />
               </Suspense>
             </Float>
@@ -426,6 +441,41 @@ export const Experience = ({
         <Planet curvePoints={curvePoints} />
 
         <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
+        <Clouds material={THREE.MeshBasicMaterial}>
+          <Cloud
+            segments={40}
+            bounds={[10, 2, 100]}
+            volume={10}
+            color="white"
+            concentrate="outside"
+            position-z={-100}
+            position-y={-10}
+          />
+          <Cloud
+            segments={400}
+            bounds={[100, 2, 100]}
+            seed={1}
+            scale={2}
+            volume={10}
+            color="white"
+            fade={100}
+            position-y={-10}
+            concentrate="outside"
+          />
+          <Cloud
+            segments={100}
+            bounds={[100, 2, 100]}
+            seed={1}
+            scale={2}
+            volume={6}
+            opacity={0.1}
+            position-z={-400}
+            color="white"
+            fade={100}
+            position-y={-10}
+            concentrate="outside"
+          />
+        </Clouds>
         <Points numPoints={2000} range={1000} />
       </>
     ),

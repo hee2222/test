@@ -19,8 +19,6 @@ export const TextSection = ({
 
   const textTitle = useMemo(
     () => [
-      '전체 직무 안내',
-      '공통 Lv. 특징',
       '전략/조직설계',
       '재무/회계',
       '마케팅',
@@ -75,7 +73,7 @@ export const TextSection = ({
         position-z={-0.01}
         font={'./fonts/Pretendard-Medium.ttf'}
       >
-        {`#TOTAL 0${sectionKey + 1}/09`}
+        {`#TOTAL 0${sectionKey + 1}/07`}
         <meshStandardMaterial
           color={'white'}
           ref={materialRefTitle}
@@ -123,7 +121,6 @@ export const TextSection = ({
           onClick={handleClick}
           onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}
           onPointerOut={(event) => setHovered(false)}
-          // scale-y={hovered ? 1.1 : 1}
         >
           <planeGeometry attach="geometry" args={[2, 0.6]} />
           <meshStandardMaterial
