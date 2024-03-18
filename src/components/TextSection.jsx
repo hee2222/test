@@ -10,7 +10,6 @@ export const TextSection = ({
   onClick,
   ...props
 }) => {
-  const materialRefTitle = useRef();
   const materialRefSubtitle = useRef();
   const materialRefDescription = useRef();
 
@@ -43,17 +42,11 @@ export const TextSection = ({
   };
 
   useFrame(() => {
-    if (materialRefTitle.current) {
-      materialRefTitle.current.opacity = sceneOpacity.current;
-    }
-    if (materialRefSubtitle.current) {
-      materialRefSubtitle.current.opacity = sceneOpacity.current;
+    if (materialRefTitle1.current) {
+      materialRefTitle1.current.opacity = sceneOpacity.current;
     }
     if (materialRefDescription.current) {
       materialRefDescription.current.opacity = sceneOpacity.current;
-    }
-    if (materialRefTitle1.current) {
-      materialRefTitle1.current.opacity = sceneOpacity.current;
     }
     if (materialRefSubtitle1.current) {
       materialRefSubtitle1.current.opacity = sceneOpacity.current;
@@ -64,25 +57,7 @@ export const TextSection = ({
   return (
     <group {...props}>
       <Text
-        fontSize={0.2}
-        color={'white'}
-        anchorY={'center'}
-        anchorX={'center'}
-        lineHeight={1.2}
-        position-y={0.4}
-        position-z={-0.01}
-        font={'./fonts/Pretendard-Medium.ttf'}
-      >
-        {`#TOTAL 0${sectionKey + 1}/07`}
-        <meshStandardMaterial
-          color={'white'}
-          ref={materialRefTitle}
-          transparent
-          onBeforeCompile={fadeOnBeforeCompileFlat}
-        />
-      </Text>
-
-      <Text
+        position-y={0.1}
         fontSize={0.5}
         color={'white'}
         anchorY={'center'}
@@ -99,24 +74,7 @@ export const TextSection = ({
         />
       </Text>
 
-      <Text
-        fontSize={0.2}
-        color={'white'}
-        anchorY={'center'}
-        anchorX={'center'}
-        lineHeight={1.2}
-        position-y={-0.8}
-        position-z={0.01}
-        font={'./fonts/Pretendard-Medium.ttf'}
-      >
-        Guide to the Whole job
-        <meshStandardMaterial
-          transparent
-          ref={materialRefSubtitle}
-          onBeforeCompile={fadeOnBeforeCompileFlat}
-        />
-      </Text>
-      <group position-y={-1.6}>
+      <group position-y={-1.1}>
         <mesh
           onClick={handleClick}
           onPointerOver={(event) => (event.stopPropagation(), setHovered(true))}

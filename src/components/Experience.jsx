@@ -441,41 +441,7 @@ export const Experience = ({
         <Planet curvePoints={curvePoints} />
 
         <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
-        <Clouds material={THREE.MeshBasicMaterial}>
-          <Cloud
-            segments={40}
-            bounds={[10, 2, 100]}
-            volume={10}
-            color="white"
-            concentrate="outside"
-            position-z={-100}
-            position-y={-10}
-          />
-          <Cloud
-            segments={400}
-            bounds={[100, 2, 100]}
-            seed={1}
-            scale={2}
-            volume={10}
-            color="white"
-            fade={100}
-            position-y={-10}
-            concentrate="outside"
-          />
-          <Cloud
-            segments={100}
-            bounds={[100, 2, 100]}
-            seed={1}
-            scale={2}
-            volume={6}
-            opacity={0.1}
-            position-z={-400}
-            color="white"
-            fade={100}
-            position-y={-10}
-            concentrate="outside"
-          />
-        </Clouds>
+
         <Points numPoints={2000} range={1000} />
       </>
     ),

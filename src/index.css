@@ -186,7 +186,7 @@ img.immerse {
   right: 20px;
   z-index: 10;
   width: auto;
-  height: 40px;
+  height: 24px;
 }
 img.logo {
   opacity: 0;
@@ -283,31 +283,37 @@ img.scrollIcon {
 }
 
 .button-grid {
+  font-weight: 500;
+  font-size: 14px;
   opacity: 0;
   position: absolute;
   top: 50%;
-  right: 40px;
+  left: 40px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 32px 20px;
+  padding: 32px 16px;
   background-color: #ffffff30;
   backdrop-filter: blur(100px);
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   transition: all 2s ease-in-out;
+  transition-delay: 1s;
 }
 .button-grid button {
+  background: transparent;
+  transition: background 0.3s ease-in-out;
   cursor: pointer;
   color: white;
-  padding: 4px;
-  border-radius: 4px;
+  padding: 4px 8px;
+  border-radius: 10px;
 }
 .button-grid button.active {
-  background-color: #66c1bf;
+  transition: background 0.3s ease-in-out;
+  background: #66c1bf;
   color: black;
 }
 .slider-container {
@@ -315,11 +321,11 @@ img.scrollIcon {
   left: 0;
   position: absolute;
   /* transition: all 1s ease-out; */
-  background-color: black;
+  /* background-color: black; */
   animation: slideOpen 1s ease-in-out;
 }
 .slider-container.close {
-  animation: 1s ease-in-out 0.5s slideClose;
+  animation: 1s ease-in-out slideClose;
 }
 .slider-container .close {
   top: 40px;
@@ -332,24 +338,17 @@ img.scrollIcon {
   width: 100%;
   height: 100vh;
   background-color: #66c1bf;
-  animation: 1s ease-in-out 0.5s slideOpen;
+  /* animation: 1s ease-in-out 0.5s slideOpen; */
 }
-.slider-container.close .slider {
-  animation: slideClose 1s ease-in-out;
-}
-
 .slider-container .slider .slide {
   width: 100vw;
   height: 100vh;
   background-color: white;
   position: relative;
-  animation: 1s ease-in-out 0.8s slideOpen;
-  animation: 1s linear 1s fadeIn;
-  opacity: 0;
-  animation-fill-mode: forwards;
+  /* animation: 1s ease-in-out 0.8s slideOpen; */
 }
 .slider-container.close .slider .slide {
-  animation: 1s ease-in-out slideClose;
+  /* animation: 1s ease-in-out slideClose; */
 }
 
 .title-area {
