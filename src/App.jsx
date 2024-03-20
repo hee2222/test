@@ -49,7 +49,7 @@ function App() {
   const handleButtonClick = (value) => {
     // 클릭 시 받은 값으로 scrollBtn 상태 업데이트
     setScrollBtn(value);
-    console.log('Button clicked with scroll value:', value);
+    // console.log('Button clicked with scroll value:', value);
   };
 
   const [targetIndex, setTargetIndex] = useState(null);

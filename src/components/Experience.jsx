@@ -54,6 +54,7 @@ export const Experience = ({
     'IP',
     '법무',
   ];
+  const [selectedSection, setSelectedSection] = useState(0);
 
   const curvePoints = useMemo(
     () => [
@@ -270,6 +271,7 @@ export const Experience = ({
         if (newTargetIndex !== -1) {
           // console.log('dd');
           onTargetIndexUpdate(newTargetIndex);
+          setSelectedSection(newTargetIndex);
         }
 
         isInThrottle = false;
@@ -376,7 +378,7 @@ export const Experience = ({
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
-                <group visible={true}>
+                {/* <group visible={selectedSection ? true : false}>
                   <Text
                     fontSize={0.08}
                     color={'black'}
@@ -386,8 +388,12 @@ export const Experience = ({
                     position-y={0.04}
                     position-z={-0.02}
                     font={'./fonts/Pretendard-Medium.ttf'}
-                  ></Text>
-                </group>
+                  >
+                    {`${
+                      buttonLabels[selectedSection - 1]
+                    } 행성에 오신 것을 환영합니다.`}
+                  </Text>
+                </group> */}
                 <Model
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
@@ -395,6 +401,7 @@ export const Experience = ({
                   position-y={-0.2}
                   position-z={0.5}
                   onTargetIndexUpdate={onTargetIndexUpdate}
+                  motionplay={selectedSection}
                 />
               </Suspense>
             </Float>
@@ -445,6 +452,8 @@ export const Experience = ({
         <Points numPoints={2000} range={1000} />
       </>
     ),
-    []
+    [
+      // selectedSection
+    ]
   );
 };

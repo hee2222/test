@@ -10,7 +10,7 @@ export const TextSection = ({
   onClick,
   ...props
 }) => {
-  const materialRefSubtitle = useRef();
+  // const materialRefSubtitle = useRef();
   const materialRefDescription = useRef();
 
   const materialRefTitle1 = useRef();
