@@ -194,6 +194,18 @@ const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
 export const Slider = ({ sectionKey, onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
 
+  document.documentElement.style.setProperty(
+    '--planet',
+    info[sectionKey].color[1]
+  );
+  document.documentElement.style.setProperty(
+    '--planet-bg',
+    info[sectionKey].color[0]
+  );
+  document.documentElement.style.setProperty(
+    '--planet-op',
+    info[sectionKey].color[2]
+  );
   const handleClose = () => {
     setIsOpen(false);
 
@@ -223,7 +235,6 @@ export const Slider = ({ sectionKey, onClose }) => {
     );
   };
 
-  let slideContent;
   let renderSlides = [];
 
   var k = 0;

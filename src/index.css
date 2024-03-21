@@ -3,6 +3,7 @@
   --brand: #5bc4bf;
   --planet: #5bc4bf;
   --planet-bg: #edf3f2;
+  --planet-op: #5bc4bf69;
 }
 * {
   -webkit-font-smoothing: antialiased;
@@ -131,7 +132,7 @@ button {
 
 /* TRACK */
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.23);
+  background: #d9d9d930;
 }
 
 /* HANDLE */
@@ -317,9 +318,28 @@ img.scrollIcon {
   border-radius: 10px;
 }
 .button-grid button.active {
-  background: var(--brand);
   transition: background 0.3s ease-in-out;
-  color: black;
+}
+.button-grid button:first-child.active {
+  background: #cf471c;
+}
+.button-grid button:nth-child(2).active {
+  background: #0aa39c;
+}
+.button-grid button:nth-child(3).active {
+  background: #8e783f;
+}
+.button-grid button:nth-child(4).active {
+  background: #c20d4e;
+}
+.button-grid button:nth-child(5).active {
+  background: #575757;
+}
+.button-grid button:nth-child(6).active {
+  background: #076dcc;
+}
+.button-grid button:nth-child(7).active {
+  background: #5347dd;
 }
 .slider-container {
   width: 100%;
@@ -550,7 +570,7 @@ ul.tab-title {
   min-height: calc(270px - 60px);
 }
 .tab-contents .card > div:first-child {
-  border-right: 1px solid var(--brand);
+  border-right: 1px solid var(--planet);
 }
 .tab-contents h6,
 .scroll-contents h6 {
@@ -576,7 +596,7 @@ ul.tab-title {
   border-radius: 52px;
   border: 1px solid var(--planet);
   gap: 20px;
-  height: 100%;
+  height: 80vh;
 }
 .scroll-card {
   display: flex;
@@ -586,8 +606,22 @@ ul.tab-title {
   padding: 24px;
   border-radius: 24px;
   border: 1px solid var(--planet);
-  height: 74%;
+  height: calc(95% - 30px);
+  overflow-y: scroll;
 }
+.scroll-card::-webkit-scrollbar {
+  width: 2px;
+}
+
+.scroll-card::-webkit-scrollbar-thumb {
+  background: rgba(220, 20, 60); /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+
+.scroll-card::-webkit-scrollbar-track {
+  background: #d9d9d9;
+}
+
 .list-title {
   padding: 8px;
   color: var(--planet);
@@ -636,7 +670,7 @@ ul.tab-title {
   border-radius: 32px;
   color: #4f4f4f;
   line-height: 200%;
-  box-shadow: #5bc4bf69 0px 2px 12px 0px;
+  box-shadow: var(--planet-op) 0px 2px 12px 0px;
 }
 
 .tab-desc img {

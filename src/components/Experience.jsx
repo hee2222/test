@@ -28,6 +28,7 @@ import { Planet } from './Planet';
 import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';
+import { Su1 } from './Su1';
 
 const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
@@ -446,6 +447,7 @@ export const Experience = ({
         </group>
 
         <Planet curvePoints={curvePoints} />
+        <Su1 curvePoints={curvePoints[1]} />
 
         <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
 
