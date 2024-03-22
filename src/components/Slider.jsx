@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import info from '../assets/info.js';
 
-const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
+const Slide = ({ sectionKey, indexI, slideKey, className }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tabClickHandler = (index) => {
+    setActiveIndex(index);
+  };
+
+  const [activeIndex1, setActiveIndex1] = useState(0);
+  const tabClickHandler1 = (index) => {
+    setActiveIndex1(index);
+  };
+
   return (
     <div className={className}>
       {indexI === 0 && (
@@ -14,47 +24,32 @@ const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
           <div className="content-area">
             <div className="tab-component">
               <ul className="tab-title">
-                <li data-id="card1" className="active">
-                  Lv1. Essential
-                </li>
-                <li data-id="card2">Lv2. Advanced</li>
+                {info[sectionKey].slide[0].map((tab, index) => (
+                  <li
+                    onClick={() => tabClickHandler(index)}
+                    className={activeIndex == index ? 'active' : ''}
+                    key={`tab${sectionKey}-${index}`}
+                  >
+                    {index === 0 && 'Lv1.Essential'}
+                    {index === 1 && 'Lv2.Advanced'}
+                    {index === 2 && 'Lv3.Expert'}
+                  </li>
+                ))}
               </ul>
-              <div className="tab-contents">
-                <div className="card" id="card1">
-                  <div>
-                    <h6>고려사항</h6>
-                    <ul>
-                      <li>
-                        재무회계 직무 수행을 위한 필수 지식과 경험이 필요한 시기
-                      </li>
-                      <li>
-                        각 영역의 업무 기초 개념, 방법론 등 기본기 제공 및
-                        평가/인증
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h6>학습대상</h6>
-                    <ul>
-                      <li>
-                        재무회계 직무 수행을 위한 필수 지식과 경험이 필요한 시기
-                      </li>
-                      <li>
-                        각 영역의 업무 기초 개념, 방법론 등 기본기 제공 및
-                        평가/인증
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
+          <div className="tab-contents">
+            {info[sectionKey].slide[0].map((tab, index) => (
+              <Card
+                activeIndex={activeIndex}
+                cardIndex={index}
+                sectionKey={sectionKey}
+                key={`C${sectionKey}-${index}`}
+              />
+            ))}
+          </div>
           <div className="tab-desc">
-            <div className="desc-content">
-              재무회계 직무의 특징은 단계별 직무수행에 따른 재무 주요 Issue에
-              대해 학습할 수 있으며, 재무회계 뿐 아니라 Investment 관점에서도
-              폭넓은 재무회계를 이해할 수 있는 과정입니다.
-            </div>
+            <div className="desc-content">{info[sectionKey].desc}</div>
             <img src="/images/slider/suni1.png" alt="" />
           </div>
         </div>
@@ -68,57 +63,35 @@ const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
           </h5>
           <div className="content-area">
             <div className="scroll-contents">
-              <div className="scroll-card">
-                <h6>전략 입문자를 위한 기본기 다지기</h6>
-                <div className="list-title">직무별 주요 개념</div>
-                <ul>
-                  <li>[Strategy Essential] 경영전략 기본 개념과 방법론 이해</li>
-                  <li>
-                    [조직 Self-Design Essential] 현업 리더가 알아야 할 조직
-                  </li>
-                  <li>
-                    설계 기본 [Financial Story] 되고 싶은 나를 구현하기 위한
-                  </li>
-                  <li>
-                    파트너십 구축 이해 [Scenario Planning Essential] 시나리오
-                  </li>
-                  <li>플래닝 방법론 및 사례 이해</li>
-                </ul>
-              </div>
-              <div className="scroll-card">
-                <h6>전략 입문자를 위한 기본기 다지기</h6>
-                <div className="list-title">직무별 주요 개념</div>
-                <ul>
-                  <li>[Strategy Essential] 경영전략 기본 개념과 방법론 이해</li>
-                  <li>
-                    [조직 Self-Design Essential] 현업 리더가 알아야 할 조직
-                  </li>
-                  <li>
-                    설계 기본 [Financial Story] 되고 싶은 나를 구현하기 위한
-                  </li>
-                  <li>
-                    파트너십 구축 이해 [Scenario Planning Essential] 시나리오
-                  </li>
-                  <li>플래닝 방법론 및 사례 이해</li>
-                </ul>
-              </div>
-              <div className="scroll-card">
-                <h6>전략 입문자를 위한 기본기 다지기</h6>
-                <div className="list-title">직무별 주요 개념</div>
-                <ul>
-                  <li>[Strategy Essential] 경영전략 기본 개념과 방법론 이해</li>
-                  <li>
-                    [조직 Self-Design Essential] 현업 리더가 알아야 할 조직
-                  </li>
-                  <li>
-                    설계 기본 [Financial Story] 되고 싶은 나를 구현하기 위한
-                  </li>
-                  <li>
-                    파트너십 구축 이해 [Scenario Planning Essential] 시나리오
-                  </li>
-                  <li>플래닝 방법론 및 사례 이해</li>
-                </ul>
-              </div>
+              {info[sectionKey].slide[1].map((list, index) => (
+                <div className="scroll-card" key={`S${sectionKey}-${index}`}>
+                  <h6>{list[0]}</h6>
+                  <div>
+                    {list.map((ul, ulId) =>
+                      ulId == 0 ? (
+                        ''
+                      ) : (
+                        <ul key={`li${sectionKey}-${ulId}`}>
+                          {ul.map((li, i) =>
+                            i === 0 ? (
+                              <div
+                                className="list-title"
+                                key={`li${sectionKey}-${ulId}-${index}`}
+                              >
+                                {li}
+                              </div>
+                            ) : (
+                              <li key={`li${sectionKey}-${ulId}-${index}-${i}`}>
+                                {li}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      )
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -133,10 +106,15 @@ const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
           <div className="content-area">
             <div className="table-component">
               <ul className="tab-title">
-                <li data-id="level1" className="active">
-                  Level 1
-                </li>
-                <li data-id="level2">Level 2</li>
+                {info[sectionKey].slide[2].map((tab, index) => (
+                  <li
+                    onClick={() => tabClickHandler1(index)}
+                    className={activeIndex1 == index ? 'active' : ''}
+                    key={`level${sectionKey}-${index}`}
+                  >
+                    Level {index + 1}
+                  </li>
+                ))}
               </ul>
               <div className="tab-contents">
                 <div className="table-header">
@@ -145,43 +123,39 @@ const Slide = ({ sectionKey, indexI, indexJ, slideKey, className }) => {
                   <span>추천학습</span>
                   <span>인증 방식</span>
                 </div>
-                <div className="level" id="level1">
-                  <div className="table-content">
-                    <div>
-                      <span className="course-title">Strategy Essential</span>
-                      <ul>
-                        <li>전략 101: 어서 와, 전략은 처음이지?</li>
-                      </ul>
-                      <ul>
-                        <li>
-                          Strategy Essengtial은 전략 수립을 위한 내/외부 경영
-                          환경 분석 방법론 개념과 활용
-                        </li>
-                      </ul>
+                {info[sectionKey].slide[2].map((wrap, i) => (
+                  <div
+                    className={`level ${activeIndex1 == i ? 'active' : ''}`}
+                    key={`wrap${sectionKey}-${i}`}
+                  >
+                    <div className="table-content">
+                      {wrap[1].map((table, index) => (
+                        <div key={`table${sectionKey}-${i}-${index}`}>
+                          <span className="course-title">{table[0]}</span>
+                          <div className="course-desc">{table[1]}</div>
+                          <ul>
+                            {table[2].map((li, liIndex) => (
+                              <li
+                                key={`table${sectionKey}-${i}-${index}-${liIndex}`}
+                              >
+                                {li}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
-                    <div>
-                      <span className="course-title">
-                        조직 Self Design Essential
-                      </span>
+                    <div className="last-cell">
                       <ul>
-                        <li>리더가 알아야 할 조직 설계의 기본 개념과 방법론</li>
-                      </ul>
-                      <ul>
-                        <li>전략 101: 어서 와, 전략은 처음이지?</li>
+                        {wrap[0].map((info, infoIndex) => (
+                          <li key={`tabInfo${sectionKey}-${i}-${infoIndex}`}>
+                            {info}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
-                  <div className="last-cell">
-                    <ul>
-                      <li>객관식 Test - 총 20문항 40분</li>
-                      <li>
-                        전문가 인터뷰 -총 10-15문항, 1시간 내외 (대면 / 비대면
-                        선택 가능)
-                      </li>
-                      <li>80점 이상 Pass, 재응시 1회 가능 (연 내)</li>
-                    </ul>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -239,15 +213,12 @@ export const Slider = ({ sectionKey, onClose }) => {
 
   var k = 0;
   for (let i = 0; i < renderObject['slide'].length; i++) {
-    // slideContent = renderObject['slide'][i][j];
-
     renderSlides.push(
       <Slide
-        key={`${sectionKey}-${i}`}
+        key={`slide${sectionKey}-${i}-${i}`}
         slideTemplate={i}
         slideKey={renderObject}
         sectionKey={sectionKey}
-        // slideContent={slideContent}
         indexI={i}
         className={`slide slide${i} ${
           currentSlide === k ? 'visible' : 'hidden'
@@ -272,6 +243,29 @@ export const Slider = ({ sectionKey, onClose }) => {
         <button onClick={handleNextSlide} className="nextBtn">
           <img src="./images/slider/arrow.svg" alt="arrow-next" />
         </button>
+      </div>
+    </div>
+  );
+};
+
+export const Card = ({ sectionKey, cardIndex, activeIndex }) => {
+  return (
+    <div className={`card ${activeIndex === cardIndex ? 'active' : ''}`}>
+      <div>
+        <h6>고려사항</h6>
+        <ul>
+          {info[sectionKey].slide[0][cardIndex][0].map((list, index) => (
+            <li key={`a${sectionKey}-${index}`}>{list}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h6>학습대상</h6>
+        <ul>
+          {info[sectionKey].slide[0][cardIndex][1].map((list, index) => (
+            <li key={`b${sectionKey}-${index}`}>{list}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

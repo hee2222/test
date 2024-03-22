@@ -381,6 +381,7 @@ img.scrollIcon {
 .slide1 .content-area {
   height: 100%;
 }
+
 .slide-inner h5 {
   color: var(--planet);
   font-size: 32px;
@@ -491,6 +492,12 @@ ul.tab-title {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  background-color: var(--planet);
+}
+.table-component ul.tab-title li.active {
+  color: var(--planet);
+  background-color: white;
 }
 .table-component .tab-contents {
   border-radius: 0;
@@ -499,6 +506,9 @@ ul.tab-title {
 }
 
 .table-component .tab-contents .level {
+  display: none;
+}
+.table-component .tab-contents .level.active {
   display: flex;
 }
 .table-component .tab-contents .level .table-content {
@@ -511,14 +521,20 @@ ul.tab-title {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 20px 20px 20px 0;
+  height: 100%;
+  padding: 20px 0;
   border-bottom: 1px solid var(--planet);
 }
+
 .table-component .tab-contents .level .table-content > div:last-child {
   border: none;
 }
 .table-component .tab-contents .level .table-content > div > * {
   width: 33.33%;
+}
+.table-component .tab-contents .level .table-content .course-title,
+.table-component .tab-contents .level .table-content .course-desc {
+  padding: 20px 40px;
 }
 .course-title {
   text-align: center;
@@ -533,7 +549,7 @@ ul.tab-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
+  padding: 0 24px;
 }
 .table-component .tab-contents .level li {
   line-height: 150%;
@@ -558,11 +574,13 @@ ul.tab-title {
 .table-header span {
   width: 25%;
 }
-
 .tab-contents .card {
-  display: flex;
+  display: none;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.tab-contents .card.active {
+  display: flex;
 }
 .tab-contents .card > div {
   flex: 1;
@@ -586,6 +604,7 @@ ul.tab-title {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
 }
 .scroll-contents {
   display: flex;
@@ -599,22 +618,30 @@ ul.tab-title {
   height: 80vh;
 }
 .scroll-card {
+  padding: 24px;
+  padding-right: 12px;
+  border-radius: 24px;
+  border: 1px solid var(--planet);
+  height: calc(95% - 30px);
+  flex: 1;
+}
+.scroll-card > div {
+  height: 90%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 24px;
-  border-radius: 24px;
-  border: 1px solid var(--planet);
-  height: calc(95% - 30px);
-  overflow-y: scroll;
+  padding-right: 12px;
+  gap: 24px;
 }
-.scroll-card::-webkit-scrollbar {
+.scroll-card > div::-webkit-scrollbar {
   width: 2px;
 }
 
-.scroll-card::-webkit-scrollbar-thumb {
-  background: rgba(220, 20, 60); /* 스크롤바 색상 */
+.scroll-card > div::-webkit-scrollbar-thumb {
+  background: var(--planet);
   border-radius: 10px; /* 스크롤바 둥근 테두리 */
 }
 
@@ -624,25 +651,33 @@ ul.tab-title {
 
 .list-title {
   padding: 8px;
-  color: var(--planet);
+  color: var(--planet) !important;
   font-weight: bold;
   border: 1px solid var(--planet);
-  background-color: white;
+  background-color: var(--planet-bg);
   border-radius: 10px;
-  margin-bottom: 12px;
   font-size: 14px;
+  width: fit-content;
 }
 .tab-contents ul li,
-.scroll-contents ul li {
+.scroll-contents ul li,
+.table-content .course-desc {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 16px;
   color: #4f4f4f;
+  line-height: 150%;
 }
-.scroll-contents ul li {
+.scroll-contents ul li,
+.table-component .tab-contents ul li,
+.table-content .course-desc {
   font-size: 14px;
   line-height: 150%;
+}
+.scroll-contents ul li:hover {
+  color: #ffffff;
+  background-color: var(--planet);
 }
 .tab-contents ul li:before,
 .scroll-contents ul li::before {
@@ -651,11 +686,14 @@ ul.tab-title {
   height: 4px;
   background-color: #e31937;
   margin-right: 8px;
-  margin-top: 6px;
+  margin-top: 10px;
   flex: 0 0 auto;
 }
 .scroll-contents ul li::before {
   margin-top: 10px;
+}
+.scroll-contents ul li:hover::before {
+  background-color: white;
 }
 .tab-desc {
   display: flex;
