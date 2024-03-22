@@ -347,6 +347,7 @@ img.scrollIcon {
   left: 0;
   position: absolute;
   animation: slideOpen 1s ease-in-out;
+  overflow: hidden;
 }
 .slider-container.close {
   animation: slideClose 1s ease-in-out;
@@ -426,6 +427,31 @@ ul.tab-title {
   z-index: 100;
   cursor: pointer;
 }
+.slideIndex {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  background-color: var(--planet-op);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+.slideDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  transition: background 0.3s ease-in-out;
+}
+.slideDot.active {
+  background: var(--planet);
+}
 .button-wrap {
   width: 100%;
   /* max-width: 1440px;
@@ -467,6 +493,7 @@ ul.tab-title {
   align-items: stretch;
   border-radius: 40px;
   overflow: hidden;
+  min-height: 300px;
 }
 .tab-contents {
   width: 100%;
@@ -478,12 +505,13 @@ ul.tab-title {
 .table-component ul.tab-title {
   background-color: var(--planet);
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 90px;
   width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 4px;
 }
 .table-component ul.tab-title li {
   border-radius: 40px;
@@ -522,12 +550,13 @@ ul.tab-title {
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 20px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--planet);
 }
 
 .table-component .tab-contents .level .table-content > div:last-child {
   border: none;
+  padding-bottom: 0;
 }
 .table-component .tab-contents .level .table-content > div > * {
   width: 33.33%;
@@ -540,23 +569,25 @@ ul.tab-title {
   text-align: center;
   font-weight: bold;
   color: vaR(--planet);
+  line-height: 150%;
 }
-.table-component .tab-contents .level li::before {
-  margin-top: 10px;
+.table-component .tab-contents .level li::before,
+.slide1 .scroll-contents ul li::before {
+  margin-top: 9px;
 }
 .table-component .tab-contents .level > div.last-cell {
   width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24px;
+  padding: 20px 24px 0;
 }
 .table-component .tab-contents .level li {
   line-height: 150%;
 }
 .table-component .tab-contents .table-header {
   height: 36px;
-  margin-bottom: 16px;
+
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -666,6 +697,7 @@ ul.tab-title {
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 16px;
+  font-weight: 500;
   color: #4f4f4f;
   line-height: 150%;
 }
@@ -674,10 +706,6 @@ ul.tab-title {
 .table-content .course-desc {
   font-size: 14px;
   line-height: 150%;
-}
-.scroll-contents ul li:hover {
-  color: #ffffff;
-  background-color: var(--planet);
 }
 .tab-contents ul li:before,
 .scroll-contents ul li::before {
@@ -688,11 +716,21 @@ ul.tab-title {
   margin-right: 8px;
   margin-top: 10px;
   flex: 0 0 auto;
+  margin-left: 6px;
+  transition: all 0.3s ease-in-out;
 }
-.scroll-contents ul li::before {
-  margin-top: 10px;
+.scroll-contents ul li {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-.scroll-contents ul li:hover::before {
+
+.scroll-contents .scroll-card:first-child ul li:hover,
+.scroll-contents ul li.active {
+  color: #ffffff;
+  background-color: var(--planet);
+}
+.scroll-contents .scroll-card:first-child ul li:hover::before,
+.scroll-contents ul li.active:before {
   background-color: white;
 }
 .tab-desc {

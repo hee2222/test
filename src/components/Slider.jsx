@@ -12,6 +12,14 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
     setActiveIndex1(index);
   };
 
+  const [hoverIndex, sethoverIndex] = useState(0);
+  const handleMouseOver = (index) => {
+    sethoverIndex(index);
+  };
+
+  const handleMouseOut = () => {
+    sethoverIndex(0);
+  };
   return (
     <div className={className}>
       {indexI === 0 && (
@@ -80,8 +88,20 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                               >
                                 {li}
                               </div>
+                            ) : index === 0 ? (
+                              <li
+                                key={`li${sectionKey}-${ulId}-${index}-${i}`}
+                                onMouseOver={() => handleMouseOver(i)}
+                                onMouseOut={handleMouseOut}
+                              >
+                                {li}
+                              </li>
                             ) : (
-                              <li key={`li${sectionKey}-${ulId}-${index}-${i}`}>
+                              <li
+                                key={`li${sectionKey}-${ulId}-${index}-${i}`}
+                                data-num={li[1]}
+                                className={hoverIndex == li[1] ? 'active' : ''}
+                              >
                                 {li}
                               </li>
                             )
@@ -210,6 +230,7 @@ export const Slider = ({ sectionKey, onClose }) => {
   };
 
   let renderSlides = [];
+  let slideIndex = [];
 
   var k = 0;
   for (let i = 0; i < renderObject['slide'].length; i++) {
@@ -224,6 +245,12 @@ export const Slider = ({ sectionKey, onClose }) => {
           currentSlide === k ? 'visible' : 'hidden'
         }`}
       />
+    );
+    slideIndex.push(
+      <div
+        key={`dot${sectionKey}-${i}-${i}`}
+        className={`slideDot ${currentSlide === k ? 'active' : ''}`}
+      ></div>
     );
     k++;
   }
@@ -244,6 +271,8 @@ export const Slider = ({ sectionKey, onClose }) => {
           <img src="./images/slider/arrow.svg" alt="arrow-next" />
         </button>
       </div>
+
+      <div className="slideIndex">{slideIndex}</div>
     </div>
   );
 };
