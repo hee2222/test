@@ -1,6 +1,6 @@
 import { ScrollControls } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Experience } from './components/Experience';
 import { easing } from 'maath';
 import { Overlay } from './components/Overlay';
@@ -22,14 +22,32 @@ function Rig() {
 
 function App() {
   const [selectedSection, setSelectedSection] = useState(null);
+  const [sectionClose, setSectionClose] = useState(false);
 
   const handleSectionClick = (sectionKey) => {
     setSelectedSection(sectionKey);
+    setSectionClose(true);
   };
-
   const handleCloseSlider = () => {
     setSelectedSection(null);
+    setSliderVisible(null);
+    setSectionClose(false);
   };
+  const [sliderVisible, setSliderVisible] = useState(null);
+
+  useEffect(() => {
+    let timer;
+    if (selectedSection !== null) {
+      // 3초 후에 슬라이더를 표시합니다.
+      timer = setTimeout(() => {
+        setSliderVisible(selectedSection);
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [selectedSection]);
 
   const { play, end } = usePlay();
 
@@ -49,7 +67,6 @@ function App() {
   const handleButtonClick = (value) => {
     // 클릭 시 받은 값으로 scrollBtn 상태 업데이트
     setScrollBtn(value);
-    // console.log('Button clicked with scroll value:', value);
   };
 
   const [targetIndex, setTargetIndex] = useState(null);
@@ -80,18 +97,18 @@ function App() {
           <Experience
             onSectionClick={handleSectionClick}
             scrollBtn={scrollBtn}
+            sectionClose={sectionClose}
             onTargetIndexUpdate={handleTargetIndexUpdate}
           />
         </ScrollControls>
-
         {effects}
         <Rig />
       </Canvas>
       <Overlay />
       <ButtonGrid onButtonClick={handleButtonClick} targetIndex={targetIndex} />
-
-      {selectedSection !== null && (
-        <Slider sectionKey={selectedSection} onClose={handleCloseSlider} />
+      {/* <div className="intro-replay">다시보기</div> */}
+      {sliderVisible !== null && (
+        <Slider sectionKey={selectedSection - 1} onClose={handleCloseSlider} />
       )}
     </>
   );

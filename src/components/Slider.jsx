@@ -58,6 +58,7 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
           </div>
           <div className="tab-desc">
             <div className="desc-content">{info[sectionKey].desc}</div>
+
             <img src="/images/slider/suni1.png" alt="" />
           </div>
         </div>
@@ -70,6 +71,7 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
             학습 Roadmap
           </h5>
           <div className="content-area">
+            <img src="/images/slider/suni2.png" alt="" />
             <div className="scroll-contents">
               {info[sectionKey].slide[1].map((list, index) => (
                 <div className="scroll-card" key={`S${sectionKey}-${index}`}>
@@ -91,18 +93,22 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                             ) : index === 0 ? (
                               <li
                                 key={`li${sectionKey}-${ulId}-${index}-${i}`}
-                                onMouseOver={() => handleMouseOver(i)}
+                                onMouseOver={() => handleMouseOver(li[1])}
                                 onMouseOut={handleMouseOut}
                               >
-                                {li}
+                                {li[0]}
                               </li>
                             ) : (
                               <li
                                 key={`li${sectionKey}-${ulId}-${index}-${i}`}
-                                data-num={li[1]}
-                                className={hoverIndex == li[1] ? 'active' : ''}
+                                className={
+                                  Array.isArray(li[1]) &&
+                                  li[1].includes(hoverIndex)
+                                    ? 'active'
+                                    : ''
+                                }
                               >
-                                {li}
+                                {li[0]}
                               </li>
                             )
                           )}
@@ -256,7 +262,11 @@ export const Slider = ({ sectionKey, onClose }) => {
   }
 
   return (
-    <div className={`slider-container ${isOpen ? 'open' : 'close'}`}>
+    <div
+      className={`slider-container slider${sectionKey} ${
+        isOpen ? 'open' : 'close'
+      }`}
+    >
       <div onClick={handleClose} className="close-btn">
         <img src="./images/slider/close.svg" alt="close-btn" />
       </div>

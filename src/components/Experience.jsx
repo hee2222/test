@@ -34,28 +34,49 @@ const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
 const CURVE_AHEAD_CAMERA = 0.008;
 const CURVE_AHEAD_AIRPLANE = 0.02;
-// const AIRPLANE_MAX_ANGLE = 35;
+const AIRPLANE_MAX_ANGLE = 35;
 const FRICTION_DISTANCE = 20;
 
 export const Experience = ({
   onSectionClick,
   scrollBtn,
   onTargetIndexUpdate,
+  sectionClose,
 }) => {
   const handleClick = (sectionKey) => {
-    onSectionClick(sectionKey);
+    onSectionClick(sectionKey + 1);
+    setSelectedSection(sectionKey + 1);
+    setTextView(true);
   };
 
-  const buttonLabels = [
-    '전략/조직설계',
-    '재무/회계',
-    '마케팅',
-    'HR',
-    '구매/SCM',
-    'IP',
-    '법무',
-  ];
-  const [selectedSection, setSelectedSection] = useState(0);
+  const buttonLabels = useMemo(
+    () => [
+      '전략/조직설계',
+      '재무/회계',
+      '마케팅',
+      'HR',
+      '구매/SCM',
+      'IP',
+      '법무',
+    ],
+    []
+  );
+  const [selectedSection, setSelectedSection] = useState(null);
+  const [textView, setTextView] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (sectionClose !== null) {
+      // 3초 후에 슬라이더를 표시합니다.
+      timer = setTimeout(() => {
+        setTextView(false);
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [sectionClose]);
 
   const curvePoints = useMemo(
     () => [
@@ -221,31 +242,31 @@ export const Experience = ({
 
     tangent.applyAxisAngle(new Vector3(0, 1, 0), -nonLerpLookAt.rotation.y);
 
-    // let angle = Math.atan2(-tangent.z, tangent.x);
-    // angle = -Math.PI / 2 + angle;
+    let angle = Math.atan2(-tangent.z, tangent.x);
+    angle = -Math.PI / 2 + angle;
 
-    // let angleDegrees = (angle * 180) / Math.PI;
-    // angleDegrees *= 2.4; // stronger angle
+    let angleDegrees = (angle * 180) / Math.PI;
+    angleDegrees *= 2.4; // stronger angle
 
-    // // LIMIT PLANE ANGLE
-    // if (angleDegrees < 0) {
-    //   angleDegrees = Math.max(angleDegrees, -AIRPLANE_MAX_ANGLE);
-    // }
-    // if (angleDegrees > 0) {
-    //   angleDegrees = Math.min(angleDegrees, AIRPLANE_MAX_ANGLE);
-    // }
+    // LIMIT PLANE ANGLE
+    if (angleDegrees < 0) {
+      angleDegrees = Math.max(angleDegrees, -AIRPLANE_MAX_ANGLE);
+    }
+    if (angleDegrees > 0) {
+      angleDegrees = Math.min(angleDegrees, AIRPLANE_MAX_ANGLE);
+    }
 
-    // // SET BACK ANGLE
-    // angle = (angleDegrees * Math.PI) / 180;
+    // SET BACK ANGLE
+    angle = (angleDegrees * Math.PI) / 180;
 
-    // const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
-    //   new THREE.Euler(
-    //     airplane.current.rotation.x,
-    //     airplane.current.rotation.y,
-    //     angle
-    //   )
-    // );
-    // airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
+    const targetAirplaneQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        airplane.current.rotation.x,
+        airplane.current.rotation.y,
+        angle
+      )
+    );
+    airplane.current.quaternion.slerp(targetAirplaneQuaternion, delta * 2);
 
     if (
       cameraGroup.current.position.z <
@@ -270,9 +291,7 @@ export const Experience = ({
           (point) => roundedPositionZ === point.z + 13
         );
         if (newTargetIndex !== -1) {
-          // console.log('dd');
           onTargetIndexUpdate(newTargetIndex);
-          setSelectedSection(newTargetIndex);
         }
 
         isInThrottle = false;
@@ -379,22 +398,24 @@ export const Experience = ({
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
-                {/* <group visible={selectedSection ? true : false}>
-                  <Text
-                    fontSize={0.08}
-                    color={'black'}
-                    anchorY={'center'}
-                    anchorX={'center'}
-                    lineHeight={1.2}
-                    position-y={0.04}
-                    position-z={-0.02}
-                    font={'./fonts/Pretendard-Medium.ttf'}
-                  >
-                    {`${
-                      buttonLabels[selectedSection - 1]
-                    } 행성에 오신 것을 환영합니다.`}
-                  </Text>
-                </group> */}
+                {(selectedSection !== null || textView == true) && (
+                  <group visible={textView}>
+                    <Text
+                      fontSize={0.08}
+                      color={'black'}
+                      anchorY={'center'}
+                      anchorX={'center'}
+                      lineHeight={1.2}
+                      position-y={0.04}
+                      position-z={-0.02}
+                      font={'./fonts/Pretendard-Medium.ttf'}
+                    >
+                      {`${
+                        buttonLabels[selectedSection - 1]
+                      } 행성에 오신 것을 환영합니다.`}
+                    </Text>
+                  </group>
+                )}
                 <Model
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
@@ -403,6 +424,7 @@ export const Experience = ({
                   position-z={0.5}
                   onTargetIndexUpdate={onTargetIndexUpdate}
                   motionplay={selectedSection}
+                  sectionClose={sectionClose}
                 />
               </Suspense>
             </Float>
@@ -413,6 +435,13 @@ export const Experience = ({
         <Suspense fallback={null}>
           {textSections.map((textSection, index) => (
             <TextSection
+              rotation={
+                index === 4
+                  ? [0, Math.PI / 4, 0]
+                  : index === 5
+                  ? [0, -Math.PI / 4, 0]
+                  : [0, 0, 0] // 기본값 설정
+              }
               {...textSection}
               sceneOpacity={sceneOpacity}
               scale={0.8}
@@ -454,8 +483,6 @@ export const Experience = ({
         <Points numPoints={2000} range={1000} />
       </>
     ),
-    [
-      // selectedSection
-    ]
+    [selectedSection, sectionClose, textView]
   );
 };

@@ -8,7 +8,13 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import { useControls } from 'leva';
 import * as THREE from 'three';
 
-export function Model({ onTargetIndexUpdate, motionplay, ...props }) {
+export function Model({
+  onTargetIndexUpdate,
+  motionplay,
+  sectionClose,
+  ...props
+}) {
+  // console.log(motionplay, sectionClose);
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('./models/SK_Actions.glb');
   const { actions } = useAnimations(animations, group);
@@ -16,47 +22,38 @@ export function Model({ onTargetIndexUpdate, motionplay, ...props }) {
   //   animation: { value: 'Flying_Action', options: Object.keys(actions) },
   // });
 
-  // useEffect(() => {
-  //   if (motionplay % 2 === 1 || motionplay % 2 === 0) {
-  //     const targetAction =
-  //       motionplay % 2 === 1 ? 'Enter_Left_Action' : 'Enter_Right_Action';
-  //     const oppositeAction =
-  //       motionplay % 2 === 1 ? 'Enter_Right_Action' : 'Enter_Left_Action';
-  //     actions?.['CapeAction']?.stop();
-  //     actions?.['Flying_Action']?.stop();
-  //     actions?.['Leg_Action']?.stop();
-  //     actions?.[oppositeAction]?.stop();
-  //     actions[targetAction].reset().fadeIn(0.5).play();
-
-  //     actions[targetAction].setLoop(THREE.LoopRepeat, 1);
-  //     actions[targetAction].clampWhenFinished = true;
-
-  //     // 3초 후에 Enter_Left_Action 또는 Enter_Right_Action 애니메이션을 멈추고 기본 애니메이션을 재생
-  //     if (
-  //       targetAction === 'Enter_Left_Action' ||
-  //       targetAction === 'Enter_Right_Action'
-  //     ) {
-  //       setTimeout(() => {
-  //         actions[targetAction].fadeOut(0.5);
-  //         actions['CapeAction'].play();
-  //         actions?.['Flying_Action'].play();
-  //         actions?.['Leg_Action'].play();
-  //       }, 3000);
-  //     }
-  //   } else {
-  //     actions[animation].clampWhenFinished = true;
-  //     actions['CapeAction'].play();
-  //     actions?.['Flying_Action'].play();
-  //     actions?.['Leg_Action'].play();
-  //   }
-
-  //   return () => actions[animation].fadeOut(0.5);
-  // }, [motionplay, actions, animation]);
   useEffect(() => {
+    let targetAction, oppositeAction;
+    actions['Enter_Left_Action']?.stop();
+    actions?.['Enter_Right_Action']?.stop();
     actions['CapeAction'].play();
     actions?.['Flying_Action'].play();
     actions?.['Leg_Action'].play();
-  });
+    if (!sectionClose) {
+      if (
+        targetAction === 'Enter_Left_Action' ||
+        targetAction === 'Enter_Right_Action'
+      ) {
+        actions['Exit_Left_Action'].play();
+        actions['CapeAction'].play();
+        actions?.['Flying_Action'].play();
+        actions?.['Leg_Action'].play();
+      }
+    } else if (motionplay) {
+      targetAction =
+        motionplay % 2 === 1 ? 'Enter_Left_Action' : 'Enter_Right_Action';
+      oppositeAction =
+        motionplay % 2 === 1 ? 'Enter_Right_Action' : 'Enter_Left_Action';
+      actions?.['CapeAction']?.stop();
+      actions?.['Flying_Action']?.stop();
+      actions?.['Leg_Action']?.stop();
+      actions?.[oppositeAction]?.stop();
+      actions[targetAction].reset().fadeIn(0.5).play();
+
+      actions[targetAction].setLoop(THREE.LoopRepeat, 1);
+      actions[targetAction].clampWhenFinished = true;
+    }
+  }, [motionplay, actions, sectionClose]);
 
   return (
     <group ref={group} {...props} dispose={null}>
