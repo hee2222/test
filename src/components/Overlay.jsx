@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useProgress } from '@react-three/drei';
 import { usePlay } from '../contexts/Play';
 import { IntroSlider } from './IntroSlider';
+import Intro from './intro';
 
 export const Overlay = ({ introSliderVisible }) => {
   const { progress } = useProgress();
@@ -145,6 +146,14 @@ export const Overlay = ({ introSliderVisible }) => {
     ],
     []
   );
+  const [showIntro, setShowIntro] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 20000); // 20 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCloseSlider = () => {
     setSectionClose(false);
@@ -178,6 +187,7 @@ export const Overlay = ({ introSliderVisible }) => {
       />
       {progress === 100 && (
         <div className={`intro ${play ? 'intro--disappear' : ''}`}>
+          {showIntro && <Intro />}
           <a href="/" className="logo">
             <img
               src="./images/logo.png"
@@ -217,6 +227,9 @@ export const Overlay = ({ introSliderVisible }) => {
               </div>
               <img src="/images/suni-out.png" alt="" />
             </div>
+            <a href="/" className="out-replay-btn">
+              다시 여행하기
+            </a>
           </div>
           <div className="outro-btn-wrap">
             {textTitle.map((textTitle, index) => (

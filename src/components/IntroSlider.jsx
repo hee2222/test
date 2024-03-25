@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { usePlay } from '../contexts/Play';
+import info from '../assets/info.js';
 import { Carousel1 } from './Carousel';
 
 const IntroSlide = ({ indexI, className, handleClose }) => {
   const { setPlay, setOpen } = usePlay();
+
+  const [clickedPlanet, setClickedPlanet] = useState(0);
+
+  const handlePlanetClick = (planet) => {
+    setClickedPlanet(planet);
+  };
 
   const intro4Title = [
     '【 초보자를위한 기초직무 역량 skill 인증 】',
@@ -57,14 +64,10 @@ const IntroSlide = ({ indexI, className, handleClose }) => {
           </div>
           <div className="intro-content">
             <div className="intro-button-wrap">
-              <Carousel1 />
+              <Carousel1 onClickPlanet={handlePlanetClick} />
             </div>
             <div className="intro-planet-slider">
-              Management 직무는 기업의 전략수립/운영/관리 등 Biz.실행 역량
-              제고를 위한 직무 역량 학습을 제공하며,
-              <br />
-              전략/조직설계, 재무, 마케팅, HR, SCM(공급망/물류), 법무, IP,
-              Competency 총 8개 직무, 242개 Contents로 구성되어 있습니다.
+              <div>{clickedPlanet == 7 ? '' : info[clickedPlanet].desc}</div>
             </div>
           </div>
         </div>
@@ -260,9 +263,9 @@ const IntroSlide = ({ indexI, className, handleClose }) => {
       {indexI == 5 && (
         <div className="intro-slide-inner">
           <h5 className="title-area">
-            Mgmt A.B.C Galaxy의 기본 소개는 이걸로 끝이야.
+            Mgmt A.B.C Galaxy 기본 소개는 여기까지입니다.
           </h5>
-          이제 직무 행성으로 다같이 떠나볼까?
+          자세한 내용은 Galaxy여행을 통해 확인해보세요!
           <div
             className="start-btn"
             onClick={() => {
