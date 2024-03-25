@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { usePlay } from '../contexts/Play';
 import { Carousel1 } from './Carousel';
 
-const IntroSlide = ({ indexI, className }) => {
+const IntroSlide = ({ indexI, className, handleClose }) => {
+  const { setPlay, setOpen } = usePlay();
+
   const intro4Title = [
     '【 초보자를위한 기초직무 역량 skill 인증 】',
     '【 초보자를위한 기초직무 역량 skill 인증 】',
@@ -10,7 +12,7 @@ const IntroSlide = ({ indexI, className }) => {
   ];
   const intro2Title = [
     [
-      '직무 기초 개념 및 방법론/Process/Framework 등에 대한 Knowledge 이해 수준 평가',
+      '직무 기초 개념 및 방법론 / Process / Framework 등에 대한 Knowledge 이해 수준 평가',
       ['직무 경력 3년차 미만 역량 개발', '직무 이동/인력 배치 시 최소 요건화'],
       [1, 2],
       [1, 3],
@@ -45,12 +47,19 @@ const IntroSlide = ({ indexI, className }) => {
         <div className="intro-slide-inner">
           <div className="intro-title">
             <img src="./images/intro-title.png" alt="" className="mgmt-logo" />
+            <div className="intro-desc">
+              Management 직무는 기업의 전략수립/운영/관리 등 Biz.실행 역량
+              제고를 위한 직무 역량 학습을 제공하며,
+              <br />
+              전략/조직설계, 재무, 마케팅, HR, SCM(공급망/물류), 법무, IP,
+              Competency 총 8개 직무, 242개 Contents로 구성되어 있습니다.
+            </div>
           </div>
           <div className="intro-content">
             <div className="intro-button-wrap">
               <Carousel1 />
             </div>
-            <div className="intro-desc">
+            <div className="intro-planet-slider">
               Management 직무는 기업의 전략수립/운영/관리 등 Biz.실행 역량
               제고를 위한 직무 역량 학습을 제공하며,
               <br />
@@ -245,7 +254,7 @@ const IntroSlide = ({ indexI, className }) => {
               <img src={`./images/in-lv${intro4tab + 1}.svg`} alt="" />
             </div>
           </div>
-          <img src="./images/suni-in2.png" alt="" class="suni2" />
+          <img src="./images/suni-in2.png" alt="" className="suni2" />
         </div>
       )}
       {indexI == 5 && (
@@ -254,6 +263,15 @@ const IntroSlide = ({ indexI, className }) => {
             Mgmt A.B.C Galaxy의 기본 소개는 이걸로 끝이야.
           </h5>
           이제 직무 행성으로 다같이 떠나볼까?
+          <div
+            className="start-btn"
+            onClick={() => {
+              setPlay(true);
+              setOpen(false);
+            }}
+          >
+            입장하기
+          </div>
         </div>
       )}
     </div>
@@ -261,18 +279,18 @@ const IntroSlide = ({ indexI, className }) => {
 };
 
 export const IntroSlider = ({ onClose }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleClose = () => {
-    setIsOpen(false);
-
-    setTimeout(() => {
-      onClose();
-    }, 1000);
-  };
-
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { setPlay } = usePlay();
+  const { open } = usePlay();
+  // const [isOpen, setIsOpen] = useState(true);
+
+  // const handleClose = (isOpen) => {
+  //   setIsOpen(isOpen);
+
+  //   setTimeout(() => {
+  //     onClose();
+  //   }, 1000);
+  // };
+
   // 슬라이드 전체 개수 계산
   let totalSlides = 6;
 
@@ -313,16 +331,7 @@ export const IntroSlider = ({ onClose }) => {
   }
 
   return (
-    <div className={`intro-slider-container  ${isOpen ? 'open' : 'close'}`}>
-      <div
-        className="close-btn"
-        onClick={() => {
-          setPlay(true);
-          handleClose();
-        }}
-      >
-        <img src="./images/slider/close.svg" alt="close-btn" />
-      </div>
+    <div className={`intro-slider-container  ${open ? 'open' : 'close'}`}>
       <div className="intro-slider">{renderSlides}</div>
 
       <div className="button-wrap">

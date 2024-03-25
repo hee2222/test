@@ -314,16 +314,20 @@ img.scrollIcon {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 10px;
 }
 .intro2-tab h6 {
   font-size: 22px;
   font-weight: 700;
   color: var(--brand);
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 .intro2-tab li {
   font-size: 16px;
   line-height: 150%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .intro2-tab ul:nth-child(1) li::before,
 .intro2-tab ul:nth-child(2) li::before {
@@ -333,7 +337,7 @@ img.scrollIcon {
   height: 4px;
   background-color: #e31937;
   margin-right: 8px;
-  margin-bottom: 3px;
+  margin-top: 10px;
   flex: 0 0 auto;
   margin-left: 6px;
 }
@@ -344,12 +348,13 @@ img.scrollIcon {
 }
 .intro2-tab ul:nth-child(3) li::before,
 .intro2-tab ul:nth-child(4) li::before {
-  margin-right: 6px;
+  margin-right: 7px;
   content: url('data:image/svg+xml,<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="7" height="7" stroke="%23E31937" stroke-opacity="0.3"/></svg>');
 }
 .intro2-tab ul:nth-child(3) li.active::before,
 .intro2-tab ul:nth-child(4) li.active::before {
   content: url('data:image/svg+xml,<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.85938 3.64522L3.97091 6.82062C4.34747 7.38691 5.16726 7.42026 5.58858 6.88643L10.2344 1" stroke="%234F4F4F" stroke-width="2" stroke-linecap="round"/><rect x="1.5" y="3.70312" width="7" height="7" stroke="%23E31937"/></svg>');
+  margin-right: 6px;
 }
 .intro2-tab ul:nth-child(3) li.active,
 .intro2-tab ul:nth-child(4) li.active {
@@ -522,10 +527,23 @@ img.scrollIcon {
   top: 0;
   left: 0;
   z-index: -1;
+  opacity: 0;
+  visibility: hidden;
 }
 .slider-container .slider .slide.visible,
 .intro-slider .intro-slide.visible {
   z-index: 1;
+  opacity: 1;
+  visibility: visible;
+}
+.intro-slider .intro-slide.slide5 {
+  background: transparent;
+}
+.intro-slider .intro-slide.slide5 .intro-slide-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .slide-inner,
 .intro-slide-inner {
@@ -562,7 +580,14 @@ img.scrollIcon {
   /* box-shadow: #5bc4bf10 0px 10px 15px -3px, #5bc4bf30  0px 4px 6px -2px; */
   box-shadow: #5bc4bf80 0px 25px 20px -20px;
 }
-.intro-desc {
+.intro-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.intro-planet-slider {
   padding: 24px 40px;
   background: linear-gradient(90deg, #a4685880 0%, #ccb0ff80 100%);
   font-weight: 700;
@@ -1147,7 +1172,7 @@ ul.tab-title {
   position: relative;
   z-index: 10;
 }
-.intro-slider-container .close-btn {
+.intro-slider-container .visible .start-btn {
   pointer-events: auto;
 }
 .intro-slider {
@@ -1170,9 +1195,10 @@ ul.tab-title {
 .slide0 .intro-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 80vh;
+  margin-top: 64px;
+  height: 100%;
 }
 .intro-slide {
   background-color: #312c3a;
@@ -1181,13 +1207,48 @@ ul.tab-title {
 .intro-button-wrap {
   position: relative;
 }
-.intro-button-wrap .button-card {
+.visible .intro-button-wrap .button-card {
   pointer-events: auto;
+  cursor: pointer;
   z-index: 10;
+}
+
+.intro-button-wrap .button-card:after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 28px;
+  background: #ffffffd6;
+  border: 4px solid #feb3a4;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-animation: blink 1.2s ease-in-out infinite;
+  animation: blink 1.2s ease-in-out infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.intro-desc,
+.slide5 .intro-slide-inner {
+  color: white;
+  opacity: 0.5;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 16px;
 }
 .intro-button-wrap .button-card img {
   width: auto;
-  height: 100%;
+  height: 200px;
 }
 .button-card .card-title {
   position: absolute;

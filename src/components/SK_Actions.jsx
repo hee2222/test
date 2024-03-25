@@ -14,13 +14,9 @@ export function Model({
   sectionClose,
   ...props
 }) {
-  // console.log(motionplay, sectionClose);
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('./models/SK_Actions.glb');
   const { actions } = useAnimations(animations, group);
-  // const { animation } = useControls({
-  //   animation: { value: 'Flying_Action', options: Object.keys(actions) },
-  // });
 
   useEffect(() => {
     let targetAction, oppositeAction;

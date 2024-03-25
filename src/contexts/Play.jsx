@@ -4,6 +4,7 @@ const Context = createContext();
 
 export const PlayProvider = ({ children }) => {
   const [play, setPlay] = useState(false);
+  const [open, setOpen] = useState(true);
   const [end, setEnd] = useState(false);
   const [hasScroll, setHasScroll] = useState(false);
 
@@ -14,6 +15,8 @@ export const PlayProvider = ({ children }) => {
         setPlay,
         end,
         setEnd,
+        open,
+        setOpen,
         hasScroll,
         setHasScroll,
       }}
