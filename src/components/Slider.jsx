@@ -93,22 +93,27 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                             ) : index === 0 ? (
                               <li
                                 key={`li${sectionKey}-${ulId}-${index}-${i}`}
-                                onMouseOver={() => handleMouseOver(li[1])}
+                                onMouseOver={() => handleMouseOver(li[2])}
                                 onMouseOut={handleMouseOut}
                               >
-                                {li[0]}
+                                <a href={li[1]} target="_blank">
+                                  {li[0]}
+                                </a>
                               </li>
                             ) : (
                               <li
                                 key={`li${sectionKey}-${ulId}-${index}-${i}`}
                                 className={
-                                  Array.isArray(li[1]) &&
-                                  li[1].includes(hoverIndex)
+                                  Array.isArray(li[2]) &&
+                                  li[2].includes(hoverIndex)
                                     ? 'active'
                                     : ''
                                 }
                               >
-                                {li[0]}
+                                {' '}
+                                <a href={li[1]} target="_blank">
+                                  {li[0]}
+                                </a>
                               </li>
                             )
                           )}
@@ -211,7 +216,7 @@ export const Slider = ({ sectionKey, onClose }) => {
 
     setTimeout(() => {
       onClose();
-    }, 1000);
+    }, 800);
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);

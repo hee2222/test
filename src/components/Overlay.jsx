@@ -228,7 +228,9 @@ export const Overlay = ({ introSliderVisible }) => {
               <img src="/images/suni-out.png" alt="" />
             </div>
             <a href="/" className="out-replay-btn">
-              다시 여행하기
+              다시
+              <br />
+              여행하기
             </a>
           </div>
           <div className="outro-btn-wrap">

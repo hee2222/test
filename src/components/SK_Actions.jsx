@@ -8,12 +8,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import { useControls } from 'leva';
 import * as THREE from 'three';
 
-export function Model({
-  onTargetIndexUpdate,
-  motionplay,
-  sectionClose,
-  ...props
-}) {
+export function Model({ onTargetIndexUpdate, motionplay, textView, ...props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('./models/SK_Actions.glb');
   const { actions } = useAnimations(animations, group);
@@ -25,7 +20,7 @@ export function Model({
     actions['CapeAction'].play();
     actions?.['Flying_Action'].play();
     actions?.['Leg_Action'].play();
-    if (!sectionClose) {
+    if (!textView) {
       if (
         targetAction === 'Enter_Left_Action' ||
         targetAction === 'Enter_Right_Action'
@@ -49,7 +44,7 @@ export function Model({
       actions[targetAction].setLoop(THREE.LoopRepeat, 1);
       actions[targetAction].clampWhenFinished = true;
     }
-  }, [motionplay, actions, sectionClose]);
+  }, [motionplay, actions, textView]);
 
   return (
     <group ref={group} {...props} dispose={null}>

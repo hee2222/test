@@ -55,21 +55,24 @@ const IntroSlide = ({ indexI, className, handleClose }) => {
           <div className="intro-title">
             <img src="./images/intro-title.png" alt="" className="mgmt-logo" />
             <div className="intro-desc">
-              Management 직무는 기업의 전략수립/운영/관리 등 Biz.실행 역량
-              제고를 위한 직무 역량 학습을 제공하며,
-              <br />
-              전략/조직설계, 재무, 마케팅, HR, SCM(공급망/물류), 법무, IP,
-              Competency 총 8개 직무, 242개 Contents로 구성되어 있습니다.
+              <span>A</span>ccelerating <span>B</span>usiness & <span>C</span>
+              areer design
             </div>
           </div>
           <div className="intro-content">
             <div className="intro-button-wrap">
               <Carousel1 onClickPlanet={handlePlanetClick} />
             </div>
+
             <div className="intro-planet-slider">
+              <div className="intro-planet-title">
+                {clickedPlanet == 7
+                  ? 'L.E.A.D 프로그램'
+                  : info[clickedPlanet].title}
+              </div>
               <div>
                 {clickedPlanet == 7
-                  ? 'L.E.A.D Program은 미래의 조직 리더 및 현재 조직 리더를 대상으로 리더가 갖추어야할 기본 소양을 다루는 교육 프로그램입니다.'
+                  ? 'L.E.A.D 프로그램은 미래 변화 관련 팀장 Level 구성원들의 Perspective 확장을 위해\n전략, 재무회계, HR, 마케팅, SCM/IP 직무의 핵심 주제 및 Issue 학습을 통한 미래 변화 대응 역량 제고 프로그램입니다.'
                   : info[clickedPlanet].desc}
               </div>
             </div>

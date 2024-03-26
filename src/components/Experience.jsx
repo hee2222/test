@@ -4,9 +4,8 @@ import {
   useScroll,
   OrbitControls,
   Sparkles,
-  Clouds,
-  Cloud,
   Text,
+  Plane,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
@@ -24,7 +23,7 @@ import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import { Model } from './SK_Actions';
 import { Background } from './Background';
-import { Planet } from './Planet';
+// import { Planet } from './Planet';
 import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';
@@ -406,14 +405,18 @@ export const Experience = ({
               <Suspense fallback={null}>
                 {(selectedSection !== null || textView == true) && (
                   <group visible={textView}>
+                    {/* <mesh position-y={0.3} position-z={-0.02}>
+                      <Plane args={[1, 0.5]} />
+                      <meshBasicMaterial color={'white'} />
+                    </mesh> */}
                     <Text
                       fontSize={0.08}
                       color={'black'}
                       anchorY={'center'}
                       anchorX={'center'}
-                      lineHeight={1.2}
-                      position-y={0.04}
-                      position-z={-0.02}
+                      lineHeight={1.3}
+                      position-y={0.4}
+                      maxWidth={0.8}
                       font={'./fonts/Pretendard-Medium.ttf'}
                     >
                       {`${
@@ -431,6 +434,7 @@ export const Experience = ({
                   onTargetIndexUpdate={onTargetIndexUpdate}
                   motionplay={selectedSection}
                   sectionClose={sectionClose}
+                  textView={textView}
                 />
               </Suspense>
             </Float>
@@ -481,7 +485,7 @@ export const Experience = ({
           </mesh>
         </group>
 
-        <Planet curvePoints={curvePoints} />
+        {/* <Planet curvePoints={curvePoints} /> */}
         <Su1 curvePoints={curvePoints[1]} />
         <Su2 curvePoints={curvePoints[2]} />
         <Su3 curvePoints={curvePoints[3]} />
