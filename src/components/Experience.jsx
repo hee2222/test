@@ -29,6 +29,12 @@ import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';
 import { Su1 } from './Su1';
+import { Su2 } from './Su2';
+import { Su3 } from './Su3';
+import { Su4 } from './Su4';
+import { Su5 } from './Su5';
+import { Su6 } from './Su6';
+import { Su7 } from './Su7';
 
 const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
@@ -477,12 +483,18 @@ export const Experience = ({
 
         <Planet curvePoints={curvePoints} />
         <Su1 curvePoints={curvePoints[1]} />
+        <Su2 curvePoints={curvePoints[2]} />
+        <Su3 curvePoints={curvePoints[3]} />
+        <Su4 curvePoints={curvePoints[4]} />
+        <Su5 curvePoints={curvePoints[5]} />
+        <Su6 curvePoints={curvePoints[6]} />
+        <Su7 curvePoints={curvePoints[7]} />
 
         <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
 
         <Points numPoints={2000} range={1000} />
       </>
     ),
-    [selectedSection, sectionClose, textView]
+    [sectionClose, textView]
   );
 };

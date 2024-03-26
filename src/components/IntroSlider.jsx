@@ -67,7 +67,11 @@ const IntroSlide = ({ indexI, className, handleClose }) => {
               <Carousel1 onClickPlanet={handlePlanetClick} />
             </div>
             <div className="intro-planet-slider">
-              <div>{clickedPlanet == 7 ? '' : info[clickedPlanet].desc}</div>
+              <div>
+                {clickedPlanet == 7
+                  ? 'L.E.A.D Program은 미래의 조직 리더 및 현재 조직 리더를 대상으로 리더가 갖추어야할 기본 소양을 다루는 교육 프로그램입니다.'
+                  : info[clickedPlanet].desc}
+              </div>
             </div>
           </div>
         </div>
