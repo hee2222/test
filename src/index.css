@@ -67,7 +67,9 @@ a {
   text-decoration: none;
 }
 
-a:hover,
+a:hover {
+  outline: none !important;
+}
 a:active,
 a:focus {
   text-decoration: none !important;
@@ -167,6 +169,7 @@ button {
   pointer-events: auto;
 }
 .loader {
+  z-index: 10000;
   position: absolute;
   top: 0;
   left: 0;
@@ -178,6 +181,8 @@ button {
 
 .loader--disappear {
   opacity: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .intro {
@@ -194,14 +199,24 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
+}
+#skip-button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 1001;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
 }
 img.mgmt-logo {
   width: auto;
   height: 64px;
   margin-bottom: 8px;
 }
-img.intro-logo {
+/* img.intro-logo {
   transform: translateY(-50%);
   position: absolute;
   top: 50vh;
@@ -209,7 +224,7 @@ img.intro-logo {
   transition: all 2s ease-in-out;
   width: 120px;
   height: auto;
-}
+} */
 img.immerse {
   position: absolute;
   bottom: 20px;
@@ -265,6 +280,7 @@ img.scrollIcon {
   align-items: center;
   border-radius: 64px;
   position: relative;
+  z-index: 2;
 }
 .intro4-title {
   position: absolute;
@@ -284,13 +300,13 @@ img.scrollIcon {
   position: absolute;
   font-weight: 700;
   font-size: 18px;
-  padding: 16px 40px;
+  padding: 16px 28px;
   background: white;
   color: var(--brand);
   border-radius: 32px;
   border: 1px solid var(--brand);
   z-index: 0;
-  left: 16px;
+  left: -12px;
   transition: all 0.3s ease-in-out;
   transform: translateY(-50%);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
@@ -316,18 +332,21 @@ img.scrollIcon {
 }
 .intro4-btn:hover,
 .intro2-btn:hover {
-  transform: translateY(-50%) translateX(-10px);
+  transform: translateY(-50%) translateX(-4px);
 }
 .intro4-tab,
 .intro2-tab {
   z-index: 1;
   display: flex;
-  width: 1000px;
+  width: 1200px;
   background-color: white;
   padding: 64px 40px;
   height: 450px;
   border-radius: 64px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
 .intro2-tab {
   gap: 32px;
 }
@@ -349,7 +368,7 @@ img.scrollIcon {
   margin-bottom: 14px;
 }
 .intro2-tab li {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 150%;
   display: flex;
   justify-content: flex-start;
@@ -387,8 +406,36 @@ img.scrollIcon {
   color: #000000;
   opacity: 1;
 }
-.intro4-tab img {
-  width: 100%;
+.intro4-tab {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.intro4-tab svg {
+  width: 74%;
+  height: auto;
+}
+.visible .intro4-tab svg g#G1 {
+  animation: draw 0.5s ease-in-out;
+}
+.visible .intro4-tab svg g#G2 {
+  animation: draw 0.5s ease-in-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+.visible .intro4-tab svg g#G3 {
+  animation: draw 0.5s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+@keyframes draw {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 .outro {
   position: absolute;
@@ -451,6 +498,7 @@ img.scrollIcon {
   }
   100% {
     opacity: 0;
+    z-index: -1;
   }
 }
 .intro-replay {
@@ -471,6 +519,7 @@ img.scrollIcon {
   transition-delay: 1s;
   cursor: pointer;
 }
+
 .button-grid {
   font-weight: 500;
   font-size: 14px;
@@ -527,15 +576,24 @@ img.scrollIcon {
 .slider-container,
 .intro-slider-container {
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   position: absolute;
   animation: slideOpen 1s ease-in-out;
+  animation-fill-mode: backwards;
   overflow: hidden;
 }
+
 .slider-container.close,
 .intro-slider-container.close {
   animation: slideClose 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.slider-container.close *,
+.intro-slider-container.close * {
+  z-index: -1;
+  pointer-events: none;
 }
 
 .slider-container .slider {
@@ -580,7 +638,7 @@ img.scrollIcon {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  max-width: 1292px;
+  max-width: 1400px;
   margin: 40px auto 40px;
   padding: 20px;
   -ms-overflow-style: none; /* IE and Edge */
@@ -597,10 +655,10 @@ img.scrollIcon {
   align-items: center;
   margin: 0 auto;
   gap: 40px;
-  width: 80%;
+  width: 100%;
 }
 .slide3 .intro-content img {
-  width: 30%;
+  width: 33.33%;
   height: auto;
   transition: all 0.3s ease-in-out;
 }
@@ -705,11 +763,26 @@ ul.tab-title {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+.open .close-btn {
+  pointer-events: auto;
+}
 .close-btn:hover,
 .nextBtn:hover,
 .prevBtn:hover {
   background: var(--planet-op);
   transform: scale(1.1);
+}
+.intro-slider-container .nextBtn,
+.intro-slider-container .prevBtn,
+.intro-slider-container .close-btn {
+  background: var(--brand);
+}
+
+.intro-slider-container .prevBtn:hover {
+  background: #5bc4bf69;
+}
+.intro-slider-container .intro-slide h5 {
+  color: var(--brand);
 }
 .slideIndex {
   position: absolute;
@@ -737,11 +810,7 @@ ul.tab-title {
     transform: translateY(0);
   }
 }
-.slide > * {
-  /* opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-in-out; */
-}
+
 .slide.visible > *,
 .intro-slide.visible > * {
   animation: fadeIn1 1s ease 0s 1 normal forwards;
@@ -1027,7 +1096,8 @@ ul.tab-title {
   font-size: 14px;
   line-height: 150%;
 }
-.scroll-contents ul li a[href=''] {
+.scroll-contents ul li a[href=''],
+.outro-content-level-list li a[href=''] {
   pointer-events: none;
 }
 .tab-contents ul li:before,
@@ -1121,8 +1191,9 @@ ul.tab-title {
 .intro-slide.slide1 .intro-content ul::after {
   content: '';
 }
-.intro-slide.slide1 .intro-content img {
-  width: 50%;
+.intro-slide.slide1 .intro-content svg {
+  width: 66.66%;
+  height: auto;
 }
 .intro-slide.slide1 .intro-content .content-card {
   padding: 30px;
@@ -1137,6 +1208,7 @@ ul.tab-title {
   z-index: 1;
   overflow: hidden;
   position: relative;
+  gap: 10px;
 }
 .intro-slide.slide1 .intro-content .content-card:before {
   content: '';
@@ -1157,12 +1229,12 @@ ul.tab-title {
   width: 33.33%;
   background-color: #44686f;
 }
-.intro-slide.slide1 .intro-content .content-card:hover {
+.intro-slide.slide1 .intro-content .content-card.active {
   box-shadow: #5bc4bfba 0px 2px 12px 0px;
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.1);
 }
 .intro-slide.slide1 .intro-content .intro-content-wrap {
-  width: 50%;
+  width: 33.33%;
   max-width: 430px;
   display: flex;
   flex-direction: column;
@@ -1171,14 +1243,17 @@ ul.tab-title {
   gap: 20px;
 }
 .intro-slide.slide1 .intro-content .content-card h6 {
-  font-size: 28px;
-  margin-bottom: 24px;
+  font-size: 24px;
+  margin-bottom: 14px;
   color: #25625f;
   font-weight: 700;
 }
 .intro-slide.slide1 .intro-content .content-card h6 span {
   font-weight: 700;
   color: var(--brand);
+}
+.intro-slide.slide1 .intro-content .content-card h6 span:nth-of-type(2) {
+  font-size: 18px;
 }
 .intro-slide.slide1 .intro-content .content-card li {
   display: inline;
@@ -1257,6 +1332,7 @@ ul.tab-title {
   height: 100%;
   position: relative;
   z-index: 10;
+  pointer-events: auto;
 }
 
 .intro-slider-container .visible .start-btn,
@@ -1325,7 +1401,7 @@ ul.tab-title {
 .visible .intro-button-wrap .button-card {
   pointer-events: auto;
   cursor: pointer;
-  z-index: 10;
+  z-index: 2;
 }
 
 .intro-button-wrap .button-card:after {
@@ -1340,6 +1416,7 @@ ul.tab-title {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation-fill-mode: backwards;
   -webkit-animation: blink 1.2s ease-in-out infinite;
   animation: blink 1.2s ease-in-out infinite;
   pointer-events: none;
@@ -1509,8 +1586,12 @@ ul.tab-title {
 .outro-content-level h5 {
   font-size: 22px;
   font-weight: 700;
-  color: var(--brand);
+  color: #25625f;
   margin-bottom: 24px;
+}
+.outro-content-level h5 span {
+  color: var(--brand);
+  font-weight: 700;
 }
 .outro-content-level-list {
   display: flex;
@@ -1519,7 +1600,7 @@ ul.tab-title {
   flex-wrap: wrap;
   gap: 20px 40px;
 }
-.outro-content-level-list li {
+.outro-content-level-list li a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1531,7 +1612,7 @@ ul.tab-title {
   cursor: pointer;
   z-index: 10;
 }
-.outro-content-level-list li::before {
+.outro-content-level-list li a::before {
   content: '';
   display: block;
   width: 4px;
@@ -1541,10 +1622,9 @@ ul.tab-title {
   margin-top: 3px;
   flex: 0 0 auto;
   margin-left: 6px;
-
   transition: all 0.3s ease-in-out;
 }
-.outro-content-level-list li:hover {
+.outro-content-level-list li a[href^='http']:hover {
   text-decoration: underline;
   color: #000000;
 }

@@ -811,18 +811,18 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-16me',
             ],
           ],
-          [
-            'Data 개념 및 M/L 기초',
-            [
-              'CDS I_데이터 처리와 시각화',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-16s0',
-              7,
-            ],
-            [
-              'CDS II_머신러닝 모델링',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-16s2',
-            ],
-          ],
+          // [
+          //   'Data 개념 및 M/L 기초',
+          //   [
+          //     'CDS I_데이터 처리와 시각화',
+          //     'https://mysuni.sk.com/suni-main/lecture/card/CARD-16s0',
+          //     7,
+          //   ],
+          //   [
+          //     'CDS II_머신러닝 모델링',
+          //     'https://mysuni.sk.com/suni-main/lecture/card/CARD-16s2',
+          //   ],
+          // ],
         ],
         [
           'HR 실무 전문성 제고를 위한 Core Skill',
@@ -833,7 +833,11 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-132s',
               [1],
             ],
-            ['BM혁신을 위한 조직역량 관리 (Skill based HR)', '', [2]],
+            [
+              'BM혁신을 위한 조직역량 관리 (Skill based HR)',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-19jx',
+              [2],
+            ],
             [
               '변화의 시대, 달라진 성과관리와 보상',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-134l',
@@ -869,7 +873,7 @@ const info = [
           [
             'HR Global Intelligence',
             [
-              '[Workshop] HR DD/PMI',
+              '[Workshop]  Cross Border M&A HR Risk 점검 ',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-15gb',
             ],
           ],

@@ -5,7 +5,7 @@ import {
   OrbitControls,
   Sparkles,
   Text,
-  Plane,
+  Image,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
@@ -413,10 +413,16 @@ export const Experience = ({
               <Suspense fallback={null}>
                 {(selectedSection !== null || textView == true) && (
                   <group visible={textView}>
-                    {/* <mesh position-y={0.3} position-z={-0.02}>
-                      <Plane args={[1, 0.5]} />
-                      <meshBasicMaterial color={'white'} />
-                    </mesh> */}
+                    <Image
+                      url="./images/img1.png"
+                      transparent
+                      opacity={0.8}
+                      position-y={0.28}
+                      position-x={-0.02}
+                      position-z={-0.02}
+                      scale-y={0.5}
+                      scale-x={0.9}
+                    />
                     <Text
                       fontSize={0.08}
                       color={'black'}
@@ -424,12 +430,21 @@ export const Experience = ({
                       anchorX={'center'}
                       lineHeight={1.3}
                       position-y={0.4}
+                      font={'./fonts/Pretendard-Medium.ttf'}
+                    >
+                      {`${buttonLabels[selectedSection - 1]} 행성에`}
+                    </Text>
+                    <Text
+                      fontSize={0.08}
+                      color={'black'}
+                      anchorY={'center'}
+                      anchorX={'center'}
+                      lineHeight={1.3}
+                      position-y={0.3}
                       maxWidth={0.8}
                       font={'./fonts/Pretendard-Medium.ttf'}
                     >
-                      {`${
-                        buttonLabels[selectedSection - 1]
-                      } 행성에 오신 것을 환영합니다.`}
+                      오신 것을 환영합니다.
                     </Text>
                   </group>
                 )}
