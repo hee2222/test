@@ -6,7 +6,7 @@ import Intro from './intro';
 
 export const Overlay = ({ introSliderVisible }) => {
   const { progress } = useProgress();
-  const { play, end, setPlay, hasScroll } = usePlay();
+  const { play, end, setEnd, setPlay, hasScroll } = usePlay();
   const [sectionClose, setSectionClose] = useState(false);
   const [tab, setTab] = useState(0);
 
@@ -159,23 +159,6 @@ export const Overlay = ({ introSliderVisible }) => {
     setSectionClose(false);
   };
 
-  // useEffect(() => {
-  //   const handleClick = () => {
-  //     // play가 false이고 화면이 터치 또는 클릭된 경우
-  //     if (!play) {
-  //       setPlay(true); // play 상태를 true로 변경
-  //     }
-  //   };
-  //   handleClick()
-  //   // 컴포넌트가 마운트되었을 때 클릭 이벤트 추가
-  //   // window.addEventListener('click', handleClick);
-
-  //   // 컴포넌트가 언마운트될 때 이벤트 제거
-  //   return () => {
-  //     window.removeEventListener('click', handleClick);
-  //   };
-  // }, [play, setPlay]);
-
   return (
     <div
       className={`overlay ${play ? 'overlay--disable' : ''}
@@ -227,7 +210,13 @@ export const Overlay = ({ introSliderVisible }) => {
               </div>
               <img src="/images/suni-out.png" alt="" />
             </div>
-            <a href="/" className="out-replay-btn">
+            <a
+              className="out-replay-btn"
+              onClick={() => {
+                setPlay(true);
+                setEnd(false);
+              }}
+            >
               다시
               <br />
               여행하기

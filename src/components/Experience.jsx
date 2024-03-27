@@ -138,7 +138,7 @@ export const Experience = ({
   const scroll = useScroll();
   const lastScroll = useRef(0);
 
-  const { play, setHasScroll, end, setEnd } = usePlay();
+  const { play, setPlay, setHasScroll, end, setEnd } = usePlay();
 
   useFrame((_state, delta) => {
     if (window.innerWidth > window.innerHeight) {
@@ -275,10 +275,10 @@ export const Experience = ({
 
     if (
       cameraGroup.current.position.z <
-      curvePoints[curvePoints.length - 1].z + 40
+      curvePoints[curvePoints.length - 1].z + 20
     ) {
       setEnd(true);
-      planeOutTl.current.play();
+      setPlay(false);
     }
 
     let isInThrottle = false;
@@ -315,7 +315,7 @@ export const Experience = ({
   });
 
   const planeInTl = useRef();
-  const planeOutTl = useRef();
+  // const planeOutTl = useRef();
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline();
@@ -341,31 +341,39 @@ export const Experience = ({
       y: -2,
     });
 
-    planeOutTl.current = gsap.timeline();
-    planeOutTl.current.pause();
+    // planeOutTl.current = gsap.timeline();
+    // planeOutTl.current.pause();
 
-    planeOutTl.current.to(
-      airplane.current.position,
-      {
-        duration: 10,
-        z: -250,
-        y: 10,
-      },
-      0
-    );
-    planeOutTl.current.to(
-      cameraRail.current.position,
-      {
-        duration: 8,
-        y: 12,
-      },
-      0
-    );
-    planeOutTl.current.to(airplane.current.position, {
-      duration: 1,
-      z: -1000,
-    });
+    // planeOutTl.current.to(
+    //   airplane.current.position,
+    //   {
+    //     duration: 10,
+    //     z: -250,
+    //     y: 10,
+    //   },
+    //   0
+    // );
+    // planeOutTl.current.to(
+    //   cameraRail.current.position,
+    //   {
+    //     duration: 8,
+    //     y: 12,
+    //   },
+    //   0
+    // );
+    // planeOutTl.current.to(airplane.current.position, {
+    //   duration: 1,
+    //   z: -1000,
+    // });
   }, []);
+  useEffect(() => {
+    if (end) {
+      scroll.el.scrollTo({
+        top: (scroll.el.scrollHeight / 9) * 7,
+        behavior: 'smooth',
+      });
+    }
+  }, [end]);
 
   useEffect(() => {
     if (play) {

@@ -80,7 +80,9 @@ function App() {
       <Canvas>
         {/* <color attach="background" args={['#ececec']} /> */}
         <ScrollControls
-          pages={play && !end ? 10 : 0}
+          // pages={play && !end ? 10 : 0}
+          // pages={play ? 10 : 0}
+          pages={10}
           damping={0}
           distance={6}
           style={{
@@ -106,7 +108,7 @@ function App() {
       </Canvas>
       <Overlay />
       <ButtonGrid onButtonClick={handleButtonClick} targetIndex={targetIndex} />
-      {/* <div className="intro-replay">다시보기</div> */}
+
       {sliderVisible !== null && (
         <Slider sectionKey={selectedSection - 1} onClose={handleCloseSlider} />
       )}
