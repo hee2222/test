@@ -141,12 +141,12 @@ const info = [
         ],
         [
           [
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술 ',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내) (사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
+            '과정 주제와 연계한 PJT 수행/\n발표  문제해결 및 적용 방식을 기술 ',
+            '80점 이상 Pass, 재응시 1회 가능\n(연 내) (사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
           ],
           [
             [
-              '재무적/비재무적  핵심인자 도출 및 관리',
+              '재무적/비재무적\n핵심인자 도출 및 관리',
               '기업가치에 영향을 미치는 재무적/비재무적 핵심인자의 도출 및 관리 방안',
               ['기업가치 핵심인자관리'],
             ],
@@ -397,9 +397,10 @@ const info = [
       [
         [
           [
-            '객관식 Test  - 총 20문항 40분',
-            '전문가 인터뷰  - 총 10~15문항, 1시간 내외 (대면/비대면 선택 가능)',
-            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
+            '객관식 Test\n- 총 20문항 40분',
+            '전문가 인터뷰\n- 총 10~15문항, 1시간 내외\n(대면/비대면 선택 가능)',
+            '80점 이상 Pass',
+            '재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -431,8 +432,8 @@ const info = [
         ],
         [
           [
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술 ',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내) (사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
+            '과정 주제와 연계한 PJT 수행/\n발표  문제해결 및 적용 방식을 기술 ',
+            '80점 이상 Pass\n재응시 1회 가능 (연 내)\n(사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
           ],
           [
             [
@@ -452,19 +453,19 @@ const info = [
             ],
             [
               '해외자산 운영/관리 실무',
-              'Cross-border M&A 시 Valuation 추정 및 Issue에  대한 해결방안 수립',
+              'PMI이후 보유한 해외자사관리의 재무 Issue별 문제 해결방안 수립',
               ['Global 자산관리 실무 Workshop'],
             ],
             [
               'EXIT 전략 수립 실무',
-              'PMI이후 보유한 해외자사관리의 재무 Issue별  문제 해결방안 수립',
+              '보유 자산에 대한 IPO, 청산, 매각 기준 수립 및 절차 이해/적용',
               ['EXIT 전략 수립 실무 Workshop'],
             ],
           ],
         ],
         [
           [
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술',
+            '과정 주제와 연계한 PJT 수행 /\n발표  문제해결 및 적용 방식을 기술',
             '해당 과정 이수 시 인증 가능하나, 20% 우수 평가자에 대해서는 그룹 SKOUGHT에 등록할 예정입니다.',
           ],
           [
@@ -504,7 +505,7 @@ const info = [
             '데이터 마케팅 프로젝트를 리드할 수 있는 그룹 Talent 수준의 전문가 육성 과정 ',
           ],
           [
-            '고객/시장 데이터 분석 관련 업무 5년차 이상 구성원 or  그에  상응하는 DT 마케팅 관련 background 보유자',
+            '고객/시장 데이터 분석 관련 업무 5년차 이상 구성원 or\n그에  상응하는 DT 마케팅 관련 background 보유자',
           ],
         ],
       ],
@@ -684,7 +685,7 @@ const info = [
         ],
         [
           [
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식 기술',
+            '과정 주제와 연계한 PJT 수행 /\n발표 문제해결 및 적용 방식 기술',
             '80점 이상 Pass',
             '재응시 1회 가능 ( 총 2회 / 연)',
           ],
@@ -760,8 +761,7 @@ const info = [
           ],
 
           [
-            '미래 HR 리더 후보 군으로 팀장/PL 보임 전 참여',
-            'HRM, HRD, ER 등 Track  구분없이 통합하여 선발 및 참여',
+            '미래 HR 리더 후보 군으로 팀장/PL 보임 전 참여\n- HRM, HRD, ER 등 Track 구분없이 통합하여 선발 및 참여',
           ],
         ],
       ],
@@ -924,7 +924,7 @@ const info = [
       [
         [
           [
-            '전문가 인터뷰  - 총 10~15문항, 1시간 내외 (대면/비대면 선택 가능)',
+            '전문가 인터뷰\n- 총 10~15문항, 1시간 내외\n(대면/비대면 선택 가능)',
             '80점 이상 Pass',
             '재응시 1회 가능 (연 내)',
           ],
@@ -946,8 +946,9 @@ const info = [
         [
           [
             'Test Only, Test + 과제 제출 중 각 Skill  검증에 적합한 방식으로 출제',
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술',
-            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
+            '과정 주제와 연계한 PJT 수행 /\n발표 문제해결 및 적용 방식을 기술',
+            '80점 이상 Pass',
+            '재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -960,7 +961,7 @@ const info = [
               ],
             ],
             [
-              'HR DD/PMI (예정)',
+              'Cross Border M&A\nHR Risk 점검(오픈예정)',
               'Cross Border M&A 상 Pre –deal DD, PMI 과정상  HR Risk 파악 및 대응방안 수립',
               [
                 '[M&A] Ⅰ. M&A Overview',
@@ -968,26 +969,13 @@ const info = [
                 'Cross Border M&A HR Risk 점검: Intensive Workshop (예정)',
               ],
             ],
-            [
-              '미국 노사관계 대응전략 수립 (예정)',
-              '미국 연방법원 노동법 및 주별 규정에 따라 발생가능한 이슈 파악 및 대응방안 수립',
-              ['미국 노사관계 실무 과정 (예정)'],
-            ],
-            [
-              '미국 주식보상설계/운영 (예정)',
-              '미국 연방법원 노동법 및 주별 규정에 따라 발생가능한 이슈 파악 및 대응방안 수립',
-              [
-                '기업가치기반 보상(주식기반 보상을 중심으로): 기업가치기반 보상 이해',
-                '미국 조직 보상 설계/운영 Workshop (예정)',
-              ],
-            ],
           ],
         ],
         [
           [
-            '각 과정 주제와 연계한 PJT 수행 / 발표로 진행되며,',
-            '과정별 Leader Committee를 운영,  현업 리더가 직접 Coaching/평가',
-            '과정 수료자 중 평가 상위 20% 내외의 학습자 선발,  그룹 Expert로 등재',
+            '각 과정 주제와 연계한 PJT 수행 /\n발표로 진행되며,',
+            '과정별 Leader Committee를 운영, 현업 리더가 직접 Coaching/평가',
+            '과정 수료자 중 평가 상위 20% 내외의 학습자 선발, 그룹 Expert로 등재',
           ],
           [
             [
@@ -1014,9 +1002,9 @@ const info = [
         [
           [
             'OJT와 함께 Entry 인력의  기본기 강화에 학습을 활용',
-            '전략 Foundation에 해당하는 영역별 실무지식, 방법론 학습',
+            '구매/SCM Foundation에 해당하는 영역별 실무지식, 방법론 학습',
           ],
-          ['신입/전입 등 전략 실무 경험 3년 이하 구성원 대상'],
+          ['신입/전입 등 구매/SCM 실무 경험 3년 이하 구성원 대상'],
         ],
         [
           [
@@ -1126,9 +1114,9 @@ const info = [
       [
         [
           [
-            '객관식 Test  - 총 20문항 40분',
-            '전문가 인터뷰  - 총 10~15문항, 1시간 내외 (대면/비대면 선택 가능)',
-            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
+            '객관식 Test\n- 총 20문항 40분',
+            '80점 이상 Pass',
+            '재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -1151,8 +1139,9 @@ const info = [
         ],
         [
           [
-            '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내) (사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
+            '과정 주제와 연계한 PJT 수행 /\n발표 문제해결 및 적용 방식을 기술',
+            '80점 이상 Pass',
+            '재응시 1회 가능 (연 내)\n(사별 정책에 따라 재 응시가 가능하거나, 과정 수강과 별개로 진행할 수 있습니다.)',
           ],
           [
             [
@@ -1183,7 +1172,7 @@ const info = [
       [
         [
           [
-            'OJT와 함께 Entry 인력의  기본기 강화에 학습을 활용',
+            'OJT와 함께 Entry 인력의 기본기 강화에 학습을 활용',
             'IP Foundation에 해당하는 영역별 실무지식, 방법론 학습',
           ],
           ['신입/전입 등 IP 실무 경험 3년 이하 구성원 대상'],
@@ -1194,10 +1183,7 @@ const info = [
             '일 경험을 통한 체득이 어려운  미래 직무 관점 upskilling 중심',
             '단기(2~3년내) 대내외 미래 변화관리 Agenda와 연계, 운영',
           ],
-          [
-            'IP 5~15년차 구성원 中  주제별 선발',
-            '연간 Agenda를 반영하여  Hot skill 중심 topic 선정',
-          ],
+          ['IP 5~15년차 구성원 中  주제별 선발'],
         ],
         [
           [
@@ -1205,8 +1191,7 @@ const info = [
             'In-depth study, 현업 문제 해결, 의사결정 능력에 대한 평가/인증',
           ],
           [
-            '미래 후보 군으로 팀장/PL 보임 전 참여',
-            'HRM, HRD, ER 등 Track  구분없이 통합하여 선발 및 참여',
+            '특허분쟁관련 업무를 수행 중인 특허분야 경험 10년차 이상 혹은 핵심인재인 실무자',
           ],
         ],
       ],
@@ -1336,7 +1321,7 @@ const info = [
       [
         [
           [
-            '객관식 Test  - 총 20문항 40분',
+            '객관식 Test\n- 총 20문항 40분',
             '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
@@ -1389,7 +1374,6 @@ const info = [
       [
         [
           [
-            // '현재 Level 1 과정은 전무한 상황이므로 신규 콘텐츠 중심의 업로드 예정',
             '‘Global 지역별 계약서 분석과 작성‘,  ‘기업 법무의 A to Z’ Category 신설 및\n법률 기초 개념과 용어 이해',
           ],
           [
@@ -1410,14 +1394,59 @@ const info = [
           '법무 기본기 다지기',
           [
             '기업 법무 기초',
-            ['News를 통해 보는 법무 상식', ''],
+            [
+              'ESG의 법적 쟁점 및 기업의 대응 전략',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
+            ],
+            [
+              'BREXIT 현실화: RECAP(회고 및 전망)',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156y',
+            ],
+            [
+              'ESG 관련  분쟁사례  소개 및 대응방안',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156v',
+            ],
             [
               '미국 바이든 대통령의  중국 군산복합체 투자금지 행정명령 서명',
-              '',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156u',
             ],
-            ['[법률 상식] 외국환거래법 위반 시 제재와 대응방안', '', 1],
+            [
+              '[최근 법률 쟁점] 형사소송법 개정에 따른 수사 및 재판 실무 변화',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax4 ',
+            ],
+            [
+              '[최근 법률 쟁점] 압수수색에 대해 알아 두어야 할 것들',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax3 ',
+            ][
+              ('[법률 상식] 외국환거래법 위반 시 제재와 대응방안',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax2',
+              1)
+            ],
           ],
-          ['Global 법무 기본', ['북미 사업 계약서 분석 기본', '', 2]],
+          ['Global 법무 기초', ['북미 사업 계약서 분석 기본(오픈예정)', '', 2]],
+          [
+            '이사회 중심 경영의 이해',
+            [
+              '2023 SK Directors’ Summit 하이라이트',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-19f4',
+            ],
+            [
+              '협의회 역할 변화와 그룹 Infra',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-162z',
+            ],
+            [
+              'SK 이사회 중심 경영',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-14uk',
+            ],
+            [
+              'Financial Story 실행력 강화를 위한 Governance (상편)',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-12su',
+            ],
+            [
+              ' Financial Story 실행력 강화를 위한 Governance (하편)',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-12uf',
+            ],
+          ],
         ],
         [
           '실무 전문성 제고를 위한 Hot Skill',
@@ -1425,19 +1454,19 @@ const info = [
             '공정거래법 주요 내용 및 개정상 시사점',
             [
               '[공정거래법] (1) 공정거래법 이해 및 정책동향',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5y',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
             ],
             [
               '[공정거래법] (2) 부당지원, 사익편취',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5x',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
             ],
             [
               '[공정거래법] (3) 불공정거래와 부당표시광고',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5w',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
             ],
             [
               '[공정거래법] (4) 경제력 집중 억제',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5v',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
             ],
             [
               '공정거래법] (5) 기업결합의 제한',
@@ -1478,18 +1507,6 @@ const info = [
           [
             '최근 법률 쟁점과 우리의 대응',
             [
-              'ESG의 법적 쟁점 및 기업의 대응 전략',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156z',
-            ],
-            [
-              'BREXIT 현실화: RECAP(회고 및 전망)',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156y',
-            ],
-            [
-              'ESG 관련  분쟁사례  소개 및 대응방안',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-156v',
-            ],
-            [
               '[최근 법률 쟁점] 영업 비밀 보호와 침해 예방',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-156s',
               [1],
@@ -1507,17 +1524,10 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-12zc',
             ],
             [
-              '[최근 법률 쟁점] 형사소송법 개정에 따른 수사 및 재판 실무 변화',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax4',
-            ],
-            [
-              '[최근 법률 쟁점] 압수수색에 대해 알아 두어야 할 것들',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax3',
-            ],
-            [
               '[최근 법률 쟁점] 집회, 시위 등 금지 가처분',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax1',
             ],
+
             [
               '[최근 법률 쟁점] 중대재해처벌법의 주요 쟁점 및 대응방안',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-ag9',
@@ -1528,8 +1538,8 @@ const info = [
             ],
           ],
           [
-            'Global 지역별 계약서 분석과 작성',
-            ['북미 사업 계약서 작성 실무', '', [2]],
+            'Global 사업 계약서 검토 실무',
+            ['북미 사업 계약서 검토 실무 (오픈예정)', '', [2]],
           ],
         ],
       ],
@@ -1549,7 +1559,7 @@ const info = [
         ],
         [
           [
-            '객관식 Test  - 총 20문항 (40분)',
+            '객관식 Test\n- 총 20문항 (40분)',
             '80점 이상 Pass, 재응시 1회 가능 (연 내) (사별 정책에 따라 재 응시가 가능하거나,  과정 수강과 별개로 진행할 수 있습니다.)',
           ],
           [
