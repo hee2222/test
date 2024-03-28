@@ -333,103 +333,105 @@ export const Overlay = ({}) => {
         </div>
       )}
       <div className={`outro ${end ? 'outro--appear' : ''}`}>
-        <div className="outro-container">
-          <div className="outro-balloon-wrap">
-            <div className="outro-balloon">
-              <h1>즐거운 여행 되셨나요?</h1>
-              <div>
-                Mgmt’s A.B.C Galaxy 여행은 여기까지입니다.
-                <br />
-                돌아가기 전에 직무별 <span>Curriculum</span>을 확인해보세요!
+        {end && (
+          <div className="outro-container">
+            <div className="outro-balloon-wrap">
+              <div className="outro-balloon">
+                <h1>즐거운 여행 되셨나요?</h1>
+                <div>
+                  Mgmt’s A.B.C Galaxy 여행은 여기까지입니다.
+                  <br />
+                  돌아가기 전에 직무별 <span>Curriculum</span>을 확인해보세요!
+                </div>
+                <img src="/images/suni-out.png" alt="" />
               </div>
-              <img src="/images/suni-out.png" alt="" />
-            </div>
-            <a
-              className="out-replay-btn"
-              onClick={() => {
-                setPlay(true);
-                setEnd(false);
-              }}
-            >
-              다시
-              <br />
-              여행하기
-            </a>
-          </div>
-          <div className="outro-btn-wrap">
-            {textTitle.map((textTitle, index) => (
-              <div
-                key={`textTitle-${index}`}
-                className={index == tab ? 'active' : ''}
-                onClick={() => tabChange(index)}
+              <a
+                className="out-replay-btn"
+                onClick={() => {
+                  setPlay(true);
+                  setEnd(false);
+                }}
               >
-                {textTitle}
-              </div>
-            ))}
-          </div>
-
-          <div className="outro-wrap">
-            <div>
-              {textRoadmap.map((textRoadmap, i) => (
+                다시
+                <br />
+                여행하기
+              </a>
+            </div>
+            <div className="outro-btn-wrap">
+              {textTitle.map((textTitle, index) => (
                 <div
-                  className={`outro-content-wrap ${i == tab ? 'active' : ''}`}
-                  key={`textRoadmap${i}`}
+                  key={`textTitle-${index}`}
+                  className={index == tab ? 'active' : ''}
+                  onClick={() => tabChange(index)}
                 >
-                  <div className="outro-content-desc">{info[i].desc}</div>
-                  <div className="outro-content-level-wrap">
-                    <div className="outro-content-level">
-                      <h5>
-                        Lv.1 <span>Essentials</span>
-                      </h5>
-                      <ul className="outro-content-level-list">
-                        {textRoadmap[0].map((list, n) => (
-                          <li key={`list1-${n}`}>
-                            <a href={list[1]} target="_blank">
-                              {list[0]}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    {textRoadmap[1] && (
-                      <div className="outro-content-level">
-                        <h5>
-                          Lv.2 <span>Advanced</span>
-                        </h5>
-                        <ul className="outro-content-level-list">
-                          {textRoadmap[1].map((list, n) => (
-                            <li key={`list2-${n}`}>
-                              <a href={list[1]} target="_blank">
-                                {list[0]}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {textRoadmap[2] && (
-                      <div className="outro-content-level">
-                        <h5>
-                          Lv.3 <span>Expert</span>
-                        </h5>
-                        <ul className="outro-content-level-list">
-                          {textRoadmap[2].map((list, n) => (
-                            <li key={`list3-${n}`}>
-                              <a href={list[1]} target="_blank">
-                                {list[0]}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                  {textTitle}
                 </div>
               ))}
             </div>
+
+            <div className="outro-wrap">
+              <div>
+                {textRoadmap.map((textRoadmap, i) => (
+                  <div
+                    className={`outro-content-wrap ${i == tab ? 'active' : ''}`}
+                    key={`textRoadmap${i}`}
+                  >
+                    <div className="outro-content-desc">{info[i].desc}</div>
+                    <div className="outro-content-level-wrap">
+                      <div className="outro-content-level">
+                        <h5>
+                          Lv.1 <span>Essentials</span>
+                        </h5>
+                        <ul className="outro-content-level-list">
+                          {textRoadmap[0].map((list, n) => (
+                            <li key={`list1-${n}`}>
+                              <a href={list[1]} target="_blank">
+                                {list[0]}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      {textRoadmap[1] && (
+                        <div className="outro-content-level">
+                          <h5>
+                            Lv.2 <span>Advanced</span>
+                          </h5>
+                          <ul className="outro-content-level-list">
+                            {textRoadmap[1].map((list, n) => (
+                              <li key={`list2-${n}`}>
+                                <a href={list[1]} target="_blank">
+                                  {list[0]}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {textRoadmap[2] && (
+                        <div className="outro-content-level">
+                          <h5>
+                            Lv.3 <span>Expert</span>
+                          </h5>
+                          <ul className="outro-content-level-list">
+                            {textRoadmap[2].map((list, n) => (
+                              <li key={`list3-${n}`}>
+                                <a href={list[1]} target="_blank">
+                                  {list[0]}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

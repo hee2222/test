@@ -169,7 +169,9 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                               <li
                                 key={`table${sectionKey}-${i}-${index}-${liIndex}`}
                               >
-                                {li}
+                                <a href={li[1]} target="_blank">
+                                  {li[0]}
+                                </a>
                               </li>
                             ))}
                           </ul>

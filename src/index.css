@@ -998,8 +998,10 @@ ul.tab-title {
   align-items: center;
   padding: 20px 24px 0;
 }
-.table-component .tab-contents .level li {
+.table-component .tab-contents .level li a {
   line-height: 150%;
+  font-size: 16px;
+  color: #4f4f4f;
 }
 .table-component .tab-contents .table-header {
   height: 36px;
@@ -1130,7 +1132,8 @@ ul.tab-title {
   line-height: 150%;
 }
 .scroll-contents ul li a[href=''],
-.outro-content-level-list li a[href=''] {
+.outro-content-level-list li a[href=''],
+.table-component .tab-contents .level li a[href=''] {
   pointer-events: none;
 }
 .tab-contents ul li:before,

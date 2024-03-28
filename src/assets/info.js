@@ -119,22 +119,52 @@ const info = [
               'Strategy Essential',
               '전략 수립을 위한 내·외부 경영 환경 분석 방법론 개념과 활용',
               [
-                '전략 101: 어서 와, 전략은 처음이지?',
-                '전략 수립의 시작, 경영환경분석',
-                'All about Portfolio Strategy',
-                '[과제] 경영환경분석 실습 Report',
+                [
+                  '전략 101: 어서 와, 전략은 처음이지?',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9m5',
+                ],
+                [
+                  '전략 수립의 시작, 경영환경분석',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4f',
+                ],
+                [
+                  'All about Portfolio Strategy',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a2s',
+                ],
+                [
+                  '[과제] 경영환경분석 실습 Report',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4f',
+                ],
               ],
             ],
             [
               '조직 Self Design Essential',
               '리더가 알아야 할 조직 설계의 기본 개념과 방법론',
               [
-                '조직 Self-Design과 Deep Change',
-                '조직 설계 101',
-                '조직 설계 기초 Framework',
-                '리더를 위한 조직 Self-Design 실전',
-                'SK 조직 설계 Re:think',
-                '[조직 설계] 역량 Self-Check',
+                [
+                  '조직 Self-Design과 Deep Change',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15if',
+                ],
+                [
+                  '조직 설계 101',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15iy',
+                ],
+                [
+                  '조직 설계 기초 Framework',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15j2',
+                ],
+                [
+                  '리더를 위한 조직 Self-Design 실전',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15lj',
+                ],
+                [
+                  'SK 조직 설계 Re:think',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-16f7',
+                ],
+                [
+                  '[조직 설계] 역량 Self-Check',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-17b4',
+                ],
               ],
             ],
           ],
@@ -148,22 +178,22 @@ const info = [
             [
               '재무적/비재무적\n핵심인자 도출 및 관리',
               '기업가치에 영향을 미치는 재무적/비재무적 핵심인자의 도출 및 관리 방안',
-              ['기업가치 핵심인자관리'],
+              [['기업가치 핵심인자관리', '']],
             ],
             [
               '해외 기업 인수합병 의사결정',
               '해외 기업 인수합병 의사결정',
-              ['Cross Border M&A'],
+              [['Cross Border M&A', '']],
             ],
             [
               '해외 진출 전략 수립',
               '해외 진출 전략 수립',
-              ['Global Market Penetration'],
+              [['Global Market Penetration', '']],
             ],
             [
               'Macro 기반 잠재 Risk 진단 및 경영대응 계획 수립',
               'Macro 기반 잠재 Risk 진단 및 경영대응 계획 수립',
-              ['Risk Sensing & Response Planning'],
+              [['Risk Sensing & Response Planning', '']],
             ],
           ],
         ],
@@ -407,26 +437,55 @@ const info = [
               '재무회계 Essential',
               '재무회계의 기본 용어정의 및 프로세스에  대한 이해',
               [
-                'Fun-Fun한 회계',
-                '궁금해요, 내부회계관리제도',
-                '기업가치, 무엇이고 어떻게 평가하는가?',
-                '재무관리 101',
-                '한 달 만에 끝내는 재무제표분석(上)  (下)',
-                '하나씩 쉽게, 계정과목 별 회계처리',
+                [
+                  'Fun-Fun한 회계',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a2x',
+                ],
+                [
+                  '궁금해요, 내부회계관리제도',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a65',
+                ],
+                [
+                  '기업가치, 무엇이고 어떻게 평가하는가?',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4j',
+                ],
+                [
+                  '재무관리 101',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4o',
+                ],
+                [
+                  '한 달 만에 끝내는 재무제표분석(上)  (下)',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-155b',
+                ],
+                [
+                  '하나씩 쉽게, 계정과목 별 회계처리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4r',
+                ],
               ],
             ],
             [
               '원가관리회계 Essential',
               '원가의 기본 개념  및 원가별 기초 계산과 적용에 대한 기본  지식 보유 검증',
               [
-                ' 처음 만나는 원가/관리회계',
-                '한 달 만에 끝내는 원가관리회계(上)  (下)',
+                [
+                  '처음 만나는 원가/관리회계',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a4x',
+                ],
+                [
+                  '한 달 만에 끝내는 원가관리회계(上)  (下)',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-155a',
+                ],
               ],
             ],
             [
               '자금관리 Essential',
               '자금관리의 기초 개념 및 자금관리 기법 습득에 대한 기초 이해 및 활용 검증',
-              ['자금 관리와 금융 기초'],
+              [
+                [
+                  '자금 관리와 금융 기초',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15qd',
+                ],
+              ],
             ],
           ],
         ],
@@ -439,27 +498,37 @@ const info = [
             [
               'ESG 기준 재무 적용',
               'ISSB 회계기준 적용한 지표 작성 및 ESG 적용 시 주요 Issue에 대한 해결방안 도출',
-              ['(기업가치 제고를 위한) ESG Workshop'],
+              [
+                [
+                  '(기업가치 제고를 위한) ESG Workshop',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-18vu',
+                ],
+              ],
             ],
             [
               'AI를 활용한 재무/회계 운영 실무',
               'ChatGPT를 활용한 재무정보 결과값 도출',
-              ['Data 기반 의사결정 지원 Workshop'],
+              [
+                [
+                  'Data 기반 의사결정 지원 Workshop',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-181t',
+                ],
+              ],
             ],
             [
               '기업가치평가(Valuation) 실무',
               'Cross-border M&A 시 Valuation 추정 및 Issue에  대한 해결방안 수립',
-              ['Cross-border M&A Valuation 실무 Workshop'],
+              [['Cross-border M&A Valuation 실무 Workshop', '']],
             ],
             [
               '해외자산 운영/관리 실무',
               'PMI이후 보유한 해외자사관리의 재무 Issue별 문제 해결방안 수립',
-              ['Global 자산관리 실무 Workshop'],
+              [['Global 자산관리 실무 Workshop', '']],
             ],
             [
               'EXIT 전략 수립 실무',
               '보유 자산에 대한 IPO, 청산, 매각 기준 수립 및 절차 이해/적용',
-              ['EXIT 전략 수립 실무 Workshop'],
+              [['EXIT 전략 수립 실무 Workshop', '']],
             ],
           ],
         ],
@@ -472,7 +541,12 @@ const info = [
             [
               'M&A Deal 전문 실무',
               'M&A Deal 기획/운영/관리 전반에 대한 PJT Leading 역량 보유 여부',
-              ['자본시장전문가 과정'],
+              [
+                [
+                  '자본시장전문가 과정',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-19lz',
+                ],
+              ],
             ],
           ],
         ],
@@ -656,30 +730,30 @@ const info = [
               '마케팅 Essential',
               '마케팅 개념 및 적용기초',
               [
-                '키워드로 배우는 마케팅 101',
-                'B2B2C 마케팅 101',
-                '사례로 배우는 상품기획 101',
-                'Global 마케팅 사례분석',
-                '마케팅 Framework & Tool',
+                ['키워드로 배우는 마케팅 101', ''],
+                ['B2B2C 마케팅 101', ''],
+                ['사례로 배우는 상품기획 101', ''],
+                ['Global 마케팅 사례분석', ''],
+                ['마케팅 Framework & Tool', ''],
               ],
             ],
             [
               'Data 마케팅 101',
               '고객/시장 데이터 분석 관련 기초적 개념 및 Case',
               [
-                'Data 마케팅 Transformation',
-                'Data 마케팅 Concept & Case',
-                '퍼포먼스 마케팅',
-                'Brand New Wave : AI 마케팅',
-                '디지털 채널 경쟁력 분석 ',
-                'SK의 고객 Data 기반 Deep Change',
-                '마스터카드의 DT 성공 전략 Case',
+                ['Data 마케팅 Transformation', ''],
+                ['Data 마케팅 Concept & Case', ''],
+                ['퍼포먼스 마케팅', ''],
+                ['Brand New Wave : AI 마케팅', ''],
+                ['디지털 채널 경쟁력 분석', ''],
+                ['SK의 고객 Data 기반 Deep Change', ''],
+                ['마스터카드의 DT 성공 전략 Case', ''],
               ],
             ],
             [
               'B2B 실무 101',
               '(B2C 와 구별되는) B2B 시장 및 고객의 특성 및 실무 체계',
-              ['B2B 실무 101'],
+              [['B2B 실무 101', '']],
             ],
           ],
         ],
@@ -693,22 +767,22 @@ const info = [
             [
               'Analytic 아젠다 도출 및 마케팅 전략 수립',
               '현업 고객/시장 Data 분석 및 Analytic Agenda 도출 역량 검증',
-              ['Data driven Marketing'],
+              [['Data driven Marketing', '']],
             ],
             [
               '고객 경험(CX) 디자인 설계',
               'DT 환경에서의 고객 Engagement 강화를 위한   MKT 전략 수립 역량 보유 여부 검증',
-              ['DT 기반 고객 Engagement'],
+              [['DT 기반 고객 Engagement', '']],
             ],
             [
               'Lead Lifecycle 분석 기반 고객 발굴/관리',
               '현업에서 담당중인 B2B 마케팅 & Sales 파이프라인 강화 전략 수립 역량 검증',
-              ['B2B 마케팅 Pipeline 관리'],
+              [['B2B 마케팅 Pipeline 관리', '']],
             ],
             [
               '(PT) 제품/서비스  Value Proposition',
               '실무 마케팅 환경에서의 효과적인  Value Proposition 기반 수주 관리 역량 보유 여부 검증',
-              ['Strategic 제안 영업'],
+              [['Strategic 제안 영업', '']],
             ],
           ],
         ],
@@ -723,7 +797,7 @@ const info = [
             [
               '마케팅 Expert',
               '고객/시장 데이터 분석 및 데이터간 상호 작용 (모델링) 기반 새로운 관점의 View/Insight  도출',
-              ['마케팅 전문가 과정'],
+              [['마케팅 전문가 과정', '']],
             ],
           ],
         ],
@@ -933,12 +1007,30 @@ const info = [
               'HR Essential',
               '인력 확보, 직무관리, 성과관리, 보상, Global HR, ER  영역 전반 운영을 위한 기초 지식 보유 여부',
               [
-                '[인력 확보 Essential] 인력계획 및 채용의 이해',
-                '[직무 관리 Essential] 직무 및 직무 활용의 이해',
-                '[성과관리 Essential] 성과관리의 개념 및 프로세스 이해',
-                '[보상 Essential] 보상 제도의 이해',
-                '[Global HR Essential] 주재원 및 Global Staff 이해',
-                '[ER Essential] 인력 운영 규제의 이해',
+                [
+                  '[인력 확보 Essential] 인력계획 및 채용의 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a6x',
+                ],
+                [
+                  '[직무 관리 Essential] 직무 및 직무 활용의 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a6y',
+                ],
+                [
+                  '[성과관리 Essential] 성과관리의 개념 및 프로세스 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a71',
+                ],
+                [
+                  '[보상 Essential] 보상 제도의 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a72',
+                ],
+                [
+                  '[Global HR Essential] 주재원 및 Global Staff 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a73',
+                ],
+                [
+                  '[ER Essential] 인력 운영 규제의 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a74',
+                ],
               ],
             ],
           ],
@@ -955,18 +1047,30 @@ const info = [
               '주식기반보상 설계/운영',
               '주식보상 유형별 개념 및 특징, 세무,Legal 이슈 관련 지식 보유 여부, 주식보상 설계 방법론 기반 최적 설계방안 제시',
               [
-                '기업가치기반 보상(주식기반 보상을 중심으로) : 기업가치기반 보상 이해',
-                '기업가치기반 보상 (주식기반보상을 중심으로):  Workshop',
-                '기업가치기반 보상(주식기반 보상을 중심으로): 주식기반 보상 운영 실무',
+                [
+                  '기업가치기반 보상(주식기반 보상을 중심으로) : 기업가치기반 보상 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-18tl',
+                ],
+                [
+                  '기업가치기반 보상 (주식기반보상을 중심으로):  Workshop',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-18tm',
+                ],
+                [
+                  '기업가치기반 보상(주식기반 보상을 중심으로): 주식기반 보상 운영 실무',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-18ui',
+                ],
               ],
             ],
             [
               'Cross Border M&A\nHR Risk 점검(오픈예정)',
               'Cross Border M&A 상 Pre –deal DD, PMI 과정상  HR Risk 파악 및 대응방안 수립',
               [
-                '[M&A] Ⅰ. M&A Overview',
-                'Cross Border M&A HR Risk 점검 (예정)',
-                'Cross Border M&A HR Risk 점검: Intensive Workshop (예정)',
+                ['[M&A] Ⅰ. M&A Overview', ''],
+                ['Cross Border M&A HR Risk 점검 (오픈예정)', ''],
+                [
+                  'Cross Border M&A HR Risk 점검: Intensive Workshop (오픈예정)',
+                  '',
+                ],
               ],
             ],
           ],
@@ -981,12 +1085,17 @@ const info = [
             [
               'HR Expert',
               '그룹 전략방향과 Align한 HR Issue에 대한 Insight 보유 정도 검증',
-              ['Strategic HR Expert 과정'],
+              [
+                [
+                  'Strategic HR Expert 과정',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-15dr',
+                ],
+              ],
             ],
             [
               'ER Expert',
               '노사관계를 둘러싼 거시적 환경 및 멤버사 개별 이슈를 종합적으로 고려한 노사관계 방향성 및 ER 이슈 대응방안 도출에 있어 Insight 보유 정도 검증',
-              ['ER Expert 과정'],
+              [['ER Expert 과정', '']],
             ],
           ],
         ],
@@ -1123,16 +1232,46 @@ const info = [
               '구매 Essentials',
               'Strategy Essential은 전략 수립을 위한 내·외부 경영 환경 분석 방법론 개념과 활용',
               [
-                '나는 진정한 구매인인가? 구매의 본질',
-                '구매의 큰 그림 보기, 구매 업무 프로세스 이해 및 활용',
-                '나는 무엇을 구매하고 있나? 구매 품목의 이해 및 관리',
-                '구매의 중요한 역할! 구매 원가 관리',
-                '모르면 큰 코 다치는, 구매 계약/구매 관련 법규 이해',
-                '알 수록 돈 버는, 구매인을 위한 재무/회계/물류',
-                '방심은 금물! 구매 위험 관리',
-                '디지털로 스마트해지는 구매, 디지털 구매 혁신',
-                '다음 단계를 생각하는 기업의 사회적 가치와 구매',
-                '시뮬레이션을 통해 알아보는 실전 구매전략',
+                [
+                  '나는 진정한 구매인인가? 구매의 본질',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qt',
+                ],
+                [
+                  '구매의 큰 그림 보기, 구매 업무 프로세스 이해 및 활용',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qs',
+                ],
+                [
+                  '나는 무엇을 구매하고 있나? 구매 품목의 이해 및 관리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qr',
+                ],
+                [
+                  '구매의 중요한 역할! 구매 원가 관리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qq',
+                ],
+                [
+                  '모르면 큰 코 다치는, 구매 계약/구매 관련 법규 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qp',
+                ],
+                [
+                  '알 수록 돈 버는, 구매인을 위한 재무/회계/물류',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qo',
+                ],
+                [
+                  '방심은 금물! 구매 위험 관리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qn',
+                ],
+                [
+                  '디지털로 스마트해지는 구매, 디지털 구매 혁신',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9qm',
+                ],
+                [
+                  '다음 단계를 생각하는 기업의 사회적 가치와 구매',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-9ql',
+                ],
+                [
+                  '시뮬레이션을 통해 알아보는 실전 구매전략',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a7w',
+                ],
               ],
             ],
           ],
@@ -1147,17 +1286,22 @@ const info = [
             [
               '표준원가 기획',
               '구매원가 관련 방법론/개념 확인 및 가상기업 Case 기반 제조원가 및 표준원가 도출',
-              ['최적 구매원가 관리'],
+              [
+                [
+                  '최적 구매원가 관리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-196v',
+                ],
+              ],
             ],
             [
               '재고의 이익 Impact 산정',
               '재고가 기업의 이익에 미치는 Impact 산정',
-              ['SCM 최적화 전략 수립'],
+              [['SCM 최적화 전략 수립', '']],
             ],
             [
               '공급망 Risk 진단 및 대응 전략 수립',
               'Supply Chain 단계별 Risk 평가 및 대응 방안 수립',
-              ['글로벌 공급망 Risk 관리'],
+              [['글로벌 공급망 Risk 관리', '']],
             ],
           ],
         ],
@@ -1329,12 +1473,30 @@ const info = [
               'IP Mind-Set Essential',
               '인증은 IP의 기초 개념 및 방법론, Process 등 IP의 기본 개념정의 및 기초 활용방안에 대한 역량 보유 여부',
               [
-                '[IP Mind-Set] ① IP, 한 번에 All Kill: 지식재산권 101',
-                '[IP Mind-Set] ②연구개발과 지식재산',
-                '[IP Mind-Set] ③ 직무발명',
-                '[IP Mind-Set] ④ AI, 특허를 만나다! MAKE AI PATENT',
-                '[IP Mind-Set] ⑤ IP War! News로 이해하는 특허분쟁',
-                '[IP Mind-Set] ⑥ 분쟁대응 문서관리',
+                [
+                  '[IP Mind-Set] ① IP, 한 번에 All Kill: 지식재산권 101',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5q',
+                ],
+                [
+                  '[IP Mind-Set] ②연구개발과 지식재산',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5p',
+                ],
+                [
+                  '[IP Mind-Set] ③ 직무발명',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5o',
+                ],
+                [
+                  '[IP Mind-Set] ④ AI, 특허를 만나다! MAKE AI PATENT',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5n',
+                ],
+                [
+                  '[IP Mind-Set] ⑤ IP War! News로 이해하는 특허분쟁',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5m',
+                ],
+                [
+                  '[IP Mind-Set] ⑥ 분쟁대응 문서관리',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5l ',
+                ],
               ],
             ],
           ],
@@ -1345,7 +1507,7 @@ const info = [
             [
               '미국 특허출원 및  심사 대응',
               '미국 특허 출원 상 발생(가능)한 이슈 및 이와 유관한 조항의 정확한 파악, 적용 시 기한 등을 고려한 신속한 대응가능 여부',
-              ['전략적 미국 특허출원 실무(MPEP'],
+              [['전략적 미국 특허출원 실무(MPEP)', '']],
             ],
           ],
         ],
@@ -1359,7 +1521,7 @@ const info = [
             [
               '미국 특허분쟁 전문가 (PLP)',
               '미국 특허 소송 건에 대해 원고/피고로 나누어 소송 Process를 모의로 진행',
-              ['미국 특허분쟁 전문가 (PLP)'],
+              [['미국 특허분쟁 전문가 (PLP)', '']],
             ],
           ],
         ],
@@ -1374,7 +1536,7 @@ const info = [
       [
         [
           [
-            '‘Global 지역별 계약서 분석과 작성‘,  ‘기업 법무의 A to Z’ Category 신설 및\n법률 기초 개념과 용어 이해',
+            '‘Global 사업 계약서 분석 기본‘, ‘이사회 중심 경영의 이해’ 등 \n학습을 통해 법률 기초 개념과 용어 이해',
           ],
           [
             '신입/전입 등 법무 실무 경험 3년 이하 구성원',
@@ -1417,10 +1579,11 @@ const info = [
             [
               '[최근 법률 쟁점] 압수수색에 대해 알아 두어야 할 것들',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax3 ',
-            ][
-              ('[법률 상식] 외국환거래법 위반 시 제재와 대응방안',
+            ],
+            [
+              '[법률 상식] 외국환거래법 위반 시 제재와 대응방안',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-ax2',
-              1)
+              1,
             ],
           ],
           ['Global 법무 기초', ['북미 사업 계약서 분석 기본(오픈예정)', '', 2]],
@@ -1551,9 +1714,9 @@ const info = [
           ],
           [
             [
-              'Global 투자 계약서 분석 (예정)',
+              'Global 사업 계약서 분석 기본(오픈예정)',
               'Global 투자 계약서의 검토 필요성을 이해하고, 주요 Issue별 관련 조항들을 분석',
-              ['Global 투자 계약서 분석'],
+              [['Global 투자 계약서 분석', '']],
             ],
           ],
         ],
@@ -1567,31 +1730,67 @@ const info = [
               '공정거래법 Advanced',
               '공정거래법 관련 최근 규제 동향, 주요 이슈 이해 여부와 관련 Risk 에  대응하기 위한 업무 수행 역량의 보유 여부',
               [
-                '[공정거래법] (1) 공정거래법 이해 및 정책동향',
-                '[공정거래법] (2) 부당지원, 사익편취',
-                '[공정거래법] (3) 불공정거래와 부당표시광고',
-                '[공정거래법] (4) 경제력 집중 억제',
-                '[공정거래법] (5) 기업결합의 제한',
-                '[공정거래법] (6) 시장지배적지위 남용행위',
-                '[공정거래법] (7) 부당한 공동행위',
-                '[공정거래법] (8) 하도급법',
+                [
+                  '[공정거래법] (1) 공정거래법 이해 및 정책동향',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5y ',
+                ],
+                [
+                  '[공정거래법] (2) 부당지원, 사익편취',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5x',
+                ],
+                [
+                  '[공정거래법] (3) 불공정거래와 부당표시광고',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5w',
+                ],
+                [
+                  '[공정거래법] (4) 경제력 집중 억제',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5v',
+                ],
+                [
+                  '[공정거래법] (5) 기업결합의 제한',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5u',
+                ],
+                [
+                  '[공정거래법] (6) 시장지배적지위 남용행위',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5t',
+                ],
+                [
+                  '[공정거래법] (7) 부당한 공동행위',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5s',
+                ],
+                [
+                  '[공정거래법] (8) 하도급법',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5r',
+                ],
               ],
             ],
-          ],
-          [
-            '회사법 Advanced',
-            '회사법 법령의 쟁점을 알고 관련 Risk에 대응할 수 있는지 여부',
             [
-              '[회사법] (1) 주주총회 운영실무',
-              '[회사법] (2) 이사회 운영실무',
-              '[회사법] (3) 상장 및 공시 이해',
-              '[회사법] (4) 상장회사 특례',
+              '회사법 Advanced',
+              '회사법 법령의 쟁점을 알고 관련 Risk에 대응할 수 있는지 여부',
+              [
+                [
+                  '[회사법] (1) 주주총회 운영실무',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-aef',
+                ],
+                [
+                  '[회사법] (2) 이사회 운영실무',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-aee',
+                ],
+                [
+                  '[회사법] (3) 상장 및 공시 이해',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-aed',
+                ],
+                [
+                  '[회사법] (4) 상장회사 특례',
+                  'https://mysuni.sk.com/suni-main/lecture/card/CARD-aec',
+                ],
+              ],
             ],
-          ],
-          [
-            '북미 투자 계약서 Advanced (예정)',
-            '북미 투자 계약서의 법적 분석 및 해석, 초안 작성 및 검토, 위험 관리 및 컴플라이언스 역량의 보유 여부',
-            ['Global 투자 계약서 분석'],
+            [
+              '북미 사업 계약서 검토 실무(오픈예정)',
+              '북미 투자 계약서의 법적 분석 및 해석, 초안 작성 및 검토, 위험 관리 및 컴플라이언스 역량의 보유 여부',
+              [['북미 사업 계약서 검토 실무(오픈예정)', '']],
+            ],
           ],
         ],
       ],

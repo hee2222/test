@@ -340,36 +340,11 @@ export const Experience = ({
       z: 5,
       y: -2,
     });
-
-    // planeOutTl.current = gsap.timeline();
-    // planeOutTl.current.pause();
-
-    // planeOutTl.current.to(
-    //   airplane.current.position,
-    //   {
-    //     duration: 10,
-    //     z: -250,
-    //     y: 10,
-    //   },
-    //   0
-    // );
-    // planeOutTl.current.to(
-    //   cameraRail.current.position,
-    //   {
-    //     duration: 8,
-    //     y: 12,
-    //   },
-    //   0
-    // );
-    // planeOutTl.current.to(airplane.current.position, {
-    //   duration: 1,
-    //   z: -1000,
-    // });
   }, []);
   useEffect(() => {
     if (end) {
       scroll.el.scrollTo({
-        top: (scroll.el.scrollHeight / 9) * 7,
+        top: (scroll.el.scrollHeight / 8) * 7 - scroll.el.scrollHeight / 30,
         behavior: 'smooth',
       });
     }
