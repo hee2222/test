@@ -1161,6 +1161,9 @@ ul.tab-title {
   box-shadow: var(--planet-op) 0px 2px 12px 0px;
   animation: bubble 1.5s ease-in Infinite Alternate;
 }
+.desc-content {
+  max-width: 1000px;
+}
 .outro-balloon,
 .intro-balloon {
   border: 1px solid var(--brand);
