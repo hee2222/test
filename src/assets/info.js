@@ -84,8 +84,8 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-18s4',
               [1],
             ],
-            ['[Workshop] Global Market Penetration', ''],
-            ['[Workshop] Cross Border M&A Intensive', ''],
+            ['[Workshop] Global Market Penetration(오픈예정)', ''],
+            ['[Workshop] Cross Border M&A Intensive(오픈예정)', ''],
           ],
           [
             '미래 역량_Mgmt. System 재정비',
@@ -102,21 +102,22 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-17z6',
               [3],
             ],
-            ['[Workshop] Risk Sensing & Response Planning', [4]],
+            ['[Workshop] Risk Sensing & Response Planning(오픈예정)', [4]],
           ],
         ],
       ],
       [
         [
           [
-            '객관식 Test - 총 20문항 40분',
-            '전문가 인터뷰 -총 10-15문항, 1시간 내외 (대면 / 비대면 선택 가능)',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '객관식 Test \n- 총 20문항 40분',
+            '전문가 인터뷰 \n-총 10-15문항, 1시간 내외\n(대면 / 비대면 선택 가능)',
+            '80점 이상 Pass',
+            '재응시 1회 가능 (연 내)',
           ],
           [
             [
               'Strategy Essential',
-              'Strategy Essengtial은 전략 수립을 위한 내/외부 경영 환경 분석 방법론 개념과 활용',
+              '전략 수립을 위한 내·외부 경영 환경 분석 방법론 개념과 활용',
               [
                 '전략 101: 어서 와, 전략은 처음이지?',
                 '전략 수립의 시작, 경영환경분석',
@@ -398,7 +399,7 @@ const info = [
           [
             '객관식 Test  - 총 20문항 40분',
             '전문가 인터뷰  - 총 10~15문항, 1시간 내외 (대면/비대면 선택 가능)',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -645,7 +646,7 @@ const info = [
       [
         [
           [
-            '객관식 Test - 총 20문항 40분',
+            '객관식 Test \n- 총 20문항 40분',
             '80점 이상 Pass',
             '재응시 1회 가능 (연 내)',
           ],
@@ -946,7 +947,7 @@ const info = [
           [
             'Test Only, Test + 과제 제출 중 각 Skill  검증에 적합한 방식으로 출제',
             '과정 주제와 연계한 PJT 수행 / 발표  문제해결 및 적용 방식을 기술',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -1127,7 +1128,7 @@ const info = [
           [
             '객관식 Test  - 총 20문항 40분',
             '전문가 인터뷰  - 총 10~15문항, 1시간 내외 (대면/비대면 선택 가능)',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -1336,7 +1337,7 @@ const info = [
         [
           [
             '객관식 Test  - 총 20문항 40분',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
             [
@@ -1388,8 +1389,8 @@ const info = [
       [
         [
           [
-            '현재 Level 1 과정은 전무한 상황이므로 신규 콘텐츠 중심의 업로드 예정',
-            '‘Global 지역별 계약서 분석과 작성‘,  ‘기업 법무의 A to Z’ Category 신설 및 법률 기초 개념과 용어 이해',
+            // '현재 Level 1 과정은 전무한 상황이므로 신규 콘텐츠 중심의 업로드 예정',
+            '‘Global 지역별 계약서 분석과 작성‘,  ‘기업 법무의 A to Z’ Category 신설 및\n법률 기초 개념과 용어 이해',
           ],
           [
             '신입/전입 등 법무 실무 경험 3년 이하 구성원',
@@ -1398,11 +1399,10 @@ const info = [
         ],
         [
           [
-            '전문성을 旣 보유한 법무 조직 리더/ 구성원들의 Upskilling 관점',
-            'Negotiation Partner로서의 Legal Part 역할 강화 등 그룹 Agenda 측면에서 접근',
-            'Level 1의 Category를 준용',
+            '전문성 旣 보유한 법무 조직 구성원들의 미래 필요 역량 Upskilling',
+            'Negotiation Partner로서의 Legal Part 역할 강화 등 그룹 Agenda  대응 중심',
           ],
-          ['법무 5~15년차 리더/구성원'],
+          ['법무5~15년차 구성원'],
         ],
       ],
       [
@@ -1536,8 +1536,8 @@ const info = [
       [
         [
           [
-            '객관식 Test - 총 20문항 40분',
-            '80점 이상 Pass, 재응시 1회 가능 (연 내)',
+            '객관식 Test \n- 총 20문항 40분',
+            '80점 이상 Pass, \n재응시 1회 가능 (연 내)',
           ],
           [
             [

@@ -1093,7 +1093,7 @@ ul.tab-title {
 .scroll-contents ul li a,
 .table-component .tab-contents ul li,
 .table-content .course-desc {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 150%;
 }
 .scroll-contents ul li a[href=''],
@@ -1108,7 +1108,7 @@ ul.tab-title {
   background-color: #e31937;
   margin-right: 8px;
   margin-top: 10px;
-  flex: 0 0 auto;
+  flex: none;
   margin-left: 6px;
   transition: all 0.3s ease-in-out;
 }

@@ -296,7 +296,7 @@ export const Card = ({ sectionKey, cardIndex, activeIndex }) => {
   return (
     <div className={`card ${activeIndex === cardIndex ? 'active' : ''}`}>
       <div>
-        <h6>고려사항</h6>
+        <h6>주요특징</h6>
         <ul>
           {info[sectionKey].slide[0][cardIndex][0].map((list, index) => (
             <li key={`a${sectionKey}-${index}`}>{list}</li>

@@ -411,7 +411,7 @@ export const Experience = ({
           <group ref={airplane}>
             <Float floatIntensity={1.5} speed={1.5} rotationIntensity={0.5}>
               <Suspense fallback={null}>
-                {(selectedSection !== null || textView == true) && (
+                {/* {(selectedSection !== null || textView == true) && (
                   <group visible={textView}>
                     <Image
                       url="./images/img1.png"
@@ -425,7 +425,7 @@ export const Experience = ({
                     />
                     <Text
                       fontSize={0.08}
-                      color={'black'}
+                      color={'white'}
                       anchorY={'center'}
                       anchorX={'center'}
                       lineHeight={1.3}
@@ -436,7 +436,7 @@ export const Experience = ({
                     </Text>
                     <Text
                       fontSize={0.08}
-                      color={'black'}
+                      color={'white'}
                       anchorY={'center'}
                       anchorX={'center'}
                       lineHeight={1.3}
@@ -447,7 +447,7 @@ export const Experience = ({
                       오신 것을 환영합니다.
                     </Text>
                   </group>
-                )}
+                )} */}
                 <Model
                   rotation-y={Math.PI}
                   rotation-x={-Math.PI / 3}
