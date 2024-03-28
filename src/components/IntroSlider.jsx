@@ -319,7 +319,7 @@ const IntroSlide = ({ indexI, className }) => {
               setOpen(false);
             }}
           >
-            입장하기
+            여행하기
           </div>
         </div>
       )}

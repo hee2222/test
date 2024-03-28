@@ -466,6 +466,7 @@ img.scrollIcon {
   opacity: 0;
   transition: opacity 2s ease-in-out;
   pointer-events: none;
+  z-index: -1;
 }
 .hidden,
 .close {
@@ -1593,6 +1594,8 @@ ul.tab-title {
   gap: 32px;
   padding: 0 20px;
   transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  visibility: hidden;
 }
 .outro-content-level-wrap {
   width: 100%;
@@ -1606,6 +1609,8 @@ ul.tab-title {
   display: flex;
   opacity: 1;
   height: 100%;
+  pointer-events: auto;
+  visibility: visible;
 }
 .outro-content-level {
   width: 100%;
