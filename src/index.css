@@ -154,7 +154,19 @@ button {
   height: 10%;
 }
 
+@keyframes backgroundChange {
+  0% {
+    background-color: #000000;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
 .overlay {
+  animation: backgroundChange 0.5s ease-in-out;
+  animation-delay: 2s;
+  animation-fill-mode: backwards;
   position: absolute;
   top: 0;
   left: 0;
