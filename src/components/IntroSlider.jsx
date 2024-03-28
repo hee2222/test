@@ -28,8 +28,8 @@ const IntroSlide = ({ indexI, className }) => {
   };
 
   const intro4Title = [
-    '초보자를위한 기초직무 역량 skill 인증',
-    '초보자를위한 기초직무 역량 skill 인증',
+    '초보자를 위한 기초직무 역량 skill 인증',
+    '실무자를 위한 미래역량 관점 skill 인증',
     '그룹 Expert 검증을 위한 직무전문역량 skill 인증',
   ];
   const intro2Title = [

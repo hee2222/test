@@ -289,9 +289,15 @@ export const Overlay = ({}) => {
     ${end ? 'overlay--end' : ''}
     ${hasScroll ? 'overlay--scrolled' : ''}`}
     >
-      <div
-        className={`loader ${progress === 100 ? 'loader--disappear' : ''}`}
-      />
+      <div className={`loader ${progress === 100 ? 'loader--disappear' : ''}`}>
+        <img
+          src="./images/intro.png"
+          alt="suni-logo"
+          height={32}
+          className="logo"
+        />
+      </div>
+
       {progress === 100 && (
         <div className={`intro ${play ? 'intro--disappear' : ''}`}>
           <Intro />
