@@ -8,8 +8,17 @@ import Intro from './intro';
 
 export const Overlay = ({}) => {
   const { progress } = useProgress();
-  const { play, end, setEnd, setPlay, hasScroll } = usePlay();
-  const [sectionClose, setSectionClose] = useState(false);
+  const {
+    play,
+    end,
+    setEnd,
+    setPlay,
+    hasScroll,
+    innerOpen,
+    innerEndOpen,
+    setInnerEndOpen,
+  } = usePlay();
+  // const [sectionClose, setSectionClose] = useState(false);
   const [tab, setTab] = useState(0);
 
   const textTitle = useMemo(
@@ -270,18 +279,10 @@ export const Overlay = ({}) => {
     ],
     []
   );
-  // const [showIntro, setShowIntro] = useState(true);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setShowIntro(false);
-  //   }, 20000); // 20 seconds
 
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // const handleCloseSlider = () => {
-  //   setSectionClose(false);
-  // };
+  const handleEndClose = () => {
+    setInnerEndOpen(false);
+  };
 
   return (
     <div
@@ -289,51 +290,46 @@ export const Overlay = ({}) => {
     ${end ? 'overlay--end' : ''}
     ${hasScroll ? 'overlay--scrolled' : ''}`}
     >
-      <div className={`loader ${progress === 100 ? 'loader--disappear' : ''}`}>
+      {/* {progress === 100 && ( */}
+      <div className={`intro ${play ? 'intro--disappear' : ''}`}>
+        <Intro />
+        <a href="/" className="logo">
+          <img
+            src="./images/logo.png"
+            alt="suni-logo"
+            height={32}
+            className="logo"
+          />
+        </a>
+
         <img
-          src="./images/intro.png"
-          alt="suni-logo"
-          height={32}
-          className="logo"
+          src="./images/scroll-icon.svg"
+          alt="scroll"
+          width={16}
+          className="scrollIcon"
         />
+        <img
+          src="./images/immerse.png"
+          alt="immerse-logo"
+          height={40}
+          className="immerse"
+        />
+
+        {(open !== false || innerOpen !== false) && (
+          <IntroSlider
+          // introSliderVisible={introSliderVisible}
+          // onClose={handleCloseSlider}
+          />
+        )}
+        {/* <ReIntroSlider /> */}
       </div>
-
-      {progress === 100 && (
-        <div className={`intro ${play ? 'intro--disappear' : ''}`}>
-          <Intro />
-          <a href="/" className="logo">
-            <img
-              src="./images/logo.png"
-              alt="suni-logo"
-              height={32}
-              className="logo"
-            />
-          </a>
-
-          <img
-            src="./images/scroll-icon.svg"
-            alt="scroll"
-            width={16}
-            className="scrollIcon"
-          />
-          <img
-            src="./images/immerse.png"
-            alt="immerse-logo"
-            height={40}
-            className="immerse"
-          />
-
-          {(open !== false || innerOpen !== false) && (
-            <IntroSlider
-            // introSliderVisible={introSliderVisible}
-            // onClose={handleCloseSlider}
-            />
-          )}
-          {/* <ReIntroSlider /> */}
-        </div>
-      )}
-      <div className={`outro ${end ? 'outro--appear' : ''}`}>
-        {end && (
+      {/* )} */}
+      <div
+        className={`outro ${
+          end === true || innerEndOpen === true ? 'outro--appear' : 'close'
+        }`}
+      >
+        {(end || innerEndOpen) && (
           <div className="outro-container">
             <div className="outro-balloon-wrap">
               <div className="outro-balloon">
@@ -345,18 +341,27 @@ export const Overlay = ({}) => {
                 </div>
                 <img src="/images/suni-out.png" alt="" />
               </div>
-              <a
-                className="out-replay-btn"
-                onClick={() => {
-                  setPlay(true);
-                  setEnd(false);
-                }}
-              >
-                다시
-                <br />
-                여행하기
-              </a>
+              {end && (
+                <a
+                  className="out-replay-btn"
+                  onClick={() => {
+                    setPlay(true);
+                    setEnd(false);
+                  }}
+                >
+                  다시
+                  <br />
+                  여행하기
+                </a>
+              )}
             </div>
+            {innerEndOpen ? (
+              <div className="close-btn" onClick={handleEndClose}>
+                <img src="./images/slider/close.svg" alt="close-btn" />
+              </div>
+            ) : (
+              ''
+            )}
             <div className="outro-btn-wrap">
               {textTitle.map((textTitle, index) => (
                 <div

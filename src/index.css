@@ -190,7 +190,6 @@ button {
   bottom: 0;
   right: 0;
   background: black;
-  transition: opacity 2s ease-in-out;
 }
 .loader img.logo {
   z-index: 10001;
@@ -269,12 +268,11 @@ img.logo {
 }
 .intro.intro--disappear img.logo,
 .intro.intro--disappear img.scrollIcon,
-.overlay--disable ~ .button-grid,
-.overlay--disable ~ .intro-replay {
+.overlay.overlay--disable ~ .overlay-button-wrap {
   opacity: 1;
 }
-.overlay--end.overlay--disable ~ .button-grid,
-.overlay--end.overlay--disable ~ .intro-replay {
+.overlay ~ .overlay-button-wrap,
+.overlay--end.overlay--disable ~ .overlay-button-wrap {
   opacity: 0;
 }
 img.scrollIcon {
@@ -540,14 +538,24 @@ img.scrollIcon {
     z-index: -1;
   }
 }
-.intro-replay {
+.overlay-button-wrap {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transition: all 2s ease-in-out;
+  transition-delay: 1s;
+}
+.intro-replay,
+.curriculum-replay {
+  width: 130px;
   font-weight: 500;
   font-size: 14px;
-  opacity: 0;
-  position: absolute;
-  top: 30%;
-  left: 40px;
-  transform: translateY(-50%);
   color: white;
   padding: 8px 16px;
   background-color: #ffffff30;
@@ -557,16 +565,14 @@ img.scrollIcon {
   transition: all 2s ease-in-out;
   transition-delay: 1s;
   cursor: pointer;
+  text-align: center;
 }
-
+.curriculum-replay {
+  line-height: 130%;
+}
 .button-grid {
   font-weight: 500;
   font-size: 14px;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -625,6 +631,7 @@ img.scrollIcon {
 }
 
 .slider-container.close,
+.outro.close,
 .intro-slider-container.close {
   animation: slideClose 1s ease-in-out;
   animation-fill-mode: forwards;
@@ -813,7 +820,8 @@ ul.tab-title {
 }
 .intro-slider-container .nextBtn,
 .intro-slider-container .prevBtn,
-.intro-slider-container .close-btn {
+.intro-slider-container .close-btn,
+.outro .close-btn {
   background: var(--brand);
 }
 

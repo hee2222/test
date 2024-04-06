@@ -6,6 +6,7 @@ export const PlayProvider = ({ children }) => {
   const [play, setPlay] = useState(false);
   const [open, setOpen] = useState(true);
   const [innerOpen, setInnerOpen] = useState(false);
+  const [innerEndOpen, setInnerEndOpen] = useState(false);
   const [end, setEnd] = useState(false);
   const [hasScroll, setHasScroll] = useState(false);
 
@@ -22,6 +23,8 @@ export const PlayProvider = ({ children }) => {
         setInnerOpen,
         hasScroll,
         setHasScroll,
+        innerEndOpen,
+        setInnerEndOpen,
       }}
     >
       {children}

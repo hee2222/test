@@ -49,7 +49,7 @@ function App() {
     };
   }, [selectedSection]);
 
-  const { setInnerOpen } = usePlay();
+  const { setInnerOpen, setInnerEndOpen } = usePlay();
 
   const effects = useMemo(
     () => (
@@ -107,16 +107,30 @@ function App() {
         <Rig />
       </Canvas>
       <Overlay />
-      <div
-        className="intro-replay"
-        onClick={() => {
-          setInnerOpen(true);
-        }}
-      >
-        인트로 다시보기
+      <div className="overlay-button-wrap">
+        <div
+          className="intro-replay"
+          onClick={() => {
+            setInnerOpen(true);
+          }}
+        >
+          인트로 다시보기
+        </div>
+        <ButtonGrid
+          onButtonClick={handleButtonClick}
+          targetIndex={targetIndex}
+        />
+        <div
+          className="curriculum-replay"
+          onClick={() => {
+            setInnerEndOpen(true);
+          }}
+        >
+          Curriculum
+          <br />
+          다시보기
+        </div>
       </div>
-      <ButtonGrid onButtonClick={handleButtonClick} targetIndex={targetIndex} />
-
       {sliderVisible !== null && (
         <Slider sectionKey={selectedSection - 1} onClose={handleCloseSlider} />
       )}

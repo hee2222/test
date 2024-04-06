@@ -23,7 +23,6 @@ import { usePlay } from '../contexts/Play';
 import { fadeOnBeforeCompileFlat } from '../utils/fadeMaterial';
 import { Model } from './SK_Actions';
 import { Background } from './Background';
-// import { Planet } from './Planet';
 import { Points } from './point';
 import { TextSection } from './TextSection';
 import { Speed } from './Speed';

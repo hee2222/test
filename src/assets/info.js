@@ -886,6 +886,23 @@ const info = [
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-16me',
             ],
           ],
+          ['HR Toolkit', ['보상제도 설계  How to (오픈예정)', '']],
+          [
+            'Data Driven HR',
+            [
+              '[HR Analytics] ① 사례로 알아보는 HR Analytics',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-134g',
+            ],
+            [
+              '[HR Analytics] ②Foundation of HR Analytics',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-15n5',
+              [7],
+            ],
+            [
+              '[HR Analytics] ③Practice of HR Analytics',
+              'https://mysuni.sk.com/suni-main/lecture/card/CARD-1903',
+            ],
+          ],
           // [
           //   'Data 개념 및 M/L 기초',
           //   [
@@ -919,7 +936,7 @@ const info = [
               [3],
             ],
             [
-              '기업가치기반 보상: 주식기반 보상 운영 실무',
+              '[Workshop] 기업가치기반 보상 (주식기반 보상 중심)',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-18ui',
               [6],
             ],
@@ -930,27 +947,16 @@ const info = [
             ],
           ],
           [
-            'Data Driven HR',
+            'Global HR',
             [
-              '[HR Analytics] ① 사례로 알아보는 HR Analytics',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-134g',
-            ],
-            [
-              '[HR Analytics] ②Foundation of HR Analytics',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-15n5',
-              [7],
-            ],
-            [
-              '[HR Analytics] ③Practice of HR Analytics',
-              'https://mysuni.sk.com/suni-main/lecture/card/CARD-1903',
-            ],
-          ],
-          [
-            'HR Global Intelligence',
-            [
-              '[Workshop]  Cross Border M&A HR Risk 점검 ',
+              '[Workshop] Cross Border M&A HR Risk 점검 (오픈예정)',
               'https://mysuni.sk.com/suni-main/lecture/card/CARD-15gb',
             ],
+            ['[사전학습] Cross Border M&A HR Risk 점검 (오픈예정)', ''],
+          ],
+          [
+            'Talent Mgmt. Advanced',
+            ['면접위원 교육 과정 Advanced (오픈예정)', ''],
           ],
         ],
         [
@@ -963,7 +969,7 @@ const info = [
               [6],
             ],
           ],
-          ['통합 ER 전문가', ['[Off-line, 선발] ER Exper', '', [5]]],
+          ['통합 ㄸR 전문가', ['[Off-line, 선발] ER Expert', '', [5]]],
           [
             'HR Insight',
             [
