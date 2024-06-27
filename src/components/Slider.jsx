@@ -20,6 +20,7 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
   const handleMouseOut = () => {
     sethoverIndex(0);
   };
+
   return (
     <div className={className}>
       {indexI === 0 && (
@@ -35,8 +36,8 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                 {info[sectionKey].slide[0].map((tab, index) => (
                   <li
                     onClick={() => tabClickHandler(index)}
-                    className={activeIndex == index ? 'active' : ''}
-                    key={`tab${sectionKey}-${index}`}
+                    className={activeIndex === index ? 'active' : ''}
+                    key={`tab-${sectionKey}-${index}-${indexI}`}
                   >
                     {index === 0 && 'Lv1.Essential'}
                     {index === 1 && 'Lv2.Advanced'}
@@ -52,13 +53,12 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                 activeIndex={activeIndex}
                 cardIndex={index}
                 sectionKey={sectionKey}
-                key={`C${sectionKey}-${index}`}
+                key={`card-${sectionKey}-${index}-${indexI}`}
               />
             ))}
           </div>
           <div className="tab-desc">
             <div className="desc-content">{info[sectionKey].desc}</div>
-
             <img src="/images/slider/suni1.png" alt="" />
           </div>
         </div>
@@ -70,48 +70,65 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
             <br />
             학습 Roadmap
           </h5>
-          <div className="content-area">
+          <div className="tab-desc">
+            <div className="desc-content">
+              과정명에 마우스를 가져가 보세요. 연계 과정이 표시됩니다!
+            </div>
             <img src="/images/slider/suni2.png" alt="" />
+          </div>
+          <div className="content-area">
+            {/* <img src="/images/slider/suni2.png" alt="" /> */}
+
             <div className="scroll-contents">
               {info[sectionKey].slide[1].map((list, index) => (
-                <div className="scroll-card" key={`S${sectionKey}-${index}`}>
+                <div
+                  className="scroll-card"
+                  key={`scroll-${sectionKey}-${index}-${indexI}`}
+                >
                   <h6>{list[0]}</h6>
                   <div>
                     {list.map((ul, ulId) =>
-                      ulId == 0 ? (
+                      ulId === 0 ? (
                         ''
                       ) : (
-                        <ul key={`li${sectionKey}-${ulId}`}>
+                        <ul key={`ul-${sectionKey}-${ulId}-${index}-${indexI}`}>
                           {ul.map((li, i) =>
                             i === 0 ? (
                               <div
                                 className="list-title"
-                                key={`li${sectionKey}-${ulId}-${index}`}
+                                key={`title-${sectionKey}-${ulId}-${index}-${i}-${indexI}`}
                               >
                                 {li}
                               </div>
                             ) : index === 0 ? (
                               <li
-                                key={`li${sectionKey}-${ulId}-${index}-${i}`}
-                                onMouseOver={() => handleMouseOver(li[2])}
+                                key={`li-${sectionKey}-${ulId}-${index}-${i}-${indexI}`}
+                                onMouseOver={() => handleMouseOver(li[3])}
                                 onMouseOut={handleMouseOut}
                               >
-                                <a href={li[1]} target="_blank">
+                                <a
+                                  href={li[1]}
+                                  target="_blank"
+                                  className={li[2] ? 'active' : ''}
+                                >
                                   {li[0]}
                                 </a>
                               </li>
                             ) : (
                               <li
-                                key={`li${sectionKey}-${ulId}-${index}-${i}`}
+                                key={`li-${sectionKey}-${ulId}-${index}-${i}-${indexI}`}
                                 className={
-                                  Array.isArray(li[2]) &&
-                                  li[2].includes(hoverIndex)
+                                  Array.isArray(li[3]) &&
+                                  li[3].includes(hoverIndex)
                                     ? 'active'
                                     : ''
                                 }
                               >
-                                {' '}
-                                <a href={li[1]} target="_blank">
+                                <a
+                                  href={li[1]}
+                                  target="_blank"
+                                  className={li[2] ? 'active' : ''}
+                                >
                                   {li[0]}
                                 </a>
                               </li>
@@ -140,10 +157,10 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                 {info[sectionKey].slide[2].map((tab, index) => (
                   <li
                     onClick={() => tabClickHandler1(index)}
-                    className={activeIndex1 == index ? 'active' : ''}
-                    key={`level${sectionKey}-${index}`}
+                    className={activeIndex1 === index ? 'active' : ''}
+                    key={`levelwrap${sectionKey}-${index}`}
                   >
-                    Level {index + 1}
+                    {sectionKey === 7 ? 'Level 2' : `Level ${index + 1}`}
                   </li>
                 ))}
               </ul>
@@ -156,37 +173,60 @@ const Slide = ({ sectionKey, indexI, slideKey, className }) => {
                 </div>
                 {info[sectionKey].slide[2].map((wrap, i) => (
                   <div
-                    className={`level ${activeIndex1 == i ? 'active' : ''}`}
+                    className={`level ${activeIndex1 === i ? 'active' : ''}`}
                     key={`wrap${sectionKey}-${i}`}
                   >
-                    <div className="table-content">
-                      {wrap[1].map((table, index) => (
-                        <div key={`table${sectionKey}-${i}-${index}`}>
-                          <span className="course-title">{table[0]}</span>
-                          <div className="course-desc">{table[1]}</div>
+                    {wrap.map((wrapinner, i) => (
+                      <div key={`wrapinner-${sectionKey}-${i}`}>
+                        <div
+                          className="table-content"
+                          key={`table-wrapinner${sectionKey}-${i}`}
+                        >
+                          {wrapinner[1].map((table, index) => (
+                            <div key={`slide-table${sectionKey}-${i}-${index}`}>
+                              <a href={table[1]} target="_blank">
+                                <span
+                                  className={
+                                    table[4]
+                                      ? 'active course-title'
+                                      : 'course-title'
+                                  }
+                                >
+                                  {table[0]}
+                                </span>
+                              </a>
+                              <div className="course-desc">{table[2]}</div>
+                              <ul>
+                                {table[3].map((li, liIndex) => (
+                                  <li
+                                    key={`table${sectionKey}-${i}-${index}-${liIndex}`}
+                                  >
+                                    <a
+                                      href={li[1]}
+                                      target="_blank"
+                                      className={li[2] ? 'active' : ''}
+                                    >
+                                      {li[0]}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="last-cell">
                           <ul>
-                            {table[2].map((li, liIndex) => (
+                            {wrapinner[0].map((info, infoIndex) => (
                               <li
-                                key={`table${sectionKey}-${i}-${index}-${liIndex}`}
+                                key={`tabInfo${sectionKey}-${i}-${infoIndex}`}
                               >
-                                <a href={li[1]} target="_blank">
-                                  {li[0]}
-                                </a>
+                                {info}
                               </li>
                             ))}
                           </ul>
                         </div>
-                      ))}
-                    </div>
-                    <div className="last-cell">
-                      <ul>
-                        {wrap[0].map((info, infoIndex) => (
-                          <li key={`tabInfo${sectionKey}-${i}-${infoIndex}`}>
-                            {info}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -213,9 +253,9 @@ export const Slider = ({ sectionKey, onClose }) => {
     '--planet-op',
     info[sectionKey].color[2]
   );
+
   const handleClose = () => {
     setIsOpen(false);
-
     setTimeout(() => {
       onClose();
     }, 800);
@@ -224,18 +264,14 @@ export const Slider = ({ sectionKey, onClose }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const renderObject = info[sectionKey];
+  const totalSlides = renderObject['slide'].length;
 
-  // 슬라이드 전체 개수 계산
-  let totalSlides = renderObject['slide'].length;
-
-  // 이전 슬라이드로 이동하는 함수
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? totalSlides - 1 : prevSlide - 1
     );
   };
 
-  // 다음 슬라이드로 이동하는 함수
   const handleNextSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === totalSlides - 1 ? 0 : prevSlide + 1
@@ -245,27 +281,25 @@ export const Slider = ({ sectionKey, onClose }) => {
   let renderSlides = [];
   let slideIndex = [];
 
-  var k = 0;
   for (let i = 0; i < renderObject['slide'].length; i++) {
     renderSlides.push(
       <Slide
-        key={`slide${sectionKey}-${i}-${i}`}
+        key={`slide${sectionKey}-${i}`}
         slideTemplate={i}
         slideKey={renderObject}
         sectionKey={sectionKey}
         indexI={i}
         className={`slide slide${i} ${
-          currentSlide === k ? 'visible' : 'hidden'
+          currentSlide === i ? 'visible' : 'hidden'
         }`}
       />
     );
     slideIndex.push(
       <div
-        key={`dot${sectionKey}-${i}-${i}`}
-        className={`slideDot ${currentSlide === k ? 'active' : ''}`}
+        key={`dot${sectionKey}-${i}`}
+        className={`slideDot ${currentSlide === i ? 'active' : ''}`}
       ></div>
     );
-    k++;
   }
 
   return (
@@ -301,7 +335,7 @@ export const Card = ({ sectionKey, cardIndex, activeIndex }) => {
         <h6>주요특징</h6>
         <ul>
           {info[sectionKey].slide[0][cardIndex][0].map((list, index) => (
-            <li key={`a${sectionKey}-${index}`}>{list}</li>
+            <li key={`a${sectionKey}-${cardIndex}-${index}`}>{list}</li>
           ))}
         </ul>
       </div>
@@ -309,7 +343,7 @@ export const Card = ({ sectionKey, cardIndex, activeIndex }) => {
         <h6>학습대상</h6>
         <ul>
           {info[sectionKey].slide[0][cardIndex][1].map((list, index) => (
-            <li key={`b${sectionKey}-${index}`}>{list}</li>
+            <li key={`b${sectionKey}-${cardIndex}-${index}`}>{list}</li>
           ))}
         </ul>
       </div>

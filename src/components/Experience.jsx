@@ -33,6 +33,7 @@ import { Su4 } from './Su4';
 import { Su5 } from './Su5';
 import { Su6 } from './Su6';
 import { Su7 } from './Su7';
+import { Su8 } from './Su8';
 
 const LINE_NB_POINTS = 1120;
 const CURVE_DISTANCE = 40;
@@ -62,6 +63,7 @@ export const Experience = ({
       '구매/SCM',
       'IP',
       '법무',
+      'Competency',
     ],
     []
   );
@@ -94,6 +96,7 @@ export const Experience = ({
       new Vector3(0, 0, -7 * CURVE_DISTANCE),
       new Vector3(0, 0, -8 * CURVE_DISTANCE),
       new Vector3(0, 0, -9 * CURVE_DISTANCE),
+      new Vector3(0, 0, -10 * CURVE_DISTANCE),
     ],
     []
   );
@@ -107,7 +110,7 @@ export const Experience = ({
 
   const textSections = useMemo(() => {
     const sections = [];
-    const numSections = 8; // 원하는 섹션의 총 수
+    const numSections = 9; // 원하는 섹션의 총 수
 
     for (let i = 1; i < numSections; i++) {
       const cameraRailDist = i % 2 === 0 ? 1 : -1; // 짝수 번째 섹션은 1, 홀수 번째 섹션은 -1
@@ -343,7 +346,7 @@ export const Experience = ({
   useEffect(() => {
     if (end) {
       scroll.el.scrollTo({
-        top: (scroll.el.scrollHeight / 8) * 7 - scroll.el.scrollHeight / 30,
+        top: (scroll.el.scrollHeight / 9) * 8 - scroll.el.scrollHeight / 30,
         behavior: 'smooth',
       });
     }
@@ -358,7 +361,7 @@ export const Experience = ({
   useEffect(() => {
     if (scroll.el && scrollBtn !== null) {
       scroll.el.scrollTo({
-        top: (scroll.el.scrollHeight / 9) * scrollBtn,
+        top: (scroll.el.scrollHeight / 10) * scrollBtn,
         behavior: 'smooth',
       });
     }
@@ -490,6 +493,7 @@ export const Experience = ({
         <Su5 curvePoints={curvePoints[5]} />
         <Su6 curvePoints={curvePoints[6]} />
         <Su7 curvePoints={curvePoints[7]} />
+        <Su8 curvePoints={curvePoints[8]} />
 
         <Sparkles count={5000} scale={[20, 3, 1000]} size={1.8} speed={0.2} />
 

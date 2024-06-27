@@ -25,6 +25,7 @@ export const TextSection = ({
       '구매/SCM',
       'IP',
       '법무',
+      'Competency',
     ],
     []
   );

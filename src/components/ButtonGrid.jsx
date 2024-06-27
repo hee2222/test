@@ -13,6 +13,7 @@ export const ButtonGrid = ({ onButtonClick, targetIndex }) => {
     '구매/SCM',
     'IP',
     '법무',
+    'Competency',
   ];
 
   // 각 버튼을 렌더링

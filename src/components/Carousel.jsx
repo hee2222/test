@@ -30,7 +30,7 @@ export const Carousel1 = ({ onClickPlanet }) => {
         xRadius={600}
         autoPlay={false}
       >
-        {Array.from({ length: 8 }, (_, index) => (
+        {Array.from({ length: 9 }, (_, index) => (
           <div className="button-card" style={style} key={`planet${index + 1}`}>
             <img
               src={`/images/intro${index + 1}.png`}

@@ -81,13 +81,15 @@ const IntroSlide = ({ indexI, className }) => {
 
             <div className="intro-planet-slider">
               <div className="intro-planet-title">
-                {clickedPlanet == 7
+                {clickedPlanet == 8
                   ? 'L.E.A.D 프로그램'
                   : info[clickedPlanet].title}
               </div>
               <div>
-                {clickedPlanet == 7
+                {clickedPlanet == 8
                   ? 'L.E.A.D 프로그램은 미래 변화 관련 팀장 Level 구성원들의 Perspective 확장을 위해\n전략, 재무회계, HR, 마케팅, SCM/IP 직무의 핵심 주제 및 Issue 학습을 통한 미래 변화 대응 역량 제고 프로그램입니다.'
+                  : clickedPlanet == 7
+                  ? '변화하는 경영 환경 속에서 주요 경영 Agenda를 중심으로 직무 역량 향상에\n도움이 되는 다양한 경영지식 및 역량을 확보할 수 있습니다.'
                   : info[clickedPlanet].desc}
               </div>
             </div>

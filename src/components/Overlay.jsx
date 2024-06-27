@@ -30,6 +30,7 @@ export const Overlay = ({}) => {
       '구매/SCM',
       'IP',
       '법무',
+      'Competency',
     ],
     []
   );
@@ -72,9 +73,17 @@ export const Overlay = ({}) => {
             'Deal Structuring & Financing',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-afq',
           ],
-          ['Cross Border M&A Intensive(오픈예정)', ''],
-          ['Global Market Penetration(오픈예정)', ''],
-          ['Risk Sensing & Response Planning(오픈예정)', ''],
+          [
+            'Cross Border M&A Intensive',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1adj',
+            true,
+          ],
+          [
+            'Global Market Penetration',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a97',
+            true,
+          ],
+          ['Risk Mgmt. & Contingency Planning(오픈예정)', '', true],
         ],
       ],
       [
@@ -109,12 +118,16 @@ export const Overlay = ({}) => {
             '기업가치 제고를 위한 ESG Workshop',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-18vu',
           ],
-          ['Cross-border Valuation 실무 Workshop(오픈예정)', ''],
-          ['Global 자산관리 실무 Workshop(오픈예정)', ''],
-          ['Due Diligence 실무 Workshop(오픈예정)', ''],
+          [
+            '[Workshop] Cross-border Valuation 실무',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a6h',
+            true,
+          ],
+          ['[Workshop] Global 해외자산관리 실무', ''],
+          ['[Workshop] Due Diligence 실무(오픈예정)', '', true],
           ['EXIT 전략 실무 Workshop(오픈예정)', ''],
         ],
-        [['자본시장전문가 과정(오픈예정)', '']],
+        [['자본시장전문가 과정', '']],
       ],
       [
         [
@@ -130,11 +143,15 @@ export const Overlay = ({}) => {
             '마케팅 Essentials',
             'https://mysuni.sk.com/suni-main/certification/badge/badge-detail/BADGE-4a',
           ],
-          ['Global Branding & MKT Communication(오픈예정)', ''],
+          [
+            'Global Branding & MKT Communication',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a3e',
+            true,
+          ],
         ],
         [
           [
-            'Data driven MKT',
+            'AI/Data Driven Marketing',
             'https://mysuni.sk.com/suni-main/certification/badge/badge-detail/BADGE-80',
           ],
           [
@@ -145,7 +162,6 @@ export const Overlay = ({}) => {
             'B2B MKT Pipeline 관리',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-152a',
           ],
-          ['DT 기반 고객 Engagement(오픈예정)', ''],
         ],
         [
           [
@@ -168,7 +184,7 @@ export const Overlay = ({}) => {
             '면접위원 교육과정(Essential)',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-16me',
           ],
-          ['보상제도 설계 How to(오픈예정)', ''],
+          ['보상체계 How-to(8월 중)', ''],
         ],
         [
           [
@@ -176,14 +192,18 @@ export const Overlay = ({}) => {
             'https://mysuni.sk.com/suni-main/certification/badge/badge-detail/BADGE-gs',
           ],
           ['Cross Border M&A HR Risk 점검(오픈예정)', ''],
-          ['면접위원 교육과정(Advanced)(오픈예정)', ''],
+          ['채용 역량 고도화(8월 중)', ''],
         ],
         [
           [
             'HR Expert',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-15dr',
           ],
-          ['ER 전문가(오픈예정)', ''],
+          [
+            'ER Expert',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1aac',
+            true,
+          ],
         ],
       ],
       [
@@ -207,8 +227,12 @@ export const Overlay = ({}) => {
             '최적 구매원가 관리',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-19gv',
           ],
-          ['Global SCM 최적화 전략 수립(오픈예정)', ''],
-          ['공급망 Dynamics 대응 전략 수립(오픈예정)', ''],
+          [
+            '전체 최적화 기반 전략적 이익 모델 설계',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a99',
+            true,
+          ],
+          ['글로벌 공급망 Risk 관리(오픈예정)', '', true],
         ],
       ],
       [
@@ -239,7 +263,10 @@ export const Overlay = ({}) => {
             '특허관리 실무',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-a5h',
           ],
-          ['전략적 미국 특허출원(오픈예정)', ''],
+          [
+            '전략적 미국 특허출원 실무 과정',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1aa8',
+          ],
         ],
         [
           [
@@ -258,7 +285,10 @@ export const Overlay = ({}) => {
             '이사회 중심 경영의 이해',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-14uk',
           ],
-          ['Global 사업 계약서 분석 기본(오픈예정)', ''],
+          [
+            'Global 사업 계약서 분석 기본',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a39',
+          ],
         ],
         [
           [
@@ -273,7 +303,38 @@ export const Overlay = ({}) => {
             '최근 법률 쟁점과 우리의 대응',
             'https://mysuni.sk.com/suni-main/lecture/card/CARD-156s',
           ],
-          ['북미 사업 계약서 검토 실무(오픈예정)', ''],
+          [
+            '북미 사업 계약서 검토 실무',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1abw',
+            true,
+          ],
+        ],
+      ],
+      [
+        [
+          [
+            '[리얼오피스] 일잘러의 진짜 파워포인트',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-17gu',
+          ],
+          [
+            '[리얼오피스] 일잘러의 진짜 엑셀',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-17gr',
+          ],
+          [
+            '디자인: 일잘러로 만드는 생각의 힘',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-14oj',
+          ],
+        ],
+        [
+          [
+            'Strategic Decision Making',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-17od',
+          ],
+          [
+            'Global Negotiation',
+            'https://mysuni.sk.com/suni-main/lecture/card/CARD-1a23',
+            true,
+          ],
         ],
       ],
     ],
@@ -302,12 +363,10 @@ export const Overlay = ({}) => {
           />
         </a>
 
-        <img
-          src="./images/scroll-icon.svg"
-          alt="scroll"
-          width={16}
-          className="scrollIcon"
-        />
+        <div className="scrollIcon">
+          <p>마우스를 스크롤해 주세요</p>
+          <img src="./images/scroll-icon.svg" alt="scroll" width={16} />
+        </div>
         <img
           src="./images/immerse.png"
           alt="immerse-logo"
@@ -390,7 +449,11 @@ export const Overlay = ({}) => {
                         <ul className="outro-content-level-list">
                           {textRoadmap[0].map((list, n) => (
                             <li key={`list1-${n}`}>
-                              <a href={list[1]} target="_blank">
+                              <a
+                                href={list[1]}
+                                target="_blank"
+                                className={list[2] ? 'active' : ''}
+                              >
                                 {list[0]}
                               </a>
                             </li>
@@ -405,7 +468,11 @@ export const Overlay = ({}) => {
                           <ul className="outro-content-level-list">
                             {textRoadmap[1].map((list, n) => (
                               <li key={`list2-${n}`}>
-                                <a href={list[1]} target="_blank">
+                                <a
+                                  href={list[1]}
+                                  target="_blank"
+                                  className={list[2] ? 'active' : ''}
+                                >
                                   {list[0]}
                                 </a>
                               </li>
@@ -422,7 +489,11 @@ export const Overlay = ({}) => {
                           <ul className="outro-content-level-list">
                             {textRoadmap[2].map((list, n) => (
                               <li key={`list3-${n}`}>
-                                <a href={list[1]} target="_blank">
+                                <a
+                                  href={list[1]}
+                                  target="_blank"
+                                  className={list[2] ? 'active' : ''}
+                                >
                                   {list[0]}
                                 </a>
                               </li>
